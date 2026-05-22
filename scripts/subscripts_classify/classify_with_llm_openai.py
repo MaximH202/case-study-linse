@@ -1,6 +1,7 @@
 from openai import OpenAI
 from datetime import datetime, timezone
 import json
+import pandas as pd
 import time
 
 client = OpenAI()
@@ -56,7 +57,7 @@ def process_with_llm_openai(model_name, system_prompt, user_prompt, schema=None)
 
 
 def process_rows_with_llm_openai(data, model, system_prompt, user_prompt_template, schema=None, log_fn=None):
-
+    data = pd.DataFrame(data)
     if schema is not None:
         schema = json.loads(schema)
 
@@ -64,8 +65,9 @@ def process_rows_with_llm_openai(data, model, system_prompt, user_prompt_templat
     log_fn(f"Starting: {n_rows} rows to process")
 
     elapsed_times = []
+    
 
-    for i, (index, row) in enumerate(data.iterrows()):
+    for i, (index, row) in enumerate(data.iterrows()):  #data
 
         user_prompt = user_prompt_template.format(text=row["text"])
 

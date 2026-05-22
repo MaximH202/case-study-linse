@@ -1,0 +1,15 @@
+ingredient,share,text,total_tokens,model_used
+Schäuferle,high,"Schäuferle ""fränkische Art"" mit Soße (S,Wz,Sel,Ge)",230,gpt-5-nano
+Soße,medium,"Schäuferle ""fränkische Art"" mit Soße (S,Wz,Sel,Ge)",230,gpt-5-nano
+fränkische Art,low,"Schäuferle ""fränkische Art"" mit Soße (S,Wz,Sel,Ge)",230,gpt-5-nano
+vegan sausage,high,"Currywurst vegan (1)Currysauce ""Ruhrpottfeuer"" (3,Kn,Sf,Sl,We)",227,gpt-5-nano
+currysauce,high,"Currywurst vegan (1)Currysauce ""Ruhrpottfeuer"" (3,Kn,Sf,Sl,We)",227,gpt-5-nano
+Quark,high,"Quark mit Früchten (16,17)	Festtagscreme Eierlikör (16,17,R,S)	(R,S,16,17)",240,gpt-5-nano
+Früchte,high,"Quark mit Früchten (16,17)	Festtagscreme Eierlikör (16,17,R,S)	(R,S,16,17)",240,gpt-5-nano
+Eierlikör,high,"Quark mit Früchten (16,17)	Festtagscreme Eierlikör (16,17,R,S)	(R,S,16,17)",240,gpt-5-nano
+"main protein (e.g., meat, fish, chicken, eggs)",medium,"Kinderteller
+",202,gpt-5-nano
+"Tomatensuppe (Tomate, Suppebasis)",high,"Cremige Tomatensuppe mit Basilikumöl, gegrillter Garnele und geröstetem Baguette (1,4,Kn,30,31,36,30a,30c)",279,gpt-5-nano
+Basilikumöl,low,"Cremige Tomatensuppe mit Basilikumöl, gegrillter Garnele und geröstetem Baguette (1,4,Kn,30,31,36,30a,30c)",279,gpt-5-nano
+gegrillte Garnele,high,"Cremige Tomatensuppe mit Basilikumöl, gegrillter Garnele und geröstetem Baguette (1,4,Kn,30,31,36,30a,30c)",279,gpt-5-nano
+geröstetes Baguette,high,"Cremige Tomatensuppe mit Basilikumöl, gegrillter Garnele und geröstetem Baguette (1,4,Kn,30,31,36,30a,30c)",279,gpt-5-nano
