@@ -135,7 +135,7 @@ classified <- unique_dishes |>
     matched_classes = map2(classes_name, classes_text, ~ unique(c(.x, .y)))
   )
 
-#  8. Abdeckung prüfen
+#  8. Abdeckung prüfen, aktuell können 95% der Gerichte einer Lebensmittelklasse zugeordnet werden
 classified |>
   mutate(n_classes = map_int(matched_classes, length)) |>
   summarise(
