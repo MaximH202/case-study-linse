@@ -1,45 +1,5 @@
+#Zuweisung zu Lebensmittelklassen und Ernährungsformen
 
-exclude_pattern_name <- str_c(
-  "pudding", "buffet", "kuchen", "obst", "dessert", "^eis$", "joghurt", "getränk", "imbiss", "personal", "catering", "schokolade"
-  ,sep = "|")
-
-exclude_pattern_type <- str_c(
-  "dessert", "pudding", "kuchen", "eis", "joghurt",
-  "obst", "beilage", "getränk", "buffet", "pudding", "salat", "imbiss", "personal", "gemüse", "catering"
-  ,sep = "|"
-)
-#  3. Unique Dishes filtern & bereinigen
-
-unique_dishes <- menus |>
-  mutate(
-    name_lc = str_to_lower(product_name),
-    type_lc = str_to_lower(prod_type),
-    is_side_type = str_detect(type_lc, exclude_pattern_type),
-    is_side_name = str_detect(name_lc, exclude_pattern_name),
-    is_side = is_side_type | is_side_name
-  ) |>
-  filter(!is_side) |>
-  distinct(product_name, .keep_all = TRUE) |>
-  mutate(
-    name_clean = product_name |>
-      str_to_lower() |>
-      str_replace_all(c(
-        "ä" = "ae", "ö" = "oe", "ü" = "ue", "ß" = "ss",
-        "\\." = " ", ","  = " "
-      )) |>
-      str_squish()
-  ) |> 
-    mutate(
-    menu_clean = menu_text |>
-      str_to_lower() |>
-      str_replace_all(c(
-        "ä" = "ae", "ö" = "oe", "ü" = "ue", "ß" = "ss",
-        "\\." = " ", ","  = " "
-      )) |>
-      str_squish()
-  )
-
-# 4. Keywords
 
 keywords <- list(
   rotes_fleisch = c(
@@ -84,7 +44,7 @@ keywords <- list(
   getreide = c(
     "weizen", "vollkorn", "reis", "basmati", "hafer", "haferflock", "kaiserschmarrn", "pfannkuchen",
     "mais", "polenta", "quinoa", "amaranth", "buchweizen", "couscous",
-    "bulgur", "nudel", "pasta", "spaghetti", "tagliatelle", "bandnudel",
+    "bulgur", "nudel", "pasta", "spaghetti", "tagliatelle", "bandnudel", "rigatoni",
     "farfalle", "penne", "fusilli", "fussili", "maccaroni", "tortelloni", "tortellini", "spaetzle", "gebaeck", 
     "pizza", "grieß", "brot"
   ),
@@ -135,6 +95,14 @@ classified <- unique_dishes |>
     matched_classes = map2(classes_name, classes_text, ~ unique(c(.x, .y)))
   )
 
+#output der gematchten Lebensmittelklassen
+classified |>
+  select(product_name, matched_classes) |>
+  mutate(
+    matched_classes_str = map_chr(matched_classes, ~ str_c(.x, collapse = ", "))
+  ) |>
+  head(20)
+
 #  8. Abdeckung prüfen, aktuell können 95% der Gerichte einer Lebensmittelklasse zugeordnet werden
 classified |>
   mutate(n_classes = map_int(matched_classes, length)) |>
@@ -145,7 +113,22 @@ classified |>
     abdeckung           = scales::percent(mean(n_classes > 0))
   )
 
-# Stichprobe der nicht klassifizierten
+# nicht klassifizierte
 not_classified <- classified |>
   filter(map_int(matched_classes, length) == 0)
 
+# Klassifizierte
+classified <- classified |>
+  filter(map_int(matched_classes, length) > 0)
+
+#Zuweisung der Lebensmittelklassen zu Ernährungsformen. 
+#Die Zuweisung erfolgt durch eine Abstufung. Sobald Fleisch in der Mahlzeit ist, handelt es sich um omnivor, die restlichen Klassen sind egal.
+#Befindet sich nur Fisch in der Mahlzeit, wird der Mahlzeit Pescetarisch zugewiesen, die restlichen Klassen sind egal. 
+# etc.
+assign_level1 <- function(classes) {
+  if(any(c("rotes_fleisch", "gefluegel") %in% classes)) return("omnivor")
+  if("fisch" %in% classes) return("pescetarisch")
+  if(any(c("milchprodukte", "ei") %in% classes)) return("vegetarisch")
+  if(length(classes) >0) return("vegan")
+  return(NA_character_)
+}
