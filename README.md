@@ -5,6 +5,7 @@ This repository contains the project with all relevant files for the case study 
 Use this file to document your solutions and findings regarding the tasks of the case study.
 
 #Setup
+
 -source("scripts/setup.R")
 
 -source("analyze/setup.R")
