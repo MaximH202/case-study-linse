@@ -259,7 +259,7 @@ safe_parse <- possibly(fromJSON, otherwise = NA)
 #   select(text, klasse, anteil, hauptprotein) |> 
 #   mutate(Klassifizierungsart = "llm")
 
-# Klassen in einer Zeile
+# Klassen in einer Zeile, Datensätze bei denen keine Lebensmittelklasse erkannt wurde wird gelöscht 
 llm_classified_short <- results_tbl |>
   mutate(parsed = map(llm_result, safe_parse)) |>
   unnest_wider(parsed) |>

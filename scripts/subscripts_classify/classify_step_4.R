@@ -25,16 +25,16 @@ Falls es keine Speise ist:
 - setze 'gruppe_ebene1' auf 'nicht_speise'
 
 Falls es eine Speise ist:
-1. schätze den qualitativen Anteil jeder Klasse die dir zu der Speise gegeben wird,
+1. schätze den qualitativen Anteil jeder Lebensmittelklasse die dir zu der Speise gegeben wird,
 2. bestimme die Hauptproteinquelle.
 
 Berücksichtige sowohl explizit genannte Zutaten als auch typische Hauptbestandteile des Gerichts.
 
 ---
 
-## Lebensmittelklassen
+## Die Lebensmittelklassen. Schätze zu jeder dieser Klassen den geschätzten Anteil am Gericht.
 
-{matched_classes_str}
+{klassen}
 
 ---
 
@@ -55,7 +55,7 @@ Berücksichtige sowohl explizit genannte Zutaten als auch typische Hauptbestandt
 
 Mögliche Werte:
 
-- {matched_classes_str}
+- {matched_classes_str} : Überlege hier genau welche dieser Klassen wahrscheinlich den Großteil des Proteingehalts ausmacht
 - keine_eindeutige_proteinquelle
 
 ---
@@ -64,7 +64,6 @@ Mögliche Werte:
 
 - Konzentriere dich ausschließlich auf Hauptzutaten und wesentliche Rezeptbestandteile.
 - Ignoriere Gewürze, Kräuter, kleine Garnituren und technisch notwendige Kleinstmengen.
-- Leite implizite Hauptzutaten aus typischen Rezepten ab.
 
 Speise:
 {text}
@@ -151,7 +150,7 @@ batch_menus_classified_2 <- classified_short |>
   select(text = menu_clean, klassen)
 
 # LLM 
-results <- process_with_llm_openai_multiple_workers(
+results2 <- process_with_llm_openai_multiple_workers(
   data = batch_menus_classified_2,
   model = "gpt-5-nano",
   system_prompt = "You are a food classification assistant for German university cafeterias. 
@@ -163,21 +162,26 @@ results <- process_with_llm_openai_multiple_workers(
 )
 
 # results in Tibble umwandeln
-results_tbl_2 <- as_tibble(results)
+results_tbl_2 <- as_tibble(result2)
 
-# Ergebnis mit nur Hauptlebensmittel
+# LLM-Ergebnisse parsen und relevante Spalten extrahieren
 safe_parse <- possibly(fromJSON, otherwise = NA)
-llm_classified_2 <- results_tbl_2 |>
-  select(-klassen) |>
-  mutate(parsed = map(llm_result, safe_parse)) |>
-  unnest_wider(parsed) |>
-  select(text, hauptprotein)
 
-# Ergebnis parsen Version mit einzelnen Lebensmitteln
-llm_classified_2 <- results_tbl_2 |>
-  mutate(parsed = map(llm_result, safe_parse)) |>
-  unnest_wider(parsed) |>
-  unnest_longer(klassen) |>
-  unnest_wider(klassen) |>
-  select(text, klasse, anteil, hauptprotein)
+final_tbl_2 <- bind_cols(batch_menus_classified_2, results_tbl_2 |> select(-text, -klassen)) |>
+  mutate(
+    parsed       = map(llm_result, safe_parse),
+    llm_klassen  = map_chr(parsed, ~ paste(.x$klassen$klasse, collapse = ", ")),
+    hauptprotein = map_chr(parsed, ~ .x$hauptprotein)
+  ) |>
+  select(text, klassen, hauptprotein)
 
+
+#join zwischen classified und llm ergebnissen
+alle_klassifikationen <- bind_rows(
+  final_tbl_2 |> rename(klasse = klassen),
+  llm_classified_short
+)
+
+classified_joined <- classified |>
+  select(-matched_classes) |>
+  right_join(alle_klassifikationen, by = c("menu_clean" = "text"))
