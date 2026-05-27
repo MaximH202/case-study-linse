@@ -229,7 +229,7 @@ schema <- '{
 
 #Daten die durch das Regelwerk nicht klassifiziert werden konnten
 batch_menus_not_classified <- not_classified |> 
-  slice_sample(n = 10) |> 
+  slice_sample(n = 40) |> 
   select(text = menu_clean) 
 
 # LLM 
@@ -241,7 +241,7 @@ results <- process_with_llm_openai_multiple_workers(
   user_prompt_template = user_prompt_template,
   schema = schema,
   log_fn = log_to_r,
-  max_workers = 5
+  max_workers = 2
 )
 
 # results in Tibble umwandeln
@@ -251,13 +251,13 @@ results_tbl <- as_tibble(results)
 safe_parse <- possibly(fromJSON, otherwise = NA)
 
 # Klassen in mehreren Zeilen
-llm_classified_long<- results_tbl |>
-  mutate(parsed = map(llm_result, safe_parse)) |>
-  unnest_wider(parsed) |>
-  unnest_longer(klassen) |>
-  unnest_wider(klassen) |>
-  select(text, klasse, anteil, hauptprotein) |> 
-  mutate(Klassifizierungsart = "llm")
+# llm_classified_long<- results_tbl |>
+#   mutate(parsed = map(llm_result, safe_parse)) |>
+#   unnest_wider(parsed) |>
+#   unnest_longer(klassen) |>
+#   unnest_wider(klassen) |>
+#   select(text, klasse, anteil, hauptprotein) |> 
+#   mutate(Klassifizierungsart = "llm")
 
 # Klassen in einer Zeile
 llm_classified_short <- results_tbl |>
@@ -274,15 +274,15 @@ llm_classified_short <- results_tbl |>
   select(text, klasse, hauptprotein)
 
 # Nur Hauptprotein
-llm_classified_mainprotein <- results_tbl |>
-  mutate(parsed = map(llm_result, safe_parse)) |>
-  unnest_wider(parsed) |>
-  select(text, hauptprotein)
+# llm_classified_mainprotein <- results_tbl |>
+#   mutate(parsed = map(llm_result, safe_parse)) |>
+#   unnest_wider(parsed) |>
+#   select(text, hauptprotein)
 
 #join der Klassen vom llm und regelbasiert
-llm_classified_join <- not_classified %>%
-  right_join(
-    llm_classified_short,
-    by = c("menu_clean" = "text")
-  ) |>
-  distinct(menu_clean, .keep_all = TRUE)
+# llm_classified_join <- not_classified %>%
+#   right_join(
+#     llm_classified_short,
+#     by = c("menu_clean" = "text")
+#   ) |>
+#   distinct(menu_clean, .keep_all = TRUE)

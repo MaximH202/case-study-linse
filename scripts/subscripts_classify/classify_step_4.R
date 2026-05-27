@@ -4,7 +4,7 @@
 
 reticulate::source_python("scripts/subscripts_classify/classify_with_llm_openai.py")
 
-user_prompt_template <- "
+user_prompt_template_2 <- "
 ## Aufgabe
 
 Für den folgenden Mensa-Eintrag sollst du zuerst entscheiden, ob es sich tatsächlich um eine Speise handelt. Dies ist ein Sonderfall, *kein* default-Fallback!
@@ -70,7 +70,7 @@ Speise:
 {text}
 "
 
-schema <- '{
+schema_2 <- '{
   "type": "object",
 
   "properties": {
@@ -146,35 +146,32 @@ schema <- '{
 }'
 
 #Daten die durch das Regelwerk nicht klassifiziert werden konnten
-batch_menus_classified <- classified |> 
-  slice_sample(n = 10) |> 
-  select(text = menu_text, matched_classes) |> 
-  mutate(
-    matched_classes_str = map_chr(matched_classes, ~ str_c(.x, collapse = ", "))
-  )
+batch_menus_classified_2 <- classified_short |> 
+  slice_sample(n = 40) |> 
+  select(text = menu_clean, klassen)
 
 # LLM 
 results <- process_with_llm_openai_multiple_workers(
-  data = batch_menus_classified,
+  data = batch_menus_classified_2,
   model = "gpt-5-nano",
   system_prompt = "You are a food classification assistant for German university cafeterias. 
                    You have extensive knowledge of German and international cuisine.",
   user_prompt_template = user_prompt_template,
-  schema = schema,
+  schema = schema_2,
   log_fn = log_to_r,
   max_workers = 5
 )
 
 # results in Tibble umwandeln
 results_tbl_2 <- as_tibble(results)
-results_tbl_2 <- results_tbl_2 |> select(-matched_classes)
 
 # Ergebnis mit nur Hauptlebensmittel
 safe_parse <- possibly(fromJSON, otherwise = NA)
 llm_classified_2 <- results_tbl_2 |>
+  select(-klassen) |>
   mutate(parsed = map(llm_result, safe_parse)) |>
   unnest_wider(parsed) |>
-  select(text, klassen, hauptprotein)
+  select(text, hauptprotein)
 
 # Ergebnis parsen Version mit einzelnen Lebensmitteln
 llm_classified_2 <- results_tbl_2 |>

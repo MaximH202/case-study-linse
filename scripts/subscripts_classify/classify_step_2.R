@@ -97,19 +97,19 @@ classified <- unique_dishes |>
   select(-classes_name, -classes_text, -is_side, -is_side_name, -is_side_type, -menu_text, -prod_type, -product_name, -name_lc)
 
   
-classified_long <- classified
+# classified_long <- classified
 classified_short <-classified
 
 
 #  8. Abdeckung prüfen, aktuell können 95% der Gerichte einer Lebensmittelklasse zugeordnet werden
-classified_long |>
-  mutate(n_classes = map_int(matched_classes, length)) |>
-  summarise(
-    total               = n(),
-    klassifiziert       = sum(n_classes > 0),
-    nicht_klassifiziert = sum(n_classes == 0),
-    abdeckung           = scales::percent(mean(n_classes > 0))
-  )
+# classified_long |>
+#   mutate(n_classes = map_int(matched_classes, length)) |>
+#   summarise(
+#     total               = n(),
+#     klassifiziert       = sum(n_classes > 0),
+#     nicht_klassifiziert = sum(n_classes == 0),
+#     abdeckung           = scales::percent(mean(n_classes > 0))
+#   )
 
 # nicht klassifizierte
 not_classified <- classified |>
@@ -124,8 +124,8 @@ classified_short <- classified_short |>
   mutate(klassen = map_chr(matched_classes, ~ paste(.x, collapse = ", "))) |> 
   select(-matched_classes)
 
-classified_long <- classified_short |>
-  mutate(
-    klassen = str_split(klassen, ",\\s*")
-  ) |>
-  unnest_longer(klassen)
+# classified_long <- classified_short |>
+#   mutate(
+#     klassen = str_split(klassen, ",\\s*")
+#   ) |>
+#   unnest_longer(klassen)
