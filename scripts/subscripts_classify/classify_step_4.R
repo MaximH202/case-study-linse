@@ -174,14 +174,13 @@ safe_parse <- possibly(fromJSON, otherwise = NA)
 llm_classified_2 <- results_tbl_2 |>
   mutate(parsed = map(llm_result, safe_parse)) |>
   unnest_wider(parsed) |>
-  select(text, klassen, hauptprotein, gruppe_ebene1)
+  select(text, klassen, hauptprotein)
 
 # Ergebnis parsen Version mit einzelnen Lebensmitteln
-safe_parse <- possibly(fromJSON, otherwise = NA)
 llm_classified_2 <- results_tbl_2 |>
   mutate(parsed = map(llm_result, safe_parse)) |>
   unnest_wider(parsed) |>
   unnest_longer(klassen) |>
   unnest_wider(klassen) |>
-  select(text, klasse, anteil, hauptprotein, gruppe_ebene1)
+  select(text, klasse, anteil, hauptprotein)
 

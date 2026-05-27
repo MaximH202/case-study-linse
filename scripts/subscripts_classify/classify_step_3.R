@@ -252,13 +252,28 @@ safe_parse <- possibly(fromJSON, otherwise = NA)
 llm_classified <- results_tbl |>
   mutate(parsed = map(llm_result, safe_parse)) |>
   unnest_wider(parsed) |>
-  select(text, klassen, hauptprotein, gruppe_ebene1)
+  select(text, klassen, hauptprotein)
 
-
+# Klassen in mehreren Zeilen
 llm_classified<- results_tbl |>
-  filter()
   mutate(parsed = map(llm_result, safe_parse)) |>
   unnest_wider(parsed) |>
   unnest_longer(klassen) |>
   unnest_wider(klassen) |>
-  select(text, klasse, anteil, hauptprotein, gruppe_ebene1)
+  select(text, klasse, anteil, hauptprotein)
+
+# Klassen in einer Zeile
+llm_classified <- results_tbl |>
+  mutate(parsed = map(llm_result, safe_parse)) |>
+  unnest_wider(parsed) |>
+  unnest_longer(klassen) |>
+  unnest_wider(klassen) |>
+  group_by(text) |>
+  summarise(
+    klasse = paste(klasse, collapse = ", "),
+    .groups = "drop"
+  )
+
+llm_classified <- llm_classified |>
+  mutate(Klassifizierungsart = "llm")
+#join der Klassen vom llm und regelbasiert
