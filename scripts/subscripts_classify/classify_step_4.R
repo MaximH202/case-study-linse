@@ -1,12 +1,13 @@
 #Nutzung von LLM zur Bestimmung von Hauptproteinquelle und Anteil
 
-#Klassifizierung der restlichen Mahlzeiten via LLM
+# Analyse der bereits klassifizierten Mahlzeiten via LLM
+
 reticulate::source_python("scripts/subscripts_classify/classify_with_llm_openai.py")
 
 user_prompt_template <- "
 ## Aufgabe
 
-Für den folgenden Mensa-Eintrag sollst du zuerst entscheiden, ob es sich tatsächlich um eine Speise handelt.
+Für den folgenden Mensa-Eintrag sollst du zuerst entscheiden, ob es sich tatsächlich um eine Speise handelt. Dies ist ein Sonderfall, *kein* default-Fallback!
 
 Beispiele für Nicht-Speisen:
 - 'Wir machen Urlaub'
@@ -15,6 +16,8 @@ Beispiele für Nicht-Speisen:
 - 'Aktionswoche'
 - 'Heute kein Betrieb'
 
+#### Sollte der Eintrag nur aus einzelnen Lebensmitteln bestehen, handelt es sich um eine Speise. In diesem Fall sollst du *nicht* ist_speise auf false setzen.
+
 Falls es keine Speise ist:
 - setze 'ist_speise' auf false
 - gib keine Lebensmittelklassen zurück
@@ -22,10 +25,8 @@ Falls es keine Speise ist:
 - setze 'gruppe_ebene1' auf 'nicht_speise'
 
 Falls es eine Speise ist:
-1. bestimme, welche Lebensmittelklassen anhand der Hauptzutaten enthalten sind,
-2. ergänze typische implizite Hauptzutaten aus Standardrezepten,
-3. schätze den qualitativen Anteil jeder Klasse,
-4. bestimme die Hauptproteinquelle.
+1. schätze den qualitativen Anteil jeder Klasse die dir zu der Speise gegeben wird,
+2. bestimme die Hauptproteinquelle.
 
 Berücksichtige sowohl explizit genannte Zutaten als auch typische Hauptbestandteile des Gerichts.
 
@@ -33,35 +34,7 @@ Berücksichtige sowohl explizit genannte Zutaten als auch typische Hauptbestandt
 
 ## Lebensmittelklassen
 
-- rotes_fleisch
-  (Rind, Schwein, Kalb, Lamm, Wild)
-
-- gefluegel
-  (Huhn, Pute, Ente)
-
-- fisch
-  (Fisch und Meeresfrüchte)
-
-- milchprodukte
-  (Käse, Sahne, Rahm, Milch, Joghurt)
-
-- ei
-
-- huelsenfruechte
-  (Linsen, Bohnen, Kichererbsen, Erbsen, Soja, Tofu)
-
-- getreide
-  (Nudeln, Reis, Brot, Pizza-/Flammkuchenteig, Weizenprodukte)
-
-- knollen
-  (Kartoffeln, Süßkartoffeln, Gnocchi)
-
-- gemuese
-  (inkl. Pilze, Tomaten, Blattgemüse etc.)
-
-- nuesse
-
-- samen
+{matched_classes_str}
 
 ---
 
@@ -82,14 +55,7 @@ Berücksichtige sowohl explizit genannte Zutaten als auch typische Hauptbestandt
 
 Mögliche Werte:
 
-- rotes_fleisch
-- gefluegel
-- fisch
-- milchprodukte
-- ei
-- huelsenfruechte
-- nuesse
-- samen
+- {matched_classes_str}
 - keine_eindeutige_proteinquelle
 
 ---
@@ -98,13 +64,7 @@ Mögliche Werte:
 
 - Konzentriere dich ausschließlich auf Hauptzutaten und wesentliche Rezeptbestandteile.
 - Ignoriere Gewürze, Kräuter, kleine Garnituren und technisch notwendige Kleinstmengen.
-- Zutaten sollen nur dann klassifiziert werden, wenn sie einen relevanten Anteil an der Speise haben.
 - Leite implizite Hauptzutaten aus typischen Rezepten ab.
-- Gib nur Lebensmittelklassen aus, die plausibel und relevant enthalten sind.
-- Mehrere Klassen können gleichzeitig vorkommen.
-- Pilze zählen zu 'gemuese'.
-- Teige, Nudeln, Reis etc. zählen zu 'getreide'.
-- Sahne- oder Käsesaucen zählen zu 'milchprodukte', wenn sie ein relevanter Bestandteil der Speise sind.
 
 Speise:
 {text}
@@ -121,6 +81,7 @@ schema <- '{
 
     "klassen": {
       "type": "array",
+      "description": "Nur relevante, bestätigte Lebensmittelklassen. Kann leer sein bei Nicht-Speisen.",
 
       "items": {
         "type": "object",
@@ -154,18 +115,13 @@ schema <- '{
           }
         },
 
-        "required": [
-          "klasse",
-          "anteil"
-        ],
-
+        "required": ["klasse", "anteil"],
         "additionalProperties": false
       }
     },
 
     "hauptprotein": {
       "type": "string",
-
       "enum": [
         "rotes_fleisch",
         "gefluegel",
@@ -177,38 +133,29 @@ schema <- '{
         "samen",
         "keine_eindeutige_proteinquelle"
       ]
-    },
-
-    "gruppe_ebene1": {
-      "type": "string",
-
-      "enum": [
-        "omnivor",
-        "pescetarisch",
-        "vegetarisch",
-        "vegan",
-        "nicht_speise"
-      ]
     }
   },
 
   "required": [
     "ist_speise",
     "klassen",
-    "hauptprotein",
-    "gruppe_ebene1"
+    "hauptprotein"
   ],
 
   "additionalProperties": false
 }'
+
 #Daten die durch das Regelwerk nicht klassifiziert werden konnten
-batch_menus_not_classified <- not_classified |> 
+batch_menus_classified <- classified |> 
   slice_sample(n = 10) |> 
-  select(text = menu_text) 
+  select(text = menu_text, matched_classes) |> 
+  mutate(
+    matched_classes_str = map_chr(matched_classes, ~ str_c(.x, collapse = ", "))
+  )
 
 # LLM 
 results <- process_with_llm_openai_multiple_workers(
-  data = batch_menus_not_classified,
+  data = batch_menus_classified,
   model = "gpt-5-nano",
   system_prompt = "You are a food classification assistant for German university cafeterias. 
                    You have extensive knowledge of German and international cuisine.",
@@ -219,12 +166,22 @@ results <- process_with_llm_openai_multiple_workers(
 )
 
 # results in Tibble umwandeln
-results_tbl <- as_tibble(results)
+results_tbl_2 <- as_tibble(results)
+results_tbl_2 <- results_tbl_2 |> select(-matched_classes)
 
-# Ergebnis parsen
+# Ergebnis mit nur Hauptlebensmittel
 safe_parse <- possibly(fromJSON, otherwise = NA)
-llm_classified <- results_tbl |>
+llm_classified_2 <- results_tbl_2 |>
   mutate(parsed = map(llm_result, safe_parse)) |>
   unnest_wider(parsed) |>
   select(text, klassen, hauptprotein, gruppe_ebene1)
+
+# Ergebnis parsen Version mit einzelnen Lebensmitteln
+safe_parse <- possibly(fromJSON, otherwise = NA)
+llm_classified_2 <- results_tbl_2 |>
+  mutate(parsed = map(llm_result, safe_parse)) |>
+  unnest_wider(parsed) |>
+  unnest_longer(klassen) |>
+  unnest_wider(klassen) |>
+  select(text, klasse, anteil, hauptprotein, gruppe_ebene1)
 

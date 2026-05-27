@@ -8,9 +8,9 @@ Use this file to document your solutions and findings regarding the tasks of the
 
 -source("scripts/setup.R")
 
--source("analyze/setup.R")
+-source("scripts/analyze/setup.R")
 
--source("classify/.R")
+-source("scripts/classify/.R")
 
 ## Instructions
 

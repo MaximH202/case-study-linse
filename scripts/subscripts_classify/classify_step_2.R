@@ -43,7 +43,7 @@ keywords <- list(
   ),
   getreide = c(
     "weizen", "vollkorn", "reis", "basmati", "hafer", "haferflock", "kaiserschmarrn", "pfannkuchen",
-    "mais", "polenta", "quinoa", "amaranth", "buchweizen", "couscous",
+    "mais", "polenta", "quinoa", "amaranth", "buchweizen", "couscous", "hirse",
     "bulgur", "nudel", "pasta", "spaghetti", "tagliatelle", "bandnudel", "rigatoni",
     "farfalle", "penne", "fusilli", "fussili", "maccaroni", "tortelloni", "tortellini", "spaetzle", "gebaeck", 
     "pizza", "grieß", "brot"
@@ -95,14 +95,6 @@ classified <- unique_dishes |>
     matched_classes = map2(classes_name, classes_text, ~ unique(c(.x, .y)))
   )
 
-#output der gematchten Lebensmittelklassen
-classified |>
-  select(product_name, matched_classes) |>
-  mutate(
-    matched_classes_str = map_chr(matched_classes, ~ str_c(.x, collapse = ", "))
-  ) |>
-  head(20)
-
 #  8. Abdeckung prüfen, aktuell können 95% der Gerichte einer Lebensmittelklasse zugeordnet werden
 classified |>
   mutate(n_classes = map_int(matched_classes, length)) |>
@@ -125,10 +117,35 @@ classified <- classified |>
 #Die Zuweisung erfolgt durch eine Abstufung. Sobald Fleisch in der Mahlzeit ist, handelt es sich um omnivor, die restlichen Klassen sind egal.
 #Befindet sich nur Fisch in der Mahlzeit, wird der Mahlzeit Pescetarisch zugewiesen, die restlichen Klassen sind egal. 
 # etc.
-assign_level1 <- function(classes) {
-  if(any(c("rotes_fleisch", "gefluegel") %in% classes)) return("omnivor")
-  if("fisch" %in% classes) return("pescetarisch")
-  if(any(c("milchprodukte", "ei") %in% classes)) return("vegetarisch")
-  if(length(classes) >0) return("vegan")
+# 1. Erst Funktion definieren
+assign_level1 <- function(matched_classes, menu_text = "") {
+  
+  if (is.na(menu_text)) menu_text <- ""
+  
+  if (grepl("vegan", menu_text, ignore.case = TRUE)) return("vegan")
+  if (grepl("vegetarisch", menu_text, ignore.case = TRUE)) return("vegetarisch")
+  
+  if (any(c("rotes_fleisch", "gefluegel") %in% matched_classes)) return("omnivor")
+  if ("fisch" %in% matched_classes) return("pescetarisch")
+  if (any(c("milchprodukte", "ei") %in% matched_classes)) return("vegetarisch")
+  if (length(matched_classes) > 0) return("vegan")
+  
   return(NA_character_)
 }
+
+# 2. Dann separat anwenden
+classified <- classified |>
+  mutate(
+    ernaehrungsform = map2_chr(
+      matched_classes,
+      menu_clean,
+      ~ assign_level1(matched_classes = .x, menu_text = .y)
+    )
+  )
+
+classified_ausgeschrieben <- classified |>
+  select(product_name, matched_classes, menu_text, ernaehrungsform) |>
+  mutate(
+    matched_classes_str = map_chr(matched_classes, ~ str_c(.x, collapse = ", "))
+  )
+
