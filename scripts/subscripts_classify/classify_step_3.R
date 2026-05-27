@@ -230,7 +230,7 @@ schema <- '{
 #Daten die durch das Regelwerk nicht klassifiziert werden konnten
 batch_menus_not_classified <- not_classified |> 
   slice_sample(n = 10) |> 
-  select(text = menu_text) 
+  select(text = menu_clean) 
 
 # LLM 
 results <- process_with_llm_openai_multiple_workers(
@@ -249,21 +249,18 @@ results_tbl <- as_tibble(results)
 
 # Ergebnis parsen
 safe_parse <- possibly(fromJSON, otherwise = NA)
-llm_classified <- results_tbl |>
-  mutate(parsed = map(llm_result, safe_parse)) |>
-  unnest_wider(parsed) |>
-  select(text, klassen, hauptprotein)
 
 # Klassen in mehreren Zeilen
-llm_classified<- results_tbl |>
+llm_classified_long<- results_tbl |>
   mutate(parsed = map(llm_result, safe_parse)) |>
   unnest_wider(parsed) |>
   unnest_longer(klassen) |>
   unnest_wider(klassen) |>
-  select(text, klasse, anteil, hauptprotein)
+  select(text, klasse, anteil, hauptprotein) |> 
+  mutate(Klassifizierungsart = "llm")
 
 # Klassen in einer Zeile
-llm_classified <- results_tbl |>
+llm_classified_short <- results_tbl |>
   mutate(parsed = map(llm_result, safe_parse)) |>
   unnest_wider(parsed) |>
   unnest_longer(klassen) |>
@@ -271,9 +268,21 @@ llm_classified <- results_tbl |>
   group_by(text) |>
   summarise(
     klasse = paste(klasse, collapse = ", "),
+    hauptprotein = first(hauptprotein),
     .groups = "drop"
-  )
+  ) |> 
+  select(text, klasse, hauptprotein)
 
-llm_classified <- llm_classified |>
-  mutate(Klassifizierungsart = "llm")
+# Nur Hauptprotein
+llm_classified_mainprotein <- results_tbl |>
+  mutate(parsed = map(llm_result, safe_parse)) |>
+  unnest_wider(parsed) |>
+  select(text, hauptprotein)
+
 #join der Klassen vom llm und regelbasiert
+llm_classified_join <- not_classified %>%
+  right_join(
+    llm_classified_short,
+    by = c("menu_clean" = "text")
+  ) |>
+  distinct(menu_clean, .keep_all = TRUE)

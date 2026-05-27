@@ -93,10 +93,16 @@ classified <- unique_dishes |>
     
     # Beide Listen vereinen, Duplikate entfernen
     matched_classes = map2(classes_name, classes_text, ~ unique(c(.x, .y)))
-  )
+  ) |>
+  select(-classes_name, -classes_text, -is_side, -is_side_name, -is_side_type, -menu_text, -prod_type, -product_name, -name_lc)
+
+  
+classified_long <- classified
+classified_short <-classified
+
 
 #  8. Abdeckung prüfen, aktuell können 95% der Gerichte einer Lebensmittelklasse zugeordnet werden
-classified |>
+classified_long |>
   mutate(n_classes = map_int(matched_classes, length)) |>
   summarise(
     total               = n(),
@@ -107,9 +113,19 @@ classified |>
 
 # nicht klassifizierte
 not_classified <- classified |>
-  filter(map_int(matched_classes, length) == 0)
+  filter(map_int(matched_classes, length) == 0) |> 
+  select(-matched_classes)
 
 # Klassifizierte
-classified <- classified |>
+classified_short <- classified_short |>
+  filter(!is.na(matched_classes)) |>
   filter(map_int(matched_classes, length) > 0) |>
-  mutate(Klassifizierungsart = "regel")
+  mutate(Klassifizierungsart = "regel") |>
+  mutate(klassen = map_chr(matched_classes, ~ paste(.x, collapse = ", "))) |> 
+  select(-matched_classes)
+
+classified_long <- classified_short |>
+  mutate(
+    klassen = str_split(klassen, ",\\s*")
+  ) |>
+  unnest_longer(klassen)

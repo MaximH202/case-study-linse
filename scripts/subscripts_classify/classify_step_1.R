@@ -39,5 +39,5 @@ unique_dishes <- menus |>
         "\\." = " ", ","  = " "
       )) |>
       str_squish()
-  )
+  ) 
 
