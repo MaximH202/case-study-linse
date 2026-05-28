@@ -29,7 +29,7 @@ keywords <- list(
     "kaese", "grillkaese", "hirtenkaese", "fetakaese", "camembert",
     "mozzarella", "halloumi", "kaiserschmarrn",
     "joghurt", "jogurt", "quark", "milch", "buttermilch",
-    "sahne", "schmand", "creme fraiche", "sauerrahm", "rahm"
+    "sahne", "schmand", "creme fraiche", "sauerrahm", "rahm", "!leberkaese"
   ),
   ei = c(
     "ruehrei", "spiegelei", "wachtelei", "pochiertem ei",

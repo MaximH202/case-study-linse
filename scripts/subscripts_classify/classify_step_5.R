@@ -3,34 +3,40 @@
 #Befindet sich nur Fisch in der Mahlzeit, wird der Mahlzeit Pescetarisch zugewiesen, die restlichen Klassen sind egal. 
 # etc.
 # 1. Erst Funktion definieren
-assign_level1 <- function(matched_classes, menu_text = "") {
+assign_level1 <- function(klassen_str= " ", menu_clean = " ") {
   
-  if (is.na(menu_text)) menu_text <- ""
+  if (is.na(menu_clean)) menu_clean <- " "
+  if (is.na(klassen_str) || klassen_str == " ") return(NA_character_)
   
-  if (grepl("vegan", menu_text, ignore.case = TRUE)) return("vegan")
-  if (grepl("vegetarisch", menu_text, ignore.case = TRUE)) return("vegetarisch")
+  # 1. Priorität: Textsuche im Namen
+  if (grepl("vegan", menu_clean, ignore.case = TRUE)) return("vegan")
+  if (grepl("vegetarisch", menu_clean, ignore.case = TRUE)) return("vegetarisch")
   
-  if (any(c("rotes_fleisch", "gefluegel") %in% matched_classes)) return("omnivor")
-  if ("fisch" %in% matched_classes) return("pescetarisch")
-  if (any(c("milchprodukte", "ei") %in% matched_classes)) return("vegetarisch")
-  if (length(matched_classes) > 0) return("vegan")
+  # Text-String in einzelne Klassen aufteilen (z.B. "fisch, getreide" -> c("fisch", "getreide"))
+  klassen_vector <- trimws(strsplit(klassen_str, ",")[[1]])
+  
+  # 2. Priorität: Klassenzuweisung
+  if (any(c("rotes_fleisch", "gefluegel") %in% klassen_vector)) return("omnivor")
+  if ("fisch" %in% klassen_vector) return("pescetarisch")
+  if (any(c("milchprodukte", "ei") %in% klassen_vector)) return("vegetarisch")
+  if (length(klassen_vector) > 0) return("vegan")
   
   return(NA_character_)
 }
 
 # 2. Dann separat anwenden
-classified <- classified |>
+joined_df <- joined_df |>
   mutate(
     ernaehrungsform = map2_chr(
-      matched_classes,
+      klasse,
       menu_clean,
-      ~ assign_level1(matched_classes = .x, menu_text = .y)
+      ~ assign_level1(klassen = .x, menu_clean = .y)
     )
   )
 
-classified_ausgeschrieben <- classified |>
-  select(product_name, matched_classes, menu_text, ernaehrungsform) |>
-  mutate(
-    matched_classes_str = map_chr(matched_classes, ~ str_c(.x, collapse = ", "))
-  )
+# classified_ausgeschrieben <- classified |>
+#   select(name_clean, klassen_str, menu_clean, ernaehrungsform) |>
+#   mutate(
+#     matched_classes_str = map_chr(matched_classes, ~ str_c(.x, collapse = ", "))
+#   )
 
