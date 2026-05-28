@@ -111,7 +111,8 @@ def process_with_llm_openai_multiple_workers(data, model, system_prompt, user_pr
     def _process_row(index, row):
         user_prompt = user_prompt_template.format(
             text=row["text"],
-            matched_classes_str=row.get("matched_classes_str", "")
+            klassen=row["klassen"],
+            gericht_name = row["gericht_name"]
         )
 
         result = process_with_llm_openai(

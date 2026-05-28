@@ -85,11 +85,11 @@ classify_row <- function(name_clean) {
 }
 
 #  7. Auf alle Gerichte anwenden (name und menu_text)
-
+plan(multisession, workers = 4)
 classified <- unique_dishes |>
   mutate(
-    classes_name = map(name_clean, classify_row),
-    classes_text = map(menu_clean, classify_row),
+    classes_name = future_map(name_clean, classify_row),
+    classes_text = future_map(menu_clean, classify_row),
     
     # Beide Listen vereinen, Duplikate entfernen
     matched_classes = map2(classes_name, classes_text, ~ unique(c(.x, .y)))
@@ -98,7 +98,7 @@ classified <- unique_dishes |>
 
   
 # classified_long <- classified
-classified_short <-classified
+classified_new <-classified
 
 
 #  8. Abdeckung prüfen, aktuell können 95% der Gerichte einer Lebensmittelklasse zugeordnet werden
@@ -111,16 +111,13 @@ classified_short <-classified
 #     abdeckung           = scales::percent(mean(n_classes > 0))
 #   )
 
-# nicht klassifizierte
-not_classified <- classified |>
-  filter(map_int(matched_classes, length) == 0) |> 
-  select(-matched_classes)
+# # nicht klassifizierte
+# not_classified <- classified |>
+#   filter(map_int(matched_classes, length) == 0) |> 
+#   select(-matched_classes)
 
 # Klassifizierte
-classified_short <- classified_short |>
-  filter(!is.na(matched_classes)) |>
-  filter(map_int(matched_classes, length) > 0) |>
-  mutate(Klassifizierungsart = "regel") |>
+classified_new <- classified_new |>
   mutate(klassen = map_chr(matched_classes, ~ paste(.x, collapse = ", "))) |> 
   select(-matched_classes)
 
