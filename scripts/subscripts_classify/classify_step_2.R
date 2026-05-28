@@ -9,7 +9,7 @@ keywords <- list(
     "lamm", "lammfleisch", "lammhack", "lammkeule", "schaf", "schaffleisch",
     "reh", "rehgulasch", "rehbraten", "hirsch", "hirschgulasch",
     "wild", "wildragout", "wildgulasch", "cevapcici", "pork", "kassler", 
-    "salami", "schinken", "hamburger", "^schaschlik$", "ungarische gulaschsuppe", "spare ribs"
+    "salami", "hamburger", "^schaschlik$", "ungarische gulaschsuppe", "spare ribs"
   ),
   gefluegel = c(
     "huhn", "haehnchen", "huehnchen", "huehner", "haehnchenbrust",

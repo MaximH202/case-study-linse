@@ -19,10 +19,10 @@ SCHRITT 2: ALLE KOMPONENTEN ERFASSEN (Inklusive Beilagen & Soßen)
 Zerlege das Gericht im Geist in alle seine Bestandteile (Hauptkomponente, Beilagen, Soßen).
 - Erfasse JEDE relevante Lebensmittelklasse, auch wenn sie nicht explizit im Text steht, sondern rezepttypisch impliziert ist.
 - WICHTIG (Projekt-Vorgabe): Klassifiziere auch stärkehaltige Beilagen (z.B. Kartoffeln/Pommes = knollen; Reis/Nudeln = getreide) und Soßenbestandteile (z.B. Champignons = gemuese; Rahm/Käse = milchprodukte).
-- Die "vorhandene_klassen" müssen zwingend übernommen werden.
+- Die "vorhandene_klassen" ({klassen}) müssen zwingend übernommen werden.
 
 SCHRITT 3: ANTEILE BESTIMMEN
-Bestimme für jede ermittelte Klasse den qualitativen Anteil am Gesamtgericht:
+Bestimme für jede ermittelte Klasse (auch "vorhandene_klassen" aus {klassen}) den qualitativen Anteil am Gesamtgericht:
 - "dominant" = Hauptakteur des Tellers (z.B. das Fleisch, das vegetarische Patty)
 - "mittel" = Sättigungsbeilage oder relevante Soße (z.B. Pommes, Rahmsoße)
 - "gering" = Kleine Beigabe, Garnitur, Käse-Topping
