@@ -3,6 +3,7 @@
 #Klassifizierung der restlichen Mahlzeiten via LLM
 reticulate::source_python("scripts/subscripts_classify/classify_with_llm_openai.py")
 
+#Der Prompt für das LLM
 user_prompt_template <- '
 Du bist ein präziser Assistent zur Analyse von Mensa-Speiseplänen im Rahmen des "Projekt Linse". 
 Deine Aufgabe ist es, Gerichte strukturiert zu analysieren, alle enthaltenen Lebensmittelklassen zu vervollständigen, deren Anteile zu bestimmen und die Hauptproteinquelle zu finden.
@@ -87,6 +88,7 @@ vorhandene_klassen:
 {klassen}
 '
 
+#Das Schema für den Output des LLM
 schema <- '{
   "type": "object",
 
@@ -168,12 +170,12 @@ schema <- '{
   "additionalProperties": false
 }'
 
-#Daten die durch das Regelwerk nicht klassifiziert werden konnten
+# Slice der gesamten Daten, der dem LLM gegeben wird (gericht_name, menu_text und klassen die durch die str suche gefunden wurden)
 batch_menus <- classified_new |> 
   slice_sample(n = 40) |> 
   select(gericht_name=name_clean, text = menu_clean, klassen) 
 
-# LLM 
+# Aufrufen des LLM und speichern der Ergebnisse in results
 results <- process_with_llm_openai_multiple_workers(
   data = batch_menus,
   model = "gpt-5-nano",
@@ -188,8 +190,10 @@ results <- process_with_llm_openai_multiple_workers(
 # results in Tibble umwandeln
 results_tbl <- as_tibble(results)
 
+# Funktion zum parsen
 safe_parse <- possibly(fromJSON, otherwise = list())
 
+# parsen des Ergebnis
 llm_classified_short <- results_tbl |>
   mutate(
     text = map_chr(text, ~ as.character(.x[[1]])),
@@ -199,9 +203,13 @@ llm_classified_short <- results_tbl |>
     hauptprotein = map_chr(parsed, ~ .x$hauptprotein),
     klasse       = map2_chr(klassen, llm_klassen, ~ paste(unique(strsplit(paste(.x, .y, sep = ", "), ", ")[[1]]), collapse = ", "))
   ) |>
+  #select der Spalten
   select(gericht_name, text, klasse, hauptprotein)
 
+# Join der LLM Ergebnisse mit classified_new, um vollständige Daten zu haben
 joined_df <- classified_new %>%
   distinct(name_clean, .keep_all = TRUE) |> 
   right_join(llm_classified_short, by = c("name_clean" = "gericht_name")) |> 
   select(-text, -klassen)
+
+rm(llm_classified_short)

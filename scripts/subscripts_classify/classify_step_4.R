@@ -1,9 +1,8 @@
 #Einzelne Zutaten mit Anteil am Gericht | LLM Output formatieren
-
-results_tbl <- as_tibble(results)
-
 safe_parse <- possibly(fromJSON, otherwise = list())
 
+#Andere Formatierung für das LLM Ergebnis. Hier wird für jede Lebensmittelklasse eines Gerichts eine eigene Spalte entfernt
+#Ermöglich eine bessere Auswertung der Lebensmittelklassen
 llm_classified_long <- results_tbl |>
   mutate(
     #Textspalte sauber als Charakter extrahieren
@@ -16,7 +15,7 @@ llm_classified_long <- results_tbl |>
     ist_speise   = map_lgl(parsed, ~ .x$ist_speise %||% FALSE),
     hauptprotein = map_chr(parsed, ~ .x$hauptprotein %||% "keine_eindeutige_proteinquelle"),
     
-    # 4. llm_klassen extrahieren
+    # llm_klassen extrahieren
     llm_klassen_df = map(parsed, ~ {
       klassen_data <- .x$llm_klassen
       
@@ -30,13 +29,13 @@ llm_classified_long <- results_tbl |>
         return(as_tibble(klassen_data))
       }
       
-      # Sicherheitshalber leer zurückgeben, falls unerwartetes Format
+      # leer zurückgeben, falls unerwartetes Format
       return(tibble(klasse = NA_character_, anteil = NA_character_))
     })
   ) |>
-  # 5. Das "Entpacken" der Dataframes in Zeilen
+  #  Das "Entpacken" der Dataframes in Zeilen
   # "keep_empty = TRUE" stellt sicher, dass Nicht-Speisen/Desserts als Zeile im Datensatz bleiben
   unnest(llm_klassen_df, keep_empty = TRUE) |>
   
-  # 6. Spalten auswählen und anordnen
+  # Spalten auswählen und anordnen
   select(gericht_name, text, klasse, anteil, hauptprotein)
