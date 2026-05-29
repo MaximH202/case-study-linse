@@ -3,110 +3,84 @@
 #Klassifizierung der restlichen Mahlzeiten via LLM
 reticulate::source_python("scripts/subscripts_classify/classify_with_llm_openai.py")
 
+#Der Prompt für das LLM
 user_prompt_template <- '
-Du bist ein präziser Assistent zur Analyse von Mensa-Speiseplänen im Rahmen des "Projekt Linse". 
-Deine Aufgabe ist es, Gerichte strukturiert zu analysieren, alle enthaltenen Lebensmittelklassen zu vervollständigen, deren Anteile zu bestimmen und die Hauptproteinquelle zu finden.
+Du bist ein präziser Assistent zur Analyse von Mensa-Speiseplänen im Rahmen des "Projekt Linse".
+Deine Aufgabe ist es, Gerichte strukturiert zu analysieren.
 
-Gehe bei der Analyse strikt nach dieser logischen Kette vor:
+Gehe strikt nach dieser logischen Kette vor:
 
-SCHRITT 1: IST ES EINE SPEISE? (Dessert-Filter)
-Prüfe, ob es sich um ein herzhaftes Hauptgericht handelt.
-- Setze "ist_speise" auf false, "llm_klassen" auf [] und "hauptprotein" auf "keine_eindeutige_proteinquelle", wenn es sich um Folgendes handelt:
-  * Keine Speise (Feiertag, geschlossen, Info...)
-  * Desserts und süße Nachspeisen (z.B. Grießbrei, Pudding, Joghurt, Kompott, Eis, Kuchen).
+SCHRITT 1: DESSERT-FILTER (ist_speise)
+Prüfe, ob es ein herzhaftes Hauptgericht ist.
+- Bei Desserts (Pudding, Kuchen etc.), Feiertagen oder Infos: Setze "ist_speise" auf false, "hauptprotein" auf "keine_eindeutige_proteinquelle" und "alle_klassen" auf [].
 
-SCHRITT 2: ALLE KOMPONENTEN ERFASSEN (Inklusive Beilagen & Soßen)
-Zerlege das Gericht im Geist in alle seine Bestandteile (Hauptkomponente, Beilagen, Soßen).
-- Erfasse JEDE relevante Lebensmittelklasse, auch wenn sie nicht explizit im Text steht, sondern rezepttypisch impliziert ist.
-- WICHTIG (Projekt-Vorgabe): Klassifiziere auch stärkehaltige Beilagen (z.B. Kartoffeln/Pommes = knollen; Reis/Nudeln = getreide) und Soßenbestandteile (z.B. Champignons = gemuese; Rahm/Käse = milchprodukte).
-- Die "vorhandene_klassen" ({klassen}) müssen zwingend übernommen werden.
+SCHRITT 2: HAUPTPROTEIN FINDEN (hauptprotein)
+Gehe diese Liste von 1 bis 6 durch. Das ERSTE, was zutrifft, gewinnt. Sei nicht zögerlich!
+1. Fleisch? -> "rotes_fleisch" oder "gefluegel"
+2. Fisch? -> "fisch"
+3. Hülsenfrüchte (Linsen, Bohnen, Erbsen, Tofu, Falafel, Soja)? -> "huelsenfruechte"
+4. Milchprodukte (Käse, Sahnesoße, Schmand, Quark)? -> "milchprodukte"
+5. Ei (Pfannkuchen, Spiegelei)? -> "ei"
+6. Nüsse/Samen (Pesto, Sesam)? -> "nuesse" oder "samen"
+Trifft NICHTS davon zu (z.B. reines Gemüse, Pommes mit Ketchup): Wähle "keine_eindeutige_proteinquelle".
 
-SCHRITT 3: ANTEILE BESTIMMEN
-Bestimme für jede ermittelte Klasse (auch "vorhandene_klassen" aus {klassen}) den qualitativen Anteil am Gesamtgericht:
-- "dominant" = Hauptakteur des Tellers (z.B. das Fleisch, das vegetarische Patty)
-- "mittel" = Sättigungsbeilage oder relevante Soße (z.B. Pommes, Rahmsoße)
-- "gering" = Kleine Beigabe, Garnitur, Käse-Topping
+SCHRITT 3: ALLE KLASSEN ZUSAMMENFÜHREN (alle_klassen)
+Sammle nun ALLE Bestandteile des Gerichts (Hauptkomponente, Beilagen, Soßen).
+REGEL 1: Die Eingabe aus "vorhandene_klassen" MUSS zwingend in deine Liste übernommen werden!
+REGEL 2: Das in Schritt 2 gewählte "hauptprotein" MUSS zwingend als Klasse in der Liste auftauchen!
+REGEL 3: Ergänze stärkehaltige Beilagen (Kartoffeln=knollen, Nudeln=getreide) und Soßen (Rahm=milchprodukte).
 
-SCHRITT 4: HAUPTPROTEIN-ENTSCHEIDUNG (Prioritäten-Entscheidungsbaum)
-Finde die wichtigste Proteinquelle des Gerichts. Sei nicht zu zögerlich! Jedes Gericht mit einer proteinreichen Zutat hat ein Hauptprotein, auch wenn es sich um ein vegetarisches Gericht handelt.
+Bestimme für jede Klasse den qualitativen Anteil:
+- "dominant" = Hauptakteur (z.B. Fleischstück, Patty)
+- "mittel" = Sättigungsbeilage / relevante Soße (z.B. Nudeln, Rahmsoße)
+- "gering" = Kleine Beigabe, Garnitur
 
-Gehe diesen Entscheidungsbaum von oben nach unten durch. Wähle den ERSTEN Punkt, der auf das Gericht zutrifft:
-
-1. Fleisch im Gericht? -> Wähle "rotes_fleisch" oder "gefluegel".
-2. Fisch im Gericht? -> Wähle "fisch".
-3. Hülsenfrüchte im Gericht? (Linsen, Bohnen, Kichererbsen, Falafel, Hummus, Tofu, Soja) -> Wähle "huelsenfruechte".
-4. Milchprodukte relevant im Gericht? (Käse-Topping, Käsefüllung, Sahnesoße, Schmand, Joghurt-Dip) -> Wähle "milchprodukte" (z.B. bei Käsespätzle, Pizza, Gratins, Rahmsoßen).
-5. Ei relevant im Gericht? (Eierspeisen, Pfannkuchen, Ei-Garnitur) -> Wähle "ei".
-6. Nüsse oder Samen im Gericht? (Pesto, Erdnusssoße, Sesam-Topping) -> Wähle "nuesse" oder "samen".
-
-NUR WENN KEINER der obigen 6 Punkte zutrifft (reines Gemüse, Kartoffelgerichte ohne Käse/Fleisch, Nudeln mit reiner Tomatensoße), wählst du "keine_eindeutige_proteinquelle".
-
-*STRIKTE KONSISTENZ-REGEL:* Das hier gewählte "hauptprotein" MUSS zwingend auch als Klasse in "llm_klassen" oder in "vorhandene_klassen" aufgeführt sein!
-
----
-ERLAUBTE WERTE (Hinweis: Gleiche diese mit dem Projekt-Schema ab):
-
-Lebensmittelklassen:
-rotes_fleisch, gefluegel, fisch, milchprodukte, ei, huelsenfruechte, getreide, knollen, gemuese, nuesse, samen
-
-Hauptprotein:
-rotes_fleisch, gefluegel, fisch, milchprodukte, ei, huelsenfruechte, nuesse, samen, keine_eindeutige_proteinquelle
-
----
 PROJEKT-BEISPIELE ALS ORIENTIERUNG:
 
-Beispiel 1 (Komplexe Speise mit Beilagen und Soße):
-menu_text: "Kalbsschnitzel mit Kartoffeln und Champignonrahmsauce"
-vorhandene_klassen: ["rotes_fleisch"]
-- Analyse: Schnitzel (rotes_fleisch, getreide für Panade), Kartoffeln (knollen), Pilze (gemuese), Rahm (milchprodukte).
-JSON-Output: {{"ist_speise": true, "llm_klassen": [{{"klasse": "rotes_fleisch", "anteil": "dominant"}}, {{"klasse": "getreide", "anteil": "gering"}}, {{"klasse": "knollen", "anteil": "mittel"}}, {{"klasse": "gemuese", "anteil": "gering"}}, {{"klasse": "milchprodukte", "anteil": "gering"}}], "hauptprotein": "rotes_fleisch"}}
+Beispiel 1: 
+menu_text: "Kalbsschnitzel mit Kartoffeln und Champignonrahmsauce", vorhandene_klassen: ["rotes_fleisch"]
+JSON-Output: 
+{{"ist_speise": true, "hauptprotein": "rotes_fleisch", "alle_klassen": [{{"klasse": "rotes_fleisch", "anteil": "dominant"}}, {{"klasse": "knollen", "anteil": "mittel"}}, {{"klasse": "getreide", "anteil": "gering"}}, {{"klasse": "gemuese", "anteil": "gering"}}, {{"klasse": "milchprodukte", "anteil": "gering"}}]}}
 
-Beispiel 2 (Implizite Zutaten):
-menu_text: "Flammkuchen Griechischer Art"
-vorhandene_klassen: []
-- Analyse: Teig (getreide), Schafskäse (milchprodukte), Tomaten/Zwiebeln (gemuese).
-JSON-Output: {{"ist_speise": true, "llm_klassen": [{{"klasse": "getreide", "anteil": "dominant"}}, {{"klasse": "milchprodukte", "anteil": "mittel"}}, {{"klasse": "gemuese", "anteil": "gering"}}], "hauptprotein": "milchprodukte"}}
-
-Beispiel 3 (Beilage ist das Hauptgericht):
-menu_text: "Großer Pommesteller mit Ketchup"
-vorhandene_klassen: []
-- Analyse: Hier sind Pommes das Hauptgericht. "knollen" wird klassifiziert. Kein Protein aus den Top 6 vorhanden.
-JSON-Output: {{"ist_speise": true, "llm_klassen": [{{"klasse": "knollen", "anteil": "dominant"}}], "hauptprotein": "keine_eindeutige_proteinquelle"}}
-
----
+Beispiel 2:
+menu_text: "Großer Pommesteller mit Ketchup", vorhandene_klassen: []
+JSON-Output: 
+{{"ist_speise": true, "hauptprotein": "keine_eindeutige_proteinquelle", "alle_klassen": [{{"klasse": "knollen", "anteil": "dominant"}}]}}
 
 EINGABE:
-
-gericht_name:
-{gericht_name}
-
-menu_text:
-{text}
-
-vorhandene_klassen:
-{klassen}
+gericht_name: {gericht_name}
+menu_text: {text}
+vorhandene_klassen: {klassen}
 '
 
+# Das Schema für den Output des LLM
 schema <- '{
   "type": "object",
-
   "properties": {
-
     "ist_speise": {
       "type": "boolean"
     },
-
-    "llm_klassen": {
+    "hauptprotein": {
+      "type": "string",
+      "enum": [
+        "rotes_fleisch",
+        "gefluegel",
+        "fisch",
+        "milchprodukte",
+        "ei",
+        "huelsenfruechte",
+        "nuesse",
+        "samen",
+        "keine_eindeutige_proteinquelle"
+      ]
+    },
+    "alle_klassen": {
       "type": "array",
-
       "items": {
         "type": "object",
-
         "properties": {
-
           "klasse": {
             "type": "string",
-
             "enum": [
               "rotes_fleisch",
               "gefluegel",
@@ -121,10 +95,8 @@ schema <- '{
               "samen"
             ]
           },
-
           "anteil": {
             "type": "string",
-
             "enum": [
               "dominant",
               "mittel",
@@ -132,48 +104,28 @@ schema <- '{
             ]
           }
         },
-
         "required": [
           "klasse",
           "anteil"
         ],
-
         "additionalProperties": false
       }
-    },
-
-    "hauptprotein": {
-      "type": "string",
-
-      "enum": [
-        "rotes_fleisch",
-        "gefluegel",
-        "fisch",
-        "milchprodukte",
-        "ei",
-        "huelsenfruechte",
-        "nuesse",
-        "samen",
-        "keine_eindeutige_proteinquelle"
-      ]
     }
   },
-
   "required": [
     "ist_speise",
-    "llm_klassen",
-    "hauptprotein"
+    "hauptprotein",
+    "alle_klassen"
   ],
-
   "additionalProperties": false
 }'
 
-#Daten die durch das Regelwerk nicht klassifiziert werden konnten
-batch_menus <- classified_new |> 
-  slice_sample(n = 100) |> 
-  select(gericht_name=name_clean, text = menu_clean, klassen) 
+# Slice der gesamten Daten, der dem LLM gegeben wird (gericht_name, menu_text und klassen die durch die str suche gefunden wurden)
+batch_menus <- unique_dishes |> 
+  slice_sample(n = 20) |> 
+  select(gericht_name=product_name, text = menu_text, klassen) 
 
-# LLM 
+# Aufrufen des LLM und speichern der Ergebnisse in results
 results <- process_with_llm_openai_multiple_workers(
   data = batch_menus,
   model = "gpt-5-nano",
@@ -186,22 +138,38 @@ results <- process_with_llm_openai_multiple_workers(
 )
 
 # results in Tibble umwandeln
-results_tbl <- as_tibble(results)
+results <- as_tibble(results)
 
+# Funktion zum parsen
 safe_parse <- possibly(fromJSON, otherwise = list())
 
-llm_classified_short <- results_tbl |>
+# parsen des Ergebnis
+llm_classified_short <- results |>
   mutate(
     text = map_chr(text, ~ as.character(.x[[1]])),
-    klassen      = map_chr(klassen, ~ paste(.x, collapse = ", ")),
-    parsed       = map(llm_result, safe_parse),
-    llm_klassen  = map_chr(parsed, ~ paste(.x$llm_klassen$klasse, collapse = ", ")),
-    hauptprotein = map_chr(parsed, ~ .x$hauptprotein),
-    klasse       = map2_chr(klassen, llm_klassen, ~ paste(unique(strsplit(paste(.x, .y, sep = ", "), ", ")[[1]]), collapse = ", "))
+    parsed = map(llm_result, safe_parse),
+    
+    # HIER DIE LÖSUNG: Nenne die Spalte direkt "klassen_llm" anstatt "klassen"
+    klassen_llm = map_chr(parsed, ~ {
+      if (is.null(.x$alle_klassen) || length(.x$alle_klassen) == 0) {
+        return("")
+      } else {
+        return(paste(.x$alle_klassen$klasse, collapse = ", "))
+      }
+    }),
+    
+    hauptprotein = map_chr(parsed, ~ {
+      if (is.null(.x$hauptprotein)) "" else .x$hauptprotein
+    })
   ) |>
-  select(gericht_name, text, klasse, hauptprotein)
+  # WICHTIG: Hier unten im select() dann auch "klassen_llm" auswählen
+  select(gericht_name, klassen_llm, hauptprotein) 
 
-joined_df <- classified_new %>%
-  distinct(name_clean, .keep_all = TRUE) |> 
-  right_join(llm_classified_short, by = c("name_clean" = "gericht_name")) |> 
-  select(-text, -klassen)
+
+# Der Join ist danach super kurz und sauber, ganz ohne "suffix" oder select(-klassen.y):
+llm_classified_short <- unique_dishes %>%
+  distinct(product_name, .keep_all = TRUE) |> 
+  select(-klassen) |> 
+  right_join(llm_classified_short, by = c("product_name" = "gericht_name")) |> 
+  mutate(klassen = klassen_llm) |> 
+  select(-klassen_llm)

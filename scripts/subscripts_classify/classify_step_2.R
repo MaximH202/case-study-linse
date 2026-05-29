@@ -1,6 +1,6 @@
 #Zuweisung zu Lebensmittelklassen und Ernährungsformen
 
-
+# Erstellung einer Liste mit den Lebensmittelklassen und typischen Wörtern die dazugehören
 keywords <- list(
   rotes_fleisch = c(
     "rind", "rinder", "rinderhack", "rindfleisch", "rindergeschnetzel",
@@ -69,60 +69,36 @@ keywords <- list(
     "chia", "hanfsamen", "mohn"
   )
 )
-
-# 5. Klassifikations-Funktionen
-
+#Funktion zur Textformatierung
 make_pattern <- function(kws) {
   kws |>
     str_replace_all("\\*", "") |>
     str_c(collapse = "|")
 }
-
+#Funktion zum mapen der Keywords auf eine Liste von Namen
 classify_row <- function(name_clean) {
   matches <- keywords |>
     imap_lgl(~ str_detect(name_clean, make_pattern(.x)))
   names(matches)[matches]
 }
 
-#  7. Auf alle Gerichte anwenden (name und menu_text)
+#4 Kerne für mehr Effizienz
 plan(multisession, workers = 4)
-classified <- unique_dishes |>
+
+# Mapen der Keywords auf die Produkt_namen und menu_text, Ergebnisse werden zusammengelegt
+unique_dishes <- unique_dishes |>
   mutate(
-    classes_name = future_map(name_clean, classify_row),
-    classes_text = future_map(menu_clean, classify_row),
+    classes_name = future_map(product_name, classify_row),
+    classes_text = future_map(menu_text, classify_row),
     
     # Beide Listen vereinen, Duplikate entfernen
     matched_classes = map2(classes_name, classes_text, ~ unique(c(.x, .y)))
   ) |>
-  select(-classes_name, -classes_text, -is_side, -is_side_name, -is_side_type, -menu_text, -prod_type, -product_name, -name_lc)
-
-  
-# classified_long <- classified
-classified_new <-classified
+  #entfernt überflüssige Spalten
+  select(-classes_name, -classes_text)
 
 
-#  8. Abdeckung prüfen, aktuell können 95% der Gerichte einer Lebensmittelklasse zugeordnet werden
-# classified_long |>
-#   mutate(n_classes = map_int(matched_classes, length)) |>
-#   summarise(
-#     total               = n(),
-#     klassifiziert       = sum(n_classes > 0),
-#     nicht_klassifiziert = sum(n_classes == 0),
-#     abdeckung           = scales::percent(mean(n_classes > 0))
-#   )
-
-# # nicht klassifizierte
-# not_classified <- classified |>
-#   filter(map_int(matched_classes, length) == 0) |> 
-#   select(-matched_classes)
-
-# Klassifizierte
-classified_new <- classified_new |>
+# Klassen werden von Vektor-Format in leserliches (, getrenntes) Format gebracht
+unique_dishes <- unique_dishes |>
   mutate(klassen = map_chr(matched_classes, ~ paste(.x, collapse = ", "))) |> 
   select(-matched_classes)
-
-# classified_long <- classified_short |>
-#   mutate(
-#     klassen = str_split(klassen, ",\\s*")
-#   ) |>
-#   unnest_longer(klassen)
