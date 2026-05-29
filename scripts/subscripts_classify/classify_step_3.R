@@ -170,7 +170,7 @@ schema <- '{
 
 #Daten die durch das Regelwerk nicht klassifiziert werden konnten
 batch_menus <- classified_new |> 
-  slice_sample(n = 40) |> 
+  slice_sample(n = 100) |> 
   select(gericht_name=name_clean, text = menu_clean, klassen) 
 
 # LLM 

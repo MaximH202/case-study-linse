@@ -33,7 +33,7 @@ joined_df <- joined_df |>
       ~ assign_level1(klassen = .x, menu_clean = .y)
     )
   )
-
+write_csv(joined_df, "data/menus_classified.csv")
 # classified_ausgeschrieben <- classified |>
 #   select(name_clean, klassen_str, menu_clean, ernaehrungsform) |>
 #   mutate(
