@@ -5,37 +5,39 @@ reticulate::source_python("scripts/subscripts_classify/classify_with_llm_openai.
 
 #Der Prompt für das LLM
 user_prompt_template <- '
-Du bist ein präziser Assistent zur Analyse von Mensa-Speiseplänen im Rahmen des "Projekt Linse".
-Deine Aufgabe ist es, Gerichte strukturiert zu analysieren.
+Follow this logical chain of reasoning strictly:
 
-Gehe strikt nach dieser logischen Kette vor:
+STEP 1: MAIN DISH FILTER (ist_speise)
+Check whether the dish is a savory main course.
+Set "ist_speise" to false, "hauptprotein" to "keine_eindeutige_proteinquelle", and "alle_klassen" to [] if it is any of the following:
+- Desserts and sweet dishes (e.g., pudding, cake, ice cream, yogurt).
+- Pure side dishes (e.g., "kleiner Beilagensalat", "Portion Pommes", "nur Reis").
+- Not a meal (holiday, closed, info text).
 
-SCHRITT 1: DESSERT-FILTER (ist_speise)
-Prüfe, ob es ein herzhaftes Hauptgericht ist.
-- Bei Desserts (Pudding, Kuchen etc.), Feiertagen oder Infos: Setze "ist_speise" auf false, "hauptprotein" auf "keine_eindeutige_proteinquelle" und "alle_klassen" auf [].
+IMPORTANT: If a side dish is served as a standalone main course (e.g., "Großer Pommesteller", "Großer Salatteller mit Ei/Käse"), it counts as a main course (set "ist_speise" to true)!
 
-SCHRITT 2: HAUPTPROTEIN FINDEN (hauptprotein)
-Gehe diese Liste von 1 bis 6 durch. Das ERSTE, was zutrifft, gewinnt. Sei nicht zögerlich!
-1. Fleisch? -> "rotes_fleisch" oder "gefluegel"
-2. Fisch? -> "fisch"
-3. Hülsenfrüchte (Linsen, Bohnen, Erbsen, Tofu, Falafel, Soja)? -> "huelsenfruechte"
-4. Milchprodukte (Käse, Sahnesoße, Schmand, Quark)? -> "milchprodukte"
-5. Ei (Pfannkuchen, Spiegelei)? -> "ei"
-6. Nüsse/Samen (Pesto, Sesam)? -> "nuesse" oder "samen"
-Trifft NICHTS davon zu (z.B. reines Gemüse, Pommes mit Ketchup): Wähle "keine_eindeutige_proteinquelle".
+STEP 2: FIND MAIN PROTEIN (hauptprotein)
+Go through this list from 1 to 6. The FIRST match wins. Do not be hesitant!
+1. Meat? -> "rotes_fleisch" or "gefluegel"
+2. Fish? -> "fisch"
+3. Legumes (lentils, beans, peas, tofu, falafel, soy)? -> "huelsenfruechte"
+4. Dairy products (cheese, cream sauce, sour cream, quark)? -> "milchprodukte"
+5. Egg (pancakes, fried egg)? -> "ei"
+6. Nuts/seeds (pesto, sesame)? -> "nuesse" or "samen"
+If NONE of the above apply (e.g., pure vegetables, french fries with ketchup): Select "keine_eindeutige_proteinquelle".
 
-SCHRITT 3: ALLE KLASSEN ZUSAMMENFÜHREN (alle_klassen)
-Sammle nun ALLE Bestandteile des Gerichts (Hauptkomponente, Beilagen, Soßen).
-REGEL 1: Die Eingabe aus "vorhandene_klassen" MUSS zwingend in deine Liste übernommen werden!
-REGEL 2: Das in Schritt 2 gewählte "hauptprotein" MUSS zwingend als Klasse in der Liste auftauchen!
-REGEL 3: Ergänze stärkehaltige Beilagen (Kartoffeln=knollen, Nudeln=getreide) und Soßen (Rahm=milchprodukte).
+STEP 3: MERGE ALL CLASSES (alle_klassen)
+Collect ALL components of the dish (main component, side dishes, sauces).
+RULE 1: The input from "vorhandene_klassen" MUST be strictly included in your list!
+RULE 2: The "hauptprotein" selected in Step 2 MUST be strictly included as a class in the list!
+RULE 3: Add starchy side dishes (potatoes = "knollen", pasta/rice = "getreide") and sauce ingredients (cream/cheese = "milchprodukte").
 
-Bestimme für jede Klasse den qualitativen Anteil:
-- "dominant" = Hauptakteur (z.B. Fleischstück, Patty)
-- "mittel" = Sättigungsbeilage / relevante Soße (z.B. Nudeln, Rahmsoße)
-- "gering" = Kleine Beigabe, Garnitur
+Determine the qualitative portion for each class:
+- "dominant" = Main component (e.g., piece of meat, patty)
+- "mittel" = Filling side dish or relevant sauce (e.g., pasta, cream sauce)
+- "gering" = Small addition, garnish
 
-PROJEKT-BEISPIELE ALS ORIENTIERUNG:
+PROJECT EXAMPLES FOR ORIENTATION:
 
 Beispiel 1: 
 menu_text: "Kalbsschnitzel mit Kartoffeln und Champignonrahmsauce", vorhandene_klassen: ["rotes_fleisch"]
@@ -47,7 +49,7 @@ menu_text: "Großer Pommesteller mit Ketchup", vorhandene_klassen: []
 JSON-Output: 
 {{"ist_speise": true, "hauptprotein": "keine_eindeutige_proteinquelle", "alle_klassen": [{{"klasse": "knollen", "anteil": "dominant"}}]}}
 
-EINGABE:
+INPUT:
 gericht_name: {gericht_name}
 menu_text: {text}
 vorhandene_klassen: {klassen}
@@ -149,7 +151,6 @@ llm_classified_short <- results |>
     text = map_chr(text, ~ as.character(.x[[1]])),
     parsed = map(llm_result, safe_parse),
     
-    # HIER DIE LÖSUNG: Nenne die Spalte direkt "klassen_llm" anstatt "klassen"
     klassen_llm = map_chr(parsed, ~ {
       if (is.null(.x$alle_klassen) || length(.x$alle_klassen) == 0) {
         return("")
@@ -162,7 +163,6 @@ llm_classified_short <- results |>
       if (is.null(.x$hauptprotein)) "" else .x$hauptprotein
     })
   ) |>
-  # WICHTIG: Hier unten im select() dann auch "klassen_llm" auswählen
   select(gericht_name, klassen_llm, hauptprotein) 
 
 

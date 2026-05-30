@@ -37,5 +37,7 @@ llm_classified_long <- results |>
   unnest(llm_klassen_df, keep_empty = TRUE) |>
   
   # Spalten auswählen und anordnen
-  select(gericht_name, text, klasse, anteil, hauptprotein)
+  select(gericht_name, text, klasse, anteil, hauptprotein) |> 
+  left_join(unique_dishes |> select(id, product_name), 
+            by = c("gericht_name" = "product_name")) 
 

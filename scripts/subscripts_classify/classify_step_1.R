@@ -44,7 +44,8 @@ unique_dishes <- menus |>
       str_replace_all(c(
         "ä" = "ae", "ö" = "oe", "ü" = "ue", "ß" = "ss",
         "\\." = " ", ","  = " "
-      )) |>
+      )) |> 
       str_squish()
-  ) 
+  ) |> 
+  mutate(id = as.integer(id))
 
