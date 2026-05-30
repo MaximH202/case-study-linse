@@ -34,9 +34,5 @@ llm_classified_short <- llm_classified_short |>
     )
   )
 write_csv(llm_classified_short, "data/menus_classified.csv")
-# classified_ausgeschrieben <- classified |>
-#   select(name_clean, klassen_str, menu_clean, ernaehrungsform) |>
-#   mutate(
-#     matched_classes_str = map_chr(matched_classes, ~ str_c(.x, collapse = ", "))
-#   )
+write_csv(llm_classified_long, "data/menu_components.csv")
 

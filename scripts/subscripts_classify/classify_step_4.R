@@ -2,6 +2,7 @@
 
 #Andere Formatierung für das LLM Ergebnis. Hier wird für jede Lebensmittelklasse eines Gerichts eine eigene Spalte entfernt
 #Ermöglich eine bessere Auswertung der Lebensmittelklassen
+#Zusätzlich die Zuordnung des Proteincodes
 llm_classified_long <- results |>
   mutate(
     #Textspalte sauber als Charakter extrahieren

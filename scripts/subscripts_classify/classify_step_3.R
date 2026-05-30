@@ -17,14 +17,17 @@ Set "ist_speise" to false, "hauptprotein" to "keine_eindeutige_proteinquelle", a
 IMPORTANT: If a side dish is served as a standalone main course (e.g., "Großer Pommesteller", "Großer Salatteller mit Ei/Käse"), it counts as a main course (set "ist_speise" to true)!
 
 STEP 2: FIND MAIN PROTEIN (hauptprotein)
-Go through this list from 1 to 6. The FIRST match wins. Do not be hesitant!
-1. Meat? -> "rotes_fleisch" or "gefluegel"
-2. Fish? -> "fisch"
-3. Legumes (lentils, beans, peas, tofu, falafel, soy)? -> "huelsenfruechte"
-4. Dairy products (cheese, cream sauce, sour cream, quark)? -> "milchprodukte"
-5. Egg (pancakes, fried egg)? -> "ei"
-6. Nuts/seeds (pesto, sesame)? -> "nuesse" or "samen"
-If NONE of the above apply (e.g., pure vegetables, french fries with ketchup): Select "keine_eindeutige_proteinquelle".
+Identify the PRIMARY source of protein in the dish. Evaluate the actual quantity and relevance! 
+WARNING: A tiny garnish (e.g., a few bacon bits on fried potatoes, a small sprinkle of parmesan) does NOT determine the main protein. Look for the main component.
+
+Choose the most substantial protein source based on this priority list:
+1. Substantial Meat or Fish? -> "rotes_fleisch", "gefluegel", or "fisch"
+2. Legumes (lentils, beans, tofu, soy)? -> "huelsenfruechte"
+3. Substantial Dairy or Egg (e.g., cheese filling, large omelet, cream sauce)? -> "milchprodukte" or "ei"
+4. Nuts or Seeds? -> "nuesse" or "samen"
+5. Grains or Tubers (e.g., a plate of pasta, a potato dish without meat)? -> "getreide" or "knollen"
+
+Select "keine_eindeutige_proteinquelle" ONLY if the dish consists entirely of ingredients with practically no protein (e.g., a simple plain green salad).
 
 STEP 3: MERGE ALL CLASSES (alle_klassen)
 Collect ALL components of the dish (main component, side dishes, sauces).
