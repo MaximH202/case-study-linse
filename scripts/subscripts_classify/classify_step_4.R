@@ -1,43 +1,39 @@
-#Einzelne Zutaten mit Anteil am Gericht | LLM Output formatieren
-
-#Andere Formatierung für das LLM Ergebnis. Hier wird für jede Lebensmittelklasse eines Gerichts eine eigene Spalte entfernt
-#Ermöglich eine bessere Auswertung der Lebensmittelklassen
-#Zusätzlich die Zuordnung des Proteincodes
+# 4. LLM-Output ins Long-Format überführen
+# Jedes Gericht wird in seine einzelnen Zutatenklassen zerlegt (erleichtert die spätere Analyse)
 llm_classified_long <- results |>
   mutate(
-    #Textspalte sauber als Charakter extrahieren
+    # Text-Spalte explizit als Character extrahieren
     text = map_chr(text, ~ as.character(.x[[1]])),
     
-    #JSON parsen
+    # JSON-Daten aus dem LLM-Ergebnis parsen
     parsed = map(llm_result, safe_parse),
     
-    # Flache Werte extrahieren (mit Fallbacks)
+    # Hauptprotein und Speise-Kennzeichnung extrahieren (mit Default-Fallbacks)
     ist_speise   = map_lgl(parsed, ~ .x$ist_speise %||% FALSE),
     hauptprotein = map_chr(parsed, ~ .x$hauptprotein %||% "keine_eindeutige_proteinquelle"),
     
-    # llm_klassen extrahieren
+    # Zutatenklassen aus der JSON-Struktur extrahieren
     llm_klassen_df = map(parsed, ~ {
       klassen_data <- .x$alle_klassen
       
-      # Fallback A: Wenn der Parse fehlschlug (leere list()) oder llm_klassen leer ist []
+      # Fallback A: Keine Klassen geliefert oder fehlerhafter Parse
       if (is.null(klassen_data) || length(klassen_data) == 0) {
         return(tibble(klasse = NA_character_, anteil = NA_character_))
       }
       
-      # Fallback B: Wenn es ein valider Dataframe ist
+      # Fallback B: Daten liegen bereits als Dataframe vor
       if (is.data.frame(klassen_data)) {
         return(as_tibble(klassen_data))
       }
       
-      # leer zurückgeben, falls unerwartetes Format
+      # Fallback C: Absicherung für unerwartete Formate
       return(tibble(klasse = NA_character_, anteil = NA_character_))
     })
   ) |>
-  #  Das "Entpacken" der Dataframes in Zeilen
-  # "keep_empty = TRUE" stellt sicher, dass Nicht-Speisen/Desserts als Zeile im Datensatz bleiben
+  # Geschachtelte Listen in einzelne Zeilen entpacken (keep_empty = TRUE erhält Desserts/Beilagen)
   unnest(llm_klassen_df, keep_empty = TRUE) |>
   
-  # Spalten auswählen und anordnen
+  # Relevante Spalten selektieren und mit Gerichts-ID verknüpfen
   select(gericht_name, text, klasse, anteil, hauptprotein) |> 
   left_join(unique_dishes |> select(id, product_name), 
             by = c("gericht_name" = "product_name")) 

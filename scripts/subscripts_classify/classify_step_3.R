@@ -1,44 +1,60 @@
-#Nutzung von LLM zur Bestimmung von Hauptproteinquelle und Anteil
+# 3. Hauptprotein und Anteile per LLM schätzen lassen
 
-#Klassifizierung der restlichen Mahlzeiten via LLM
+# Einbindung des Python-Skripts für die OpenAI API-Kommunikation
 reticulate::source_python("scripts/subscripts_classify/classify_with_llm_openai.py")
 
-#Der Prompt für das LLM
+# Prompt für das LLM
 user_prompt_template <- '
+INPUT PRIORITY:
+- Use "gericht_name" to identify the core dish (it is the clean, main name).
+- Use "menu_text" to find additional details, side dishes, sauces, or ingredients.
+
 Follow this logical chain of reasoning strictly:
 
 STEP 1: MAIN DISH FILTER (ist_speise)
-Check whether the dish is a savory main course.
-Set "ist_speise" to false, "hauptprotein" to "keine_eindeutige_proteinquelle", and "alle_klassen" to [] if it is any of the following:
-- Desserts and sweet dishes (e.g., pudding, cake, ice cream, yogurt).
-- Pure side dishes (e.g., "kleiner Beilagensalat", "Portion Pommes", "nur Reis").
-- Not a meal (holiday, closed, info text).
+Identify if the dish is a savory main course.
+ist_speise = true if the dish contains a substantial main component, including vegetarian or vegan dishes.
+Examples:
+- Hirsepuffer mit Gemüse
+- Falafel mit Salat
+- Gemüselasagne
+- Burger
+- Curry mit Reis
+- Großer Salatteller
 
-IMPORTANT: If a side dish is served as a standalone main course (e.g., "Großer Pommesteller", "Großer Salatteller mit Ei/Käse"), it counts as a main course (set "ist_speise" to true)!
+ist_speise = false only for:
+- desserts
+- pure side dishes (plain fries, plain rice, small side salad)
+- non-meals (e.g., information about open opening times)
 
-STEP 2: FIND MAIN PROTEIN (hauptprotein)
-Identify the PRIMARY source of protein in the dish. Evaluate the actual quantity and relevance! 
-WARNING: A tiny garnish (e.g., a few bacon bits on fried potatoes, a small sprinkle of parmesan) does NOT determine the main protein. Look for the main component.
+STEP 2: RECONSTRUCT ALL CLASSES (alle_klassen)
+Deconstruct the dish into its ingredients and list all constituent classes with their portion size:
+- "dominant" (main base/protein), "mittel" (side dish/heavy sauce), "gering" (garnish/seasoning/breading).
 
-Choose the most substantial protein source based on this priority list:
-1. Substantial Meat or Fish? -> "rotes_fleisch", "gefluegel", or "fisch"
-2. Legumes (lentils, beans, tofu, soy)? -> "huelsenfruechte"
-3. Substantial Dairy or Egg (e.g., cheese filling, large omelet, cream sauce)? -> "milchprodukte" or "ei"
-4. Nuts or Seeds? -> "nuesse" or "samen"
-5. Grains or Tubers (e.g., a plate of pasta, a potato dish without meat)? -> "getreide" or "knollen"
+CORE RULES:
+1. START with the classes from "vorhandene_klassen" (must be strictly kept).
+2. ADD missing implicit ingredients (e.g., breaded dishes -> add "getreide"; pizza -> add "milchprodukte" + "getreide"; lasagna -> add "getreide" + "milchprodukte").
+3. HACKFLEISCH/BURGER RULE: Default to "rotes_fleisch" unless specified otherwise (e.g., "chicken burger" -> "gefluegel", "vegan burger" -> non-animal class).
+4. VEG/VEGAN OVERRIDE: If "veg", "vegetarisch", or "vegan" is detected, do NOT assign animal classes ("rotes_fleisch", "gefluegel", "fisch", "ei", "milchprodukte" if vegan). Replace with plant-based equivalents. (This overrides all other rules).
 
-Select "keine_eindeutige_proteinquelle" ONLY if the dish consists entirely of ingredients with practically no protein (e.g., a simple plain green salad).
+STEP 3: DETERMINE MAIN PROTEIN (hauptprotein)
+Select the primary protein from the classes in Step 2. Use ONLY a class present in your "alle_klassen" list.
 
-STEP 3: MERGE ALL CLASSES (alle_klassen)
-Collect ALL components of the dish (main component, side dishes, sauces).
-RULE 1: The input from "vorhandene_klassen" MUST be strictly included in your list!
-RULE 2: The "hauptprotein" selected in Step 2 MUST be strictly included as a class in the list!
-RULE 3: Add starchy side dishes (potatoes = "knollen", pasta/rice = "getreide") and sauce ingredients (cream/cheese = "milchprodukte").
+To make the decision, categorize your classes from Step 2 into two groups:
+- PRIMARY PROTEINS: "rotes_fleisch", "gefluegel", "fisch", "huelsenfruechte", "milchprodukte", "ei", "nuesse", "samen"
+- SECONDARY PROTEINS: "getreide", "knollen"
 
-Determine the qualitative portion for each class:
-- "dominant" = Main component (e.g., piece of meat, patty)
-- "mittel" = Filling side dish or relevant sauce (e.g., pasta, cream sauce)
-- "gering" = Small addition, garnish
+LOGIC:
+1. Choose a PRIMARY protein if it is present in a "dominant" or "mittel" portion (e.g., beef in lasagna, cheese on a pizza, tofu in a curry).
+2. Choose a SECONDARY protein (Grains or Tubers) if no substantial primary protein is present, or if the primary protein is only a "gering" garnish (e.g., pasta with just a light sprinkle of cheese, or potatoes with just a few bacon bits).
+3. Choose "keine_eindeutige_proteinquelle" only if the dish contains no substantial ingredients from either group (e.g., a plain vegetable dish or green salad).
+
+---
+
+INTERNAL VERIFICATION LOOP (MANDATORY)
+Before finishing the JSON, verify mentally:
+[ ] Is my chosen "hauptprotein" physically listed inside the "alle_klassen" array? 
+[ ] Did I copy all classes from "vorhandene_klassen" into "alle_klassen"?
 
 PROJECT EXAMPLES FOR ORIENTATION:
 
@@ -50,7 +66,7 @@ JSON-Output:
 Beispiel 2:
 menu_text: "Großer Pommesteller mit Ketchup", vorhandene_klassen: []
 JSON-Output: 
-{{"ist_speise": true, "hauptprotein": "keine_eindeutige_proteinquelle", "alle_klassen": [{{"klasse": "knollen", "anteil": "dominant"}}]}}
+{{"ist_speise": true, "hauptprotein": "knollen", "alle_klassen": [{{"klasse": "knollen", "anteil": "dominant"}}]}}
 
 INPUT:
 gericht_name: {gericht_name}
@@ -58,7 +74,7 @@ menu_text: {text}
 vorhandene_klassen: {klassen}
 '
 
-# Das Schema für den Output des LLM
+# JSON-Schema für strukturierte LLM-Antwort
 schema <- '{
   "type": "object",
   "properties": {
@@ -76,6 +92,8 @@ schema <- '{
         "huelsenfruechte",
         "nuesse",
         "samen",
+        "getreide",
+        "knollen",
         "keine_eindeutige_proteinquelle"
       ]
     },
@@ -85,52 +103,27 @@ schema <- '{
         "type": "object",
         "properties": {
           "klasse": {
-            "type": "string",
-            "enum": [
-              "rotes_fleisch",
-              "gefluegel",
-              "fisch",
-              "milchprodukte",
-              "ei",
-              "huelsenfruechte",
-              "getreide",
-              "knollen",
-              "gemuese",
-              "nuesse",
-              "samen"
-            ]
+            "type": "string"
           },
           "anteil": {
-            "type": "string",
-            "enum": [
-              "dominant",
-              "mittel",
-              "gering"
-            ]
+            "type": "string"
           }
         },
-        "required": [
-          "klasse",
-          "anteil"
-        ],
+        "required": ["klasse", "anteil"],
         "additionalProperties": false
       }
     }
   },
-  "required": [
-    "ist_speise",
-    "hauptprotein",
-    "alle_klassen"
-  ],
+  "required": ["ist_speise", "hauptprotein", "alle_klassen"],
   "additionalProperties": false
 }'
 
-# Slice der gesamten Daten, der dem LLM gegeben wird (gericht_name, menu_text und klassen die durch die str suche gefunden wurden)
+# Testlauf: Zufällige Stichprobe (30 Gerichte) für das LLM ziehen
 batch_menus <- unique_dishes |> 
-  slice_sample(n = 20) |> 
+  slice_sample(n = 30) |> 
   select(gericht_name=product_name, text = menu_text, klassen) 
 
-# Aufrufen des LLM und speichern der Ergebnisse in results
+# OpenAI API aufrufen und Ergebnisse über mehrere Worker parallel abfragen
 results <- process_with_llm_openai_multiple_workers(
   data = batch_menus,
   model = "gpt-5-nano",
@@ -139,16 +132,16 @@ results <- process_with_llm_openai_multiple_workers(
   user_prompt_template = user_prompt_template,
   schema = schema,
   log_fn = log_to_r,
-  max_workers = 2
+  max_workers = 4
 )
 
-# results in Tibble umwandeln
+# Ergebnisse in ein R-Datenformat (Tibble) konvertieren
 results <- as_tibble(results)
 
-# Funktion zum parsen
+# Fehlerresistentes Parsen mit purrr::possibly (verhindert Abbruch bei fehlerhaftem JSON)
 safe_parse <- possibly(fromJSON, otherwise = list())
 
-# parsen des Ergebnis
+# JSON extrahieren und in strukturierte Spalten überführen
 llm_classified_short <- results |>
   mutate(
     text = map_chr(text, ~ as.character(.x[[1]])),
@@ -162,14 +155,59 @@ llm_classified_short <- results |>
       }
     }),
     
+    # Typische Fehler des LLM korrigieren die uns aufgefallen sind 
     hauptprotein = map_chr(parsed, ~ {
-      if (is.null(.x$hauptprotein)) "" else .x$hauptprotein
+      hp <- if (is.null(.x$hauptprotein)) "" else .x$hauptprotein
+      df <- .x$alle_klassen
+      
+      if (!is.null(df) && is.data.frame(df) && nrow(df) > 0) {
+        
+        # ABSICHERUNG 1: Widerspruchs-Schutz (LLM übersieht Protein)
+        if (hp == "keine_eindeutige_proteinquelle") {
+          prim_proteine <- c("rotes_fleisch", "gefluegel", "fisch", "huelsenfruechte", "milchprodukte", "ei", "nuesse", "samen")
+          # Gibt es ein primäres Protein, das dominant oder mittel ist?
+          starke_proteine <- df$klasse[df$klasse %in% prim_proteine & df$anteil %in% c("dominant", "mittel")]
+          
+          if (length(starke_proteine) > 0) {
+            hp <- starke_proteine[1] # Überschreibe mit dem gefundenen Protein
+          }
+        }
+
+        # ABSICHERUNG 2: Getreide- UND Knollen-Fallback
+        # Suche nach dominantem/mittlerem Getreide ODER Knollen
+        kohlenhydrat_klasse <- df$klasse[df$klasse %in% c("getreide", "knollen") & df$anteil %in% c("dominant", "mittel")]
+        
+        if (length(kohlenhydrat_klasse) > 0) {
+          # Nimm das erste (entweder getreide oder knollen)
+          target_klasse <- kohlenhydrat_klasse[1] 
+          
+          others <- df[df$klasse != target_klasse & df$klasse != "gemuese", ]
+          invalid_others <- others[!(others$klasse == "milchprodukte" & others$anteil == "gering"), ]
+          
+          # Wenn keine blockierenden Zutaten da sind -> überschreibe mit Getreide/Knollen
+          if (nrow(invalid_others) == 0) {
+            hp <- target_klasse
+          }
+        }
+      }
+      return(hp)
+    }),
+    
+    # Boolean-Wert für Hauptgerichte extrahieren
+    ist_speise = map_lgl(parsed, ~ {
+      if (is.null(.x$ist_speise)) NA else as.logical(.x$ist_speise)
     })
   ) |>
-  select(gericht_name, klassen_llm, hauptprotein) 
+  select(gericht_name, klassen_llm, hauptprotein, ist_speise) |> 
+  
+  # Plausibilitätsfilter: Das ermittelte Hauptprotein muss physisch in den Zutaten vorkommen
+  filter(
+    hauptprotein %in% c("keine_eindeutige_proteinquelle", "", NA) | 
+    str_detect(klassen_llm, paste0("\\b", hauptprotein, "\\b"))
+  )
 
 
-# Der Join ist danach super kurz und sauber, ganz ohne "suffix" oder select(-klassen.y):
+# Ergebnisse mit dem ursprünglichen unique_dishes-Datensatz zusammenführen
 llm_classified_short <- unique_dishes %>%
   distinct(product_name, .keep_all = TRUE) |> 
   select(-klassen) |> 

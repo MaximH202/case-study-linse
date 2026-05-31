@@ -1,0 +1,71 @@
+gericht_name,text,klasse,anteil,hauptprotein,id
+lachsfilet m dillsahne brokkoli & reis,lachsfilet (wz fi) mit dillrahmsosse (wz mi) brokkoligemuese (mi) und wildreis,fisch,dominant,fisch,148232
+lachsfilet m dillsahne brokkoli & reis,lachsfilet (wz fi) mit dillrahmsosse (wz mi) brokkoligemuese (mi) und wildreis,getreide,mittel,fisch,148232
+lachsfilet m dillsahne brokkoli & reis,lachsfilet (wz fi) mit dillrahmsosse (wz mi) brokkoligemuese (mi) und wildreis,gemuese,mittel,fisch,148232
+lachsfilet m dillsahne brokkoli & reis,lachsfilet (wz fi) mit dillrahmsosse (wz mi) brokkoligemuese (mi) und wildreis,milchprodukte,gering,fisch,148232
+de cecco fusilli vegan,"pipe rigate""carbonara- vegan"" in sojasahnesauce mit erbsen und salbei (f)geriebener vegankaese (1 2)",getreide,dominant,huelsenfruechte,1065004
+de cecco fusilli vegan,"pipe rigate""carbonara- vegan"" in sojasahnesauce mit erbsen und salbei (f)geriebener vegankaese (1 2)",huelsenfruechte,dominant,huelsenfruechte,1065004
+haehnchen suess sauer,haehnchenstreifen in suess-saurer sosse (g a9 a10),gefluegel,dominant,gefluegel,39332
+blauer wittling,blauer wittlingsfilet in knusperpanade (sn fi gl glw ml)remouladensauce (5 9 ei sn gl glw glg ml)kartoffel-gurkensalat (5 sn sf)beilagensalat oder regio-apfel(ei fi gl glg glw ml sf sn 5 9),knollen,dominant,gefluegel,228450
+blauer wittling,blauer wittlingsfilet in knusperpanade (sn fi gl glw ml)remouladensauce (5 9 ei sn gl glw glg ml)kartoffel-gurkensalat (5 sn sf)beilagensalat oder regio-apfel(ei fi gl glg glw ml sf sn 5 9),gemuese,mittel,gefluegel,228450
+kartoffel gemuese quarkauflauf hausgemach,kartoffel-quarkauflauf mit karotten zucchini und sellerie (ml)paprikadip (6 ml)apfel-rotkrautsalat (sf)obst mensafit,milchprodukte,dominant,milchprodukte,218383
+kartoffel gemuese quarkauflauf hausgemach,kartoffel-quarkauflauf mit karotten zucchini und sellerie (ml)paprikadip (6 ml)apfel-rotkrautsalat (sf)obst mensafit,knollen,mittel,milchprodukte,218383
+kartoffel gemuese quarkauflauf hausgemach,kartoffel-quarkauflauf mit karotten zucchini und sellerie (ml)paprikadip (6 ml)apfel-rotkrautsalat (sf)obst mensafit,gemuese,mittel,milchprodukte,218383
+haehnchen m rettich-champ sosse u bulgur,haehnchenbruststeak mit rettich-champignon-gemuese minzsosse und pinienkern-bulgur (g mv wz mi),gefluegel,dominant,gefluegel,120076
+haehnchen m rettich-champ sosse u bulgur,haehnchenbruststeak mit rettich-champignon-gemuese minzsosse und pinienkern-bulgur (g mv wz mi),getreide,mittel,gefluegel,120076
+haehnchen m rettich-champ sosse u bulgur,haehnchenbruststeak mit rettich-champignon-gemuese minzsosse und pinienkern-bulgur (g mv wz mi),gemuese,gering,gefluegel,120076
+haehnchen m rettich-champ sosse u bulgur,haehnchenbruststeak mit rettich-champignon-gemuese minzsosse und pinienkern-bulgur (g mv wz mi),nuesse,gering,gefluegel,120076
+seelachs auf kuerbis-moehrenpueree u salat,msc gebratener seelachs mit kuerbis-moehren-kartoffelpueree und lauch-mais-salat (7 f mv msc mi ses),fisch,dominant,fisch,104088
+seelachs auf kuerbis-moehrenpueree u salat,msc gebratener seelachs mit kuerbis-moehren-kartoffelpueree und lauch-mais-salat (7 f mv msc mi ses),knollen,mittel,fisch,104088
+seelachs auf kuerbis-moehrenpueree u salat,msc gebratener seelachs mit kuerbis-moehren-kartoffelpueree und lauch-mais-salat (7 f mv msc mi ses),gemuese,mittel,fisch,104088
+seelachs auf kuerbis-moehrenpueree u salat,msc gebratener seelachs mit kuerbis-moehren-kartoffelpueree und lauch-mais-salat (7 f mv msc mi ses),getreide,gering,fisch,104088
+r steak m kraeuterbutter brokkoli & wed,rumpsteak vom rind (r sel) mit kraeuterbutter (mi) broccoli (1) und wedges (wz),rotes_fleisch,dominant,rotes_fleisch,138104
+r steak m kraeuterbutter brokkoli & wed,rumpsteak vom rind (r sel) mit kraeuterbutter (mi) broccoli (1) und wedges (wz),gemuese,mittel,rotes_fleisch,138104
+r steak m kraeuterbutter brokkoli & wed,rumpsteak vom rind (r sel) mit kraeuterbutter (mi) broccoli (1) und wedges (wz),knollen,gering,rotes_fleisch,138104
+gratiniertes weizenschnitzel,gratiniertes weizenschnitzel mit minzjoghurt (3 15 a1 a6 a7),getreide,dominant,getreide,517389
+gratiniertes weizenschnitzel,gratiniertes weizenschnitzel mit minzjoghurt (3 15 a1 a6 a7),milchprodukte,gering,getreide,517389
+laugen-knoedel,laugen-serviettenknoedel (8 ei gl glw glr glg ml)pilzragout (gl glw ml)(vegetar ei gl glg glr glw ml 8),gemuese,dominant,ei,245188
+laugen-knoedel,laugen-serviettenknoedel (8 ei gl glw glr glg ml)pilzragout (gl glw ml)(vegetar ei gl glg glr glw ml 8),ei,dominant,ei,245188
+gulasch schwein,schweinegulasch (sch gl glw)fusilli (ei gl glw)(ei gl glw sch),rotes_fleisch,dominant,rotes_fleisch,244380
+gulasch schwein,schweinegulasch (sch gl glw)fusilli (ei gl glw)(ei gl glw sch),getreide,dominant,rotes_fleisch,244380
+fisch mit kartoffelsalat,backfisch (gl fi sf) daenische remoulade (2 8 ei fi la sf) kartoffelsalat (2 5 sl sf sw),fisch,dominant,fisch,981185
+fisch mit kartoffelsalat,backfisch (gl fi sf) daenische remoulade (2 8 ei fi la sf) kartoffelsalat (2 5 sl sf sw),knollen,mittel,fisch,981185
+seelachs,msc seelachsfilet tomate-basilikum (msc)mit weissweinsauce (2 4)gemuesebandnudeln (4)blattsalat,fisch,dominant,fisch,196908
+seelachs,msc seelachsfilet tomate-basilikum (msc)mit weissweinsauce (2 4)gemuesebandnudeln (4)blattsalat,getreide,mittel,fisch,196908
+seelachs,msc seelachsfilet tomate-basilikum (msc)mit weissweinsauce (2 4)gemuesebandnudeln (4)blattsalat,gemuese,mittel,fisch,196908
+"pfanne mv- ""bulgur- gemuese"" nuesse soja",mensavital: bulgur-gemuesepfanne mit walnuessen und cashewkernen dazu soja-kraeuter-dip (3 18 21 49 73 74 81),huelsenfruechte,dominant,nuesse,6703
+"pfanne mv- ""bulgur- gemuese"" nuesse soja",mensavital: bulgur-gemuesepfanne mit walnuessen und cashewkernen dazu soja-kraeuter-dip (3 18 21 49 73 74 81),getreide,mittel,nuesse,6703
+"pfanne mv- ""bulgur- gemuese"" nuesse soja",mensavital: bulgur-gemuesepfanne mit walnuessen und cashewkernen dazu soja-kraeuter-dip (3 18 21 49 73 74 81),gemuese,gering,nuesse,6703
+"pfanne mv- ""bulgur- gemuese"" nuesse soja",mensavital: bulgur-gemuesepfanne mit walnuessen und cashewkernen dazu soja-kraeuter-dip (3 18 21 49 73 74 81),nuesse,gering,nuesse,6703
+backfisch kartoffelsalat remoulade,backfisch kartoffelsalat remoulade (ei fi glw mi sf) (ei fi glw mi sf),fisch,dominant,fisch,732135
+backfisch kartoffelsalat remoulade,backfisch kartoffelsalat remoulade (ei fi glw mi sf) (ei fi glw mi sf),knollen,dominant,fisch,732135
+linsentopf mit putenwienerle,linseneintopf mitputenwienerle (g),gefluegel,dominant,gefluegel,36462
+linsentopf mit putenwienerle,linseneintopf mitputenwienerle (g),huelsenfruechte,mittel,gefluegel,36462
+kasslerruecken,<b>kasselerrueckenbraten</b> (1),rotes_fleisch,dominant,rotes_fleisch,236688
+seehechtfilet auf tomaten-zucchinigemuese,gegrilltes seehechtfilet auf tomaten-zucchinigemuese (gl fi) und kraeuterkartoffeln dazu einen himbeerjoghurt (la),fisch,dominant,fisch,250943
+seehechtfilet auf tomaten-zucchinigemuese,gegrilltes seehechtfilet auf tomaten-zucchinigemuese (gl fi) und kraeuterkartoffeln dazu einen himbeerjoghurt (la),gemuese,mittel,fisch,250943
+seehechtfilet auf tomaten-zucchinigemuese,gegrilltes seehechtfilet auf tomaten-zucchinigemuese (gl fi) und kraeuterkartoffeln dazu einen himbeerjoghurt (la),knollen,mittel,fisch,250943
+seehechtfilet auf tomaten-zucchinigemuese,gegrilltes seehechtfilet auf tomaten-zucchinigemuese (gl fi) und kraeuterkartoffeln dazu einen himbeerjoghurt (la),milchprodukte,gering,fisch,250943
+tortellini tricolore,<b>tortellini tricolore</b>gemuese-kaese-sauceblattsalat,getreide,dominant,getreide,206756
+tortellini tricolore,<b>tortellini tricolore</b>gemuese-kaese-sauceblattsalat,gemuese,mittel,getreide,206756
+kartoffel-frischktaschen m dip u salat,kartoffeltaschen gefuellt mit frischkaese (v mi) quark-gurken-dip (mi sen) und gemischtem salat (1 7 9 su),knollen,dominant,knollen,179424
+kartoffel-frischktaschen m dip u salat,kartoffeltaschen gefuellt mit frischkaese (v mi) quark-gurken-dip (mi sen) und gemischtem salat (1 7 9 su),milchprodukte,dominant,knollen,179424
+kartoffel-frischktaschen m dip u salat,kartoffeltaschen gefuellt mit frischkaese (v mi) quark-gurken-dip (mi sen) und gemischtem salat (1 7 9 su),gemuese,mittel,knollen,179424
+kartoffel-pastinaken,kartoffel-pastinakengratin (kn mi)(v kn mi),knollen,dominant,knollen,429504
+bew kuerbiscremesuppe,kuerbiscremesuppe (mi nmn) baguettebrot (glw) (ve glw mi nmn),gemuese,dominant,keine_eindeutige_proteinquelle,703867
+bew kuerbiscremesuppe,kuerbiscremesuppe (mi nmn) baguettebrot (glw) (ve glw mi nmn),getreide,mittel,keine_eindeutige_proteinquelle,703867
+lamm-ragout auf breiten nudeln,lamm-curry (2 so la sl glw) kraeuternudeln (2 glw),rotes_fleisch,dominant,rotes_fleisch,872448
+lamm-ragout auf breiten nudeln,lamm-curry (2 so la sl glw) kraeuternudeln (2 glw),getreide,mittel,rotes_fleisch,872448
+mexikanische hackfleischpfanne vom rind,mexikanische hackfleischpfanne vom rind mit chili (2 3 a12),rotes_fleisch,dominant,rotes_fleisch,521875
+mexikanische hackfleischpfanne vom rind,mexikanische hackfleischpfanne vom rind mit chili (2 3 a12),gemuese,mittel,rotes_fleisch,521875
+suesskartoffel puffer (vital),suesskartoffel-puffer mit mango-senf-dip (15 a1 a3 a7 a10),knollen,dominant,knollen,561904
+braten mit rotkohl kartoffeln (vital),sauerbraten mit apfelrotkohl und kartoffelkloessen (3 9 15 a1 a7 a9 r),knollen,dominant,knollen,565273
+braten mit rotkohl kartoffeln (vital),sauerbraten mit apfelrotkohl und kartoffelkloessen (3 9 15 a1 a7 a9 r),gemuese,mittel,knollen,565273
+salatteller sommeraktion,salatteller (v+),knollen,dominant,keine_eindeutige_proteinquelle,326249
+stueck- suedtiroler spinatknoedel,3 suedtiroler spinatknoedel mit nussbutter und parmesanhobel (15 19 47 81)dazu bunter salatmix,gemuese,dominant,nuesse,7745
+stueck- suedtiroler spinatknoedel,3 suedtiroler spinatknoedel mit nussbutter und parmesanhobel (15 19 47 81)dazu bunter salatmix,milchprodukte,dominant,nuesse,7745
+mscseelachs m sosse karotten & kartoffeln,msc seelachsfilet in kraeutereihuelle auf dijon-senfsauce und karotten dazu kraeuterkartoffeln (f mv msc wz ei mi sen),fisch,dominant,fisch,101899
+mscseelachs m sosse karotten & kartoffeln,msc seelachsfilet in kraeutereihuelle auf dijon-senfsauce und karotten dazu kraeuterkartoffeln (f mv msc wz ei mi sen),knollen,mittel,fisch,101899
+mscseelachs m sosse karotten & kartoffeln,msc seelachsfilet in kraeutereihuelle auf dijon-senfsauce und karotten dazu kraeuterkartoffeln (f mv msc wz ei mi sen),gemuese,mittel,fisch,101899
+crossies + pommes,haehnchencrossies (we g)pommes fritescocktailsauce (1 3 ei mi sf we)mit rucola(ei g mi sf we 1 3),knollen,dominant,gefluegel,441181
+crossies + pommes,haehnchencrossies (we g)pommes fritescocktailsauce (1 3 ei mi sf we)mit rucola(ei g mi sf we 1 3),gefluegel,dominant,gefluegel,441181

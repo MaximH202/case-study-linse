@@ -1,104 +1,181 @@
-#Zuweisung zu Lebensmittelklassen und Ernährungsformen
+# 2. Zuordnung zu Lebensmittelklassen
 
-# Erstellung einer Liste mit den Lebensmittelklassen und typischen Wörtern die dazugehören
+# Keywords für die einzelnen Klassen definieren
 keywords <- list(
-  rotes_fleisch = c(
-    "rind", "rinder", "rinderhack", "rindfleisch", "rindergeschnetzel",
-    "kalb", "kalbs", "schwein", "schweine", "schweinefleisch",
-    "schweineschnitzel", "schweinenacken", "spanferkel", "kotelett",
-    "lamm", "lammfleisch", "lammhack", "lammkeule", "schaf", "schaffleisch",
-    "reh", "rehgulasch", "rehbraten", "hirsch", "hirschgulasch",
-    "wild", "wildragout", "wildgulasch", "cevapcici", "pork", "kassler", 
-    "salami", "hamburger", "^schaschlik$", "ungarische gulaschsuppe", "spare ribs"
-  ),
-  gefluegel = c(
-    "huhn", "haehnchen", "huehnchen", "huehner", "haehnchenbrust",
-    "huhnbrust", "chicken", "gefluegel", "truthahn",
-    "pute", "puten", "putenfleisch", "putenbrust", "putensteak", "putenhack",
-    "ente", "entenbrust", "entenkeule", "entenfleisch",
-    "gans", "gaensekeule", "gaensebraten", "chicken", "pollo"
-  ),
-  fisch = c(
-    "fisch", "fischfilet", "lachs", "seelachs", "kabeljau", "backfisch",
-    "thunfisch", "forelle", "petersfisch", "st pierre", "dorade",
-    "meeresfrueecht", "meeresfruecht", "meeresfrucht", "muschel",
-    "miesmuschel", "garnele", "shrimp", "scampi", "krabbe", "calamares",
-    "tintenfisch", "scholle", "hering", "makrele", "zander", "barsch", "fish"
-  ),
-  milchprodukte = c(
-    "kaese", "grillkaese", "hirtenkaese", "fetakaese", "camembert",
-    "mozzarella", "halloumi", "kaiserschmarrn",
-    "joghurt", "jogurt", "quark", "milch", "buttermilch",
-    "sahne", "schmand", "creme fraiche", "sauerrahm", "rahm", "!leberkaese"
-  ),
-  ei = c(
-    "ruehrei", "spiegelei", "wachtelei", "pochiertem ei",
-    "gekochtem ei", "eiergericht", "^ei$"
-  ),
-  huelsenfruechte = c(
-    "linse", "linsen", "kichererbse", "kichererbs", "hummus", "humus",
-    "falafel", "bohn", "kidney", "black bean", "erbse", "erbsen",
-    "lupin", "lupinen", "soja", "sojafleisch", "sojaschnetzel",
-    "sojabohn", "tofu", "raeuuchertofu", "tempeh", "edamame"
-  ),
-  getreide = c(
-    "weizen", "vollkorn", "reis", "basmati", "hafer", "haferflock", "kaiserschmarrn", "pfannkuchen",
-    "mais", "polenta", "quinoa", "amaranth", "buchweizen", "couscous", "hirse",
-    "bulgur", "nudel", "pasta", "spaghetti", "tagliatelle", "bandnudel", "rigatoni",
-    "farfalle", "penne", "fusilli", "fussili", "maccaroni", "tortelloni", "tortellini", "spaetzle", "gebaeck", 
-    "pizza", "grieß", "brot"
-  ),
-  knollen = c(
-    "kartoffel", "kartoffelpuffer", "kartoffelgratin", "kartoffelstampf",
-    "bratkartoffel", "salzkartoffel", "puerree", "pueree",
-    "suesskartoffel", "pastinake", "maniok", "pommes", "roesti", "gnocchi", "wedges"
-  ),
-  gemuese = c(
-    "spinat", "gruenkohl", "wirsing", "mangold", "brokkoli", "broccoli",
-    "pak choi", "chinakohl", "karott", "moehre", "kuerbis", "paprika",
-    "tomat", "rote bete", "chili", "kohl", "lauch", "porree", "zwiebel",
-    "sellerie", "gurk", "zucchini", "aubergine", "fenchel", "spargel",
-    "pilz", "champignon", "olive", "gemuese"
-  ),
-  nuesse = c(
-    "mandel", "walnuss", "haselnuss", "cashew", "pistazie",
-    "pinienkern", "kastanie", "marone", "kokos", "erdnuss"
-  ),
-  samen = c(
-    "sonnenblumenkern", "kuerbiskern", "sesam", "leinsamen",
-    "chia", "hanfsamen", "mohn"
-  )
+rotes_fleisch = c(
+  "rind", "rinder", "rinderhack", "rindfleisch", "rindergeschnetzel",
+  "kalb", "kalbs", "kalbfleisch", "kalbsschnitzel",
+  "schwein", "schweine", "schweinefleisch", "schweinebraten",
+  "schweineschnitzel", "schweinenacken", "schweinefilet",
+  "spanferkel", "kotelett", "kassler",
+  "lamm", "lammfleisch", "lammhack", "lammkeule", "lammkotelett",
+  "schaf", "schaffleisch", "hacksteak", "pulled beef",
+  "reh", "rehgulasch", "rehbraten", "rehkeule",
+  "hirsch", "hirschgulasch", "hirschbraten",
+  "wild", "wildragout", "wildgulasch", "wildschwein",
+  "cevapcici", "pork", "salami", "hamburger",
+  "ungarische gulaschsuppe", "spare ribs", "leberkaes",
+  "mett", "hackbraten", "roulade", "beef", "pastrami", "corned beef"
+),
+
+gefluegel = c(
+  "huhn", "haehnchen", "huehnchen", "huehner", "haehnchenbrust",
+  "huhnbrust", "huhnfilet", "chicken", "gefluegel",
+  "truthahn", "pute", "puten", "putenfleisch", "putenbrust",
+  "putensteak", "putenhack", "putenschnitzel",
+  "ente", "entenbrust", "entenkeule", "entenfleisch",
+  "gans", "gaensekeule", "gaensebraten",
+  "pollo", "maishaehnchen", "hendl",
+  "coq", "perlhuhn"
+),
+
+fisch = c(
+  "fisch", "fischfilet", "lachs", "seelachs", "kabeljau", "backfisch",
+  "thunfisch", "forelle", "petersfisch", "st pierre", "dorade",
+  "matjes", "hering", "makrele", "zander", "barsch",
+  "scholle", "heilbutt", "rotbarsch", "seezunge",
+  "meeresfrueecht", "meeresfruecht", "meeresfrucht",
+  "muschel", "miesmuschel", "jakobsmuschel",
+  "garnele", "shrimp", "scampi", "krabbe",
+  "calamares", "tintenfisch", "oktopus",
+  "fish", "seeteufel", "sardine", "anchovis", "aal", "aalfilet", "butt", "steinbutt", "flunder",
+  "sprotte", "kieler sprotte", "stint",
+  "felchen", "renke", "maraene", "saibling", "seesaibling", "bachsaibling", "karpfen", "wels", "welsfilet", "hecht",
+  "lachsforelle", "wildlachs", "silberlachs",
+  "atlantiklachs", "pazifiklachs","seehecht","pollack", "pollak", "koehler","schellfisch", "dorsch", "skrei","wolfsbarsch", "seebarsch",
+  "steinbeisser", "steinbeißer","tilapia", "pangasius", "pangasiusfilet",
+  "victoriabarsch", "victoriaseebarsch","red snapper", "snapper","sardelle", "ansjovis", "anchovy",
+  "aalrauch", "raeucheraal","fischfrikadelle", "fischfrikadellen",
+  "fischstaebchen", "fischstäbchen","fischburger","fischragout", "fischpfanne",
+  "fischcurry", "fischgulasch","riesengarnele", "riesengarnelen", "prawn", "king prawn",
+  "flusskrebs", "flusskrebse", "hummer", "languste", "langustine",
+  "kaisergranat", "krustentier", "krustentiere",
+  "auster", "austern", "venusmuschel", "vongole", "vongole veraci"
+),
+
+milchprodukte = c(
+  "grillkaese", "hirtenkaese", "fetakaese",
+  "camembert", "brie", "mozzarella", "halloumi",
+  "parmesan", "gouda", "emmentaler", "bergkaese",
+  "frischkaese", "ricotta", "mascarpone",
+  "joghurt", "jogurt", "quark", "milch", "buttermilch", "schmand", "creme fraiche", "sauerrahm", "rahm",
+  "kefir", "molke", "skyr"
+),
+
+ei = c(
+  "ruehrei", "spiegelei", "wachtelei", "pochiertem ei",
+  "gekochtem ei", "eiergericht", "^ei$",
+  "omelett", "omelette", "eierspeise",
+  "eiersalat", "eiweiss", "eigelb"
+),
+
+huelsenfruechte = c(
+  "linse", "linsen", "rote linse", "braune linse", "gruene linse", "belugalinse",
+  "kichererbse", "kichererbs", "kichererbsenmehl", "kichererbsen",
+  "hummus", "humus", "falafel",
+  "soja", "sojabohn", "sojabohne", "sojabohnen",
+  "sojafleisch", "sojaschnetzel", "sojagranulat", "sojamedaillons",
+  "tofu", "raeuchertofu", "seidentofu", "tempeh", "edamame",
+  "bohn", "bohnen", "kidney", "kidneybohne", "black bean", "schwarze bohne",
+  "weisse bohne", "rote bohne", "braune bohne", "dicke bohne",
+  "mungbohne", "mung", "ackerbohne", "lupin", "lupinen",
+  "erbsen", "erbse", "grüne erbsen", "spalterbse",
+  "adukibohne", "azukibohne", "butterbohne",
+  "borlotti", "borlottibohnen",
+  "cannellini", "cannellinibohnen"
+),
+
+getreide = c(
+  "weizen", "vollkorn", "vollkornweizen", "dinkel", "gerste", "roggen",
+  "reis", "basmati", "jasmine reis", "sushireis",
+  "hafer", "haferflock", "haferflocken",
+  "mais", "maiskorn", "polenta",
+  "quinoa", "amaranth", "buchweizen",
+  "hirse", "bulgur", "couscous",
+  "nudel", "nudeln", "pasta", "spaghetti", "tagliatelle",
+  "bandnudel", "bandnudeln", "rigatoni", "farfalle", "penne",
+  "fusilli", "fussili", "maccaroni", "macaroni",
+  "tortelloni", "tortellini", "spaetzle", "spätzle",
+  "risotto", "gries", "griess", "grieß",
+  "brot", "baguette", "broetchen", "brötchen", "toast", "ciabatta",
+  "fladenbrot", "wrap", "lavash", "tortilla",
+  "pizza", "lasagne", "ravioli",
+  "pfannkuchen", "kaiserschmarrn", "crepe", "crêpe",
+  "haferbrei", "porridge"
+),
+
+knollen = c(
+  "kartoffel", "kartoffeln", "kartoffelpuffer", "kartoffelgratin",
+  "kartoffelstampf", "bratkartoffel", "bratkartoffeln",
+  "salzkartoffel", "salzkartoffeln",
+  "pueree", "puerree", "kartoffelpueree", "kartoffelpüree",
+  "suesskartoffel", "süsskartoffel", "sweet potato",
+  "pastinake", "maniok", "cassava",
+  "pommes", "pommes frites", "fritten", "fries",
+  "roesti", "rösti",
+  "gnocchi", "wedges", "kroketten", "krokette"
+),
+
+gemuese = c(
+  "spinat", "gruenkohl", "wirsing", "mangold",
+  "brokkoli", "broccoli", "pak choi", "chinakohl",
+  "karott", "moehre", "kuerbis", "paprika",
+  "tomat", "rote bete", "chili", "kohl",
+  "lauch", "porree", "zwiebel", "sellerie",
+  "gurk", "zucchini", "aubergine", "fenchel",
+  "spargel", "pilz", "champignon", "olive",
+  "gemuese", "blumenkohl", "rosenkohl",
+  "kohlrabi", "artischocke", "radies",
+  "rettich", "rotebeete", "avocado",
+  "bohnenkraut", "sauerkraut", "champignon"
+),
+
+nuesse = c(
+  "mandel", "walnuss", "haselnuss", "cashew",
+  "pistazie", "pinienkern", "kastanie",
+  "marone", "kokos", "erdnuss",
+  "macadamia", "pecannuss", "pekannuss",
+  "paranuss"
+),
+
+samen = c(
+  "sonnenblumenkern", "kuerbiskern",
+  "sesam", "leinsamen", "chia",
+  "hanfsamen", "mohn",
+  "flohsamen", "nigella"
 )
-#Funktion zur Textformatierung
+)
+# Erstellt ein reguläres RegExp-Pattern aus der Keyword-Liste (trennt Wörter mit OR |)
 make_pattern <- function(kws) {
   kws |>
     str_replace_all("\\*", "") |>
     str_c(collapse = "|")
 }
-#Funktion zum mapen der Keywords auf eine Liste von Namen
+# Prüft, welche Lebensmittelklassen auf ein Gericht zutreffen (liefert Namen der zutreffenden Klassen zurück)
 classify_row <- function(name_clean) {
   matches <- keywords |>
     imap_lgl(~ str_detect(name_clean, make_pattern(.x)))
   names(matches)[matches]
 }
 
-#4 Kerne für mehr Effizienz
-plan(multisession, workers = 4)
+# Parallelisierung (Kerne je nach CPU wählen, 4 sollten bei den meisten gehen)
+plan(multisession, workers = 8)
 
-# Mapen der Keywords auf die Produkt_namen und menu_text, Ergebnisse werden zusammengelegt
+# Keywords auf Produktname und Beschreibung matchen und zusammenführen
+# (future_map führt die Klassifizierung parallel über die 8 Kerne aus)
 unique_dishes <- unique_dishes |>
   mutate(
     classes_name = future_map(product_name, classify_row),
     classes_text = future_map(menu_text, classify_row),
     
-    # Beide Listen vereinen, Duplikate entfernen
+    # Ergebnisse aus Produktname und Beschreibung zusammenführen und Duplikate entfernen
     matched_classes = map2(classes_name, classes_text, ~ unique(c(.x, .y)))
   ) |>
-  #entfernt überflüssige Spalten
+  # Hilfsspalten wieder löschen
   select(-classes_name, -classes_text)
 
 
-# Klassen werden von Vektor-Format in leserliches (, getrenntes) Format gebracht
+# Die gematchten Klassen als Komma-getrennten String speichern für bessere Lesbarkeit
 unique_dishes <- unique_dishes |>
   mutate(klassen = map_chr(matched_classes, ~ paste(.x, collapse = ", "))) |> 
   select(-matched_classes)
