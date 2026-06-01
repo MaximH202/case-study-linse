@@ -32,10 +32,3 @@ llm_classified_short <- llm_classified_short |>
       ~ assign_level1(klassen = .x, menu_text = .y)
     )
   )
-# Ergebnisse als CSV-Dateien für die weitere Analyse speichern
-write_csv(llm_classified_short, "data/menus_classified.csv")
-write_csv(llm_classified_long, "data/menu_components.csv")
-
-#Join mit der gesamten menus liste um alle Einträge zu bekommen
-menus_short <- menus |> 
-  inner_join(llm_classified_short, by = "product_name")

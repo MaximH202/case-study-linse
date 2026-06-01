@@ -110,9 +110,10 @@ def process_with_llm_openai_multiple_workers(data, model, system_prompt, user_pr
 
     def _process_row(index, row):
         user_prompt = user_prompt_template.format(
-            text=row["text"],
+            id = row["id"],
+            menu_text=row["menu_text"],
             klassen=row["klassen"],
-            gericht_name = row["gericht_name"]
+            product_name = row["product_name"]
         )
 
         result = process_with_llm_openai(

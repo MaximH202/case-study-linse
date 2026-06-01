@@ -2,15 +2,11 @@
 # Jedes Gericht wird in seine einzelnen Zutatenklassen zerlegt (erleichtert die spätere Analyse)
 llm_classified_long <- results |>
   mutate(
-    # Text-Spalte explizit als Character extrahieren
-    text = map_chr(text, ~ as.character(.x[[1]])),
-    
     # JSON-Daten aus dem LLM-Ergebnis parsen
     parsed = map(llm_result, safe_parse),
     
     # Hauptprotein und Speise-Kennzeichnung extrahieren (mit Default-Fallbacks)
     ist_speise   = map_lgl(parsed, ~ .x$ist_speise %||% FALSE),
-    hauptprotein = map_chr(parsed, ~ .x$hauptprotein %||% "keine_eindeutige_proteinquelle"),
     
     # Zutatenklassen aus der JSON-Struktur extrahieren
     llm_klassen_df = map(parsed, ~ {
@@ -25,7 +21,6 @@ llm_classified_long <- results |>
       if (is.data.frame(klassen_data)) {
         return(as_tibble(klassen_data))
       }
-      
       # Fallback C: Absicherung für unerwartete Formate
       return(tibble(klasse = NA_character_, anteil = NA_character_))
     })
@@ -34,7 +29,7 @@ llm_classified_long <- results |>
   unnest(llm_klassen_df, keep_empty = TRUE) |>
   
   # Relevante Spalten selektieren und mit Gerichts-ID verknüpfen
-  select(gericht_name, text, klasse, anteil, hauptprotein) |> 
-  left_join(unique_dishes |> select(id, product_name), 
-            by = c("gericht_name" = "product_name")) 
+  select(id, klasse, anteil) |> 
+  left_join(unique_dishes |> select(id, product_name, menu_text), 
+            by = "id") 
 
