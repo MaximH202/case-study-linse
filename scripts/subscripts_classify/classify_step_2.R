@@ -55,9 +55,10 @@ fisch = c(
 
 milchprodukte = c(
   "grillkaese", "hirtenkaese", "fetakaese", "schafskaese", "schafkaese", "ziegenkaese",
-  "camembert", "brie", "mozzarella", "halloumi",
-  "parmesan", "gouda", "emmentaler", "bergkaese",
-  "frischkaese", "ricotta", "mascarpone",
+  "camembert", "brie", "mozzarella", "halloumi","harzer_kaese", "handkaese",
+  "parmesan", "gouda", "emmentaler", "bergkaese","tilsiter", "vollmilch",
+  "provolone", "cheddar", "raclettekaese", "schmelzkaese", "kaesesoße",
+  "weisskaese", "blauschimmelkaese", "frischkaese", "ricotta", "mascarpone",
   "joghurt", "jogurt", "quark", "milch", "buttermilch", "schmand", "creme fraiche", "sauerrahm", "rahm",
   "kefir", "molke", "skyr", "auflauf"
 ),

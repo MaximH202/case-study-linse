@@ -34,10 +34,10 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMTY4LjA2fDY0MS4wM3w0OS40NnwzOTEuOTM=)'>
-<polyline points='252.85,391.93 252.85,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='379.44,391.93 379.44,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='506.03,391.93 506.03,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='632.61,391.93 632.61,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='243.71,391.93 243.71,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='352.01,391.93 352.01,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='460.30,391.93 460.30,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='568.60,391.93 568.60,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='168.06,375.08 641.03,375.08 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='168.06,347.01 641.03,347.01 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='168.06,318.94 641.03,318.94 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
@@ -51,42 +51,44 @@
 <polyline points='168.06,94.37 641.03,94.37 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='168.06,66.30 641.03,66.30 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='189.56,391.93 189.56,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='316.15,391.93 316.15,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='442.73,391.93 442.73,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='569.32,391.93 569.32,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='189.56' y='306.31' width='43.49' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='189.56' y='222.09' width='235.43' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='189.56' y='194.02' width='241.57' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='189.56' y='334.38' width='39.77' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='189.56' y='81.74' width='426.51' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='189.56' y='109.81' width='321.20' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='189.56' y='250.17' width='157.18' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='189.56' y='165.95' width='259.64' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='189.56' y='137.88' width='279.35' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='189.56' y='362.45' width='20.06' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<polyline points='297.86,391.93 297.86,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='406.15,391.93 406.15,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='514.45,391.93 514.45,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='622.75,391.93 622.75,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<rect x='189.56' y='250.17' width='43.35' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='189.56' y='194.02' width='154.81' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='189.56' y='109.81' width='342.12' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='189.56' y='362.45' width='0.83' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='189.56' y='137.88' width='328.40' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='189.56' y='165.95' width='309.46' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='189.56' y='334.38' width='1.95' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='189.56' y='222.09' width='153.67' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='189.56' y='81.74' width='355.12' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='189.56' y='278.24' width='27.58' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
 <rect x='189.56' y='53.67' width='429.97' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='189.56' y='278.24' width='77.55' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='189.56' y='306.31' width='18.68' height='25.26' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
 </g>
 <g clip-path='url(#cpMC4wMHw2NDguMDB8MC4wMHw0MzIuMDA=)'>
-<text x='161.79' y='379.09' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='36.06px' lengthAdjust='spacingAndGlyphs'>nuesse</text>
-<text x='161.79' y='351.02' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='46.00px' lengthAdjust='spacingAndGlyphs'>gemuese</text>
-<text x='161.79' y='322.95' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='8.70px' lengthAdjust='spacingAndGlyphs'>ei</text>
-<text x='161.79' y='294.88' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='33.56px' lengthAdjust='spacingAndGlyphs'>samen</text>
-<text x='161.79' y='266.81' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='154.81px' lengthAdjust='spacingAndGlyphs'>keine_eindeutige_proteinquelle</text>
-<text x='161.79' y='238.73' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='23.00px' lengthAdjust='spacingAndGlyphs'>fisch</text>
-<text x='161.79' y='210.66' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='45.39px' lengthAdjust='spacingAndGlyphs'>gefluegel</text>
-<text x='161.79' y='182.59' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='35.44px' lengthAdjust='spacingAndGlyphs'>knollen</text>
-<text x='161.79' y='154.52' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='69.61px' lengthAdjust='spacingAndGlyphs'>milchprodukte</text>
-<text x='161.79' y='126.45' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='79.58px' lengthAdjust='spacingAndGlyphs'>huelsenfruechte</text>
-<text x='161.79' y='98.38' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='40.41px' lengthAdjust='spacingAndGlyphs'>getreide</text>
+<text x='161.79' y='379.09' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='46.00px' lengthAdjust='spacingAndGlyphs'>gemuese</text>
+<text x='161.79' y='351.02' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='154.81px' lengthAdjust='spacingAndGlyphs'>keine_eindeutige_proteinquelle</text>
+<text x='161.79' y='322.95' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='33.56px' lengthAdjust='spacingAndGlyphs'>samen</text>
+<text x='161.79' y='294.88' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='36.06px' lengthAdjust='spacingAndGlyphs'>nuesse</text>
+<text x='161.79' y='266.81' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='8.70px' lengthAdjust='spacingAndGlyphs'>ei</text>
+<text x='161.79' y='238.73' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='35.44px' lengthAdjust='spacingAndGlyphs'>knollen</text>
+<text x='161.79' y='210.66' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='23.00px' lengthAdjust='spacingAndGlyphs'>fisch</text>
+<text x='161.79' y='182.59' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='79.58px' lengthAdjust='spacingAndGlyphs'>huelsenfruechte</text>
+<text x='161.79' y='154.52' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='40.41px' lengthAdjust='spacingAndGlyphs'>getreide</text>
+<text x='161.79' y='126.45' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='45.39px' lengthAdjust='spacingAndGlyphs'>gefluegel</text>
+<text x='161.79' y='98.38' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='69.61px' lengthAdjust='spacingAndGlyphs'>milchprodukte</text>
 <text x='161.79' y='70.30' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='62.78px' lengthAdjust='spacingAndGlyphs'>rotes_fleisch</text>
 <text x='189.56' y='406.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='16.17px' lengthAdjust='spacingAndGlyphs'>0%</text>
-<text x='316.15' y='406.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='16.17px' lengthAdjust='spacingAndGlyphs'>5%</text>
-<text x='442.73' y='406.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>10%</text>
-<text x='569.32' y='406.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>15%</text>
+<text x='297.86' y='406.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='16.17px' lengthAdjust='spacingAndGlyphs'>5%</text>
+<text x='406.15' y='406.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>10%</text>
+<text x='514.45' y='406.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>15%</text>
+<text x='622.75' y='406.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>20%</text>
 <text x='404.54' y='422.08' text-anchor='middle' style='font-size: 14.00px; font-family: "Arial";' textLength='115.91px' lengthAdjust='spacingAndGlyphs'>Anteil der Gerichte</text>
 <text x='168.06' y='39.54' style='font-size: 14.00px; font-family: "Arial";' textLength='210.02px' lengthAdjust='spacingAndGlyphs'>Anteil aller klassifizierten Gerichte</text>
-<text x='168.06' y='19.01' style='font-size: 16.80px; font-family: "Arial";' textLength='310.12px' lengthAdjust='spacingAndGlyphs'>Verteilung der code_main_protein quellen</text>
+<text x='168.06' y='19.01' style='font-size: 16.80px; font-family: "Arial";' textLength='268.06px' lengthAdjust='spacingAndGlyphs'>Verteilung der Hauptprotein-Quellen</text>
 </g>
 </g>
 </svg>

@@ -1,5 +1,6 @@
 # 4. LLM-Output ins Long-Format überführen
 # Jedes Gericht wird in seine einzelnen Zutatenklassen zerlegt (erleichtert die spätere Analyse)
+
 llm_classified_long <- results |>
   mutate(
     # JSON-Daten aus dem LLM-Ergebnis parsen
@@ -19,13 +20,22 @@ llm_classified_long <- results |>
       
       # Fallback B: Daten liegen bereits als Dataframe vor
       if (is.data.frame(klassen_data)) {
-        return(as_tibble(klassen_data))
+          df_clean <- as_tibble(klassen_data) |> 
+          # FILTER: Schmeißt alle Klassen raus, die nicht im Projekt-Schema stehen
+          filter(klasse %in% erlaubte_klassen)
+        
+        # Falls das LLM NUR Halluzinationen geliefert hat und der DF jetzt leer ist:
+        if (nrow(df_clean) == 0) {
+          return(tibble(klasse = NA_character_, anteil = NA_character_))
+        }
+         return(df_clean)
       }
       # Fallback C: Absicherung für unerwartete Formate
       return(tibble(klasse = NA_character_, anteil = NA_character_))
     })
   ) |>
   # Geschachtelte Listen in einzelne Zeilen entpacken (keep_empty = TRUE erhält Desserts/Beilagen)
+  filter(ist_speise != FALSE) |>
   unnest(llm_klassen_df, keep_empty = TRUE) |>
   
   # Relevante Spalten selektieren und mit Gerichts-ID verknüpfen

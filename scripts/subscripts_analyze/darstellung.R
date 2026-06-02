@@ -212,7 +212,7 @@ p_protein_share <- protein_share |>
     labels = scales::label_percent()
   ) +
   labs(
-    title = "Verteilung der code_main_protein quellen",
+    title = "Verteilung der Hauptprotein-Quellen",
     subtitle = "Anteil aller klassifizierten Gerichte",
     x = "Anteil der Gerichte",
     y = NULL
@@ -358,6 +358,144 @@ p_protein_score_year
 ggsave(
   "communications/visualizations/06_weighted_protein_quality_over_time.svg",
   plot = p_protein_score_year,
+  width = 9,
+  height = 6
+)
+
+# 1. Daten vorbereiten und filtern
+trend_data <- menus_classified |>
+  # Filter: Keine NAs und Output muss größer als 0 sein
+  filter(!is.na(actual_output) & actual_output > 0) |>
+  # Jahr aus dem Datum extrahieren
+  mutate(year = year(date)) |>
+  # Gruppieren nach Jahr und Ernährungsform
+  group_by(year, group_level_1) |>
+  # Summe der verkauften Portionen berechnen
+  summarise(total_sold = sum(actual_output), .groups = "drop") |>
+  # NAs in der Ernährungsform (falls vorhanden) herausfiltern
+  filter(!is.na(group_level_1))
+
+# Eigene Farben für die Ernährungsformen definieren
+diet_colors <- c(
+  "vegan" = "#4daf4a",        # Grün
+  "vegetarisch" = "#dede00",  # Gelb
+  "pescetarisch" = "#377eb8", # Blau
+  "omnivor" = "#e41a1c"       # Rot
+)
+
+# ---------------------------------------------------------
+# GRAFIK 1: Absolute Verkaufszahlen über die Jahre (Flächendiagramm)
+# ---------------------------------------------------------
+plot_absolute <- ggplot(trend_data, aes(x = year, y = total_sold, fill = group_level_1)) +
+  geom_area(alpha = 0.8, color = "white", linewidth = 0.2) +
+  scale_fill_manual(values = diet_colors) +
+  scale_y_continuous(labels = label_number(scale_cut = cut_short_scale())) + # Macht aus 1000000 -> 1M
+  scale_x_continuous(breaks = unique(trend_data$year)) +
+  labs(
+    title = "Verkaufte Mensa-Portionen über die Jahre",
+    subtitle = "Absolute Zahlen nach Ernährungsform (ohne fehlende Tracking-Daten)",
+    x = "Jahr",
+    y = "Verkaufte Portionen",
+    fill = "Ernährungsform"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "bottom",
+    panel.grid.minor = element_blank()
+  )
+
+print(plot_absolute)
+library(scales)
+# ---------------------------------------------------------
+# GRAFIK 2: Prozentuale Beliebtheit (100% Stacked Bar Chart)
+# Zeigt den echten Trend unabhängig von Corona-Schließungen!
+# ---------------------------------------------------------
+plot_relative <- ggplot(trend_data, aes(x = year, y = total_sold, fill = group_level_1)) +
+  geom_col(position = "fill", width = 0.8) +
+  scale_fill_manual(values = diet_colors) +
+  scale_y_continuous(labels = label_percent()) +
+  scale_x_continuous(breaks = unique(trend_data$year)) +
+  labs(
+    title = "Entwicklung der Beliebtheit von Ernährungsformen",
+    subtitle = "Prozentualer Anteil an den Gesamtverkäufen pro Jahr",
+    x = "Jahr",
+    y = "Anteil an verkauften Portionen",
+    fill = "Ernährungsform"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "bottom",
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_blank()
+  )
+
+print(plot_relative)
+
+
+# 1. Die Top 6 Hauptproteinquellen ermitteln (über alle Jahre)
+top6_protein <- menus_short |>
+  filter(!is.na(actual_output) & actual_output > 0) |>
+  filter(!is.na(code_main_protein)) |>
+  group_by(code_main_protein) |>
+  summarise(gesamt_verkaeufe = sum(actual_output), .groups = "drop") |>
+  arrange(desc(gesamt_verkaeufe)) |>
+  slice_head(n = 6) |>
+  pull(code_main_protein)
+
+# 2. Daten für die relative Heatmap vorbereiten
+heatmap_data_relative <- menus_short |>
+  filter(!is.na(actual_output) & actual_output > 0) |>
+  filter(!is.na(code_main_protein)) |>
+  mutate(year = year(date)) |>
+  
+  # A) Gesamtverkäufe für JEDES Jahr berechnen (für alle Gerichte)
+  group_by(year) |>
+  mutate(yearly_total = sum(actual_output)) |>
+  
+  # B) Verkäufe pro Protein und Jahr berechnen
+  group_by(year, code_main_protein, yearly_total) |>
+  summarise(protein_sold = sum(actual_output), .groups = "drop") |>
+  
+  # C) Den prozentualen Anteil berechnen
+  mutate(share = protein_sold / yearly_total) |>
+  
+  # D) Nur die Top 6 behalten und für den Plot sortieren
+  filter(code_main_protein %in% top6_protein) |>
+  mutate(code_main_protein = factor(code_main_protein, levels = rev(top6_protein)))
+
+# 3. Die Heatmap erstellen
+plot_heatmap_relative <- ggplot(heatmap_data_relative, aes(x = factor(year), y = code_main_protein, fill = share)) +
+  # Kacheln zeichnen (mit weißem Rand für bessere Trennung)
+  geom_tile(color = "white", linewidth = 0.5) +
+  
+  # Farbpalette wählen und Legende als Prozent formatieren
+  scale_fill_distiller(
+    palette = "YlOrRd", 
+    direction = 1, 
+    labels = function(x) paste0(round(x * 100, 0), "%") # Macht aus 0.25 -> "25%"
+  ) +
+  
+  labs(
+    title = "Heatmap: Beliebtheit der Top 6 Hauptproteinquellen",
+    subtitle = "Prozentualer Anteil an den Gesamtverkäufen des jeweiligen Jahres",
+    x = "Jahr",
+    y = "Hauptprotein",
+    fill = "Anteil"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    panel.grid = element_blank(),
+    axis.ticks = element_blank(),
+    legend.position = "right",
+    legend.title = element_text(face = "bold")
+  )
+
+# Plot anzeigen
+print(plot_heatmap)
+# Plot anzeigen
+ggsave(
+  "communications/visualizations/05_beliebtheit.svg",
+  plot = plot_heatmap_relative,
   width = 9,
   height = 6
 )
