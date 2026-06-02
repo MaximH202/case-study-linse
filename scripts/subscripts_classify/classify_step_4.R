@@ -31,9 +31,10 @@ llm_classified_long <- results |>
   # Relevante Spalten selektieren und mit Gerichts-ID verknüpfen
   select(id, klasse, anteil) |> 
   left_join(unique_dishes |> select(id, product_name, menu_text), 
-            by = "id") 
+            by = "id") |> 
+  rename(group_level_2 = klasse)
 
-llm_classified_long <- llm_classified_long |> 
+llm_classified_long <- llm_classified_long |>
   mutate(
     proteincode = case_when(
       group_level_2 %in% c("milchprodukte", "eier") ~ "very_high",
