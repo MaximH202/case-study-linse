@@ -4,11 +4,14 @@ menus_short <- menus |>
   select(-id) |> 
   inner_join(llm_classified_short, by = "menu_text")
 
+llm_classified_short <- llm_classified_short |> 
+  left_join(llm_classified_long |> distinct(id, code_main_protein), by = "id")
+
 menus_short <- menus_short |> 
   left_join(llm_classified_long |> distinct(product_name, code_main_protein), by = "product_name")
 
 menus_long <- menus |> 
-  select(-id) |> 
+  select(-id, -menu_text) |> 
   inner_join(llm_classified_long, by = "product_name")
 
 

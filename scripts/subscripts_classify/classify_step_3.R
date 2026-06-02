@@ -89,7 +89,7 @@ schema <- '{
 
 # Testlauf: Zufällige Stichprobe (30 Gerichte) für das LLM ziehen
 batch_menus <- unique_dishes |> 
-  slice_sample(n = 20) |> 
+  slice_sample(n = 100) |> 
   select(id, product_name, menu_text, klassen) 
 
 # OpenAI API aufrufen und Ergebnisse über mehrere Worker parallel abfragen
