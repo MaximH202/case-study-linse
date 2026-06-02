@@ -1,6 +1,9 @@
-# 2. Zuordnung zu Lebensmittelklassen
+# 2. Zuordnung zu Lebensmittelklassen (Keyword-Matching)
+# Bevor wir das LLM nutzen, schauen wir selbst nach: Lassen sich durch einfache 
+# Schlüsselwörter im Gerichtsnamen bereits bestimmte Lebensmittelklassen erkennen?
+# Das hilft, dem LLM eine Vorahnung ("vorhandene_klassen") mitzugeben.
 
-# Keywords für die einzelnen Klassen definieren
+# Wir definieren Listen von Keywords (Zutaten, Gerichte) für jede Klasse.
 keywords <- list(
 rotes_fleisch = c(
   "rind", "rinder", "rinderhack", "rindfleisch", "rindergeschnetzel",
@@ -146,34 +149,39 @@ samen = c(
   "flohsamen", "nigella"
 )
 )
-# Erstellt ein reguläres RegExp-Pattern aus der Keyword-Liste (trennt Wörter mit OR |)
+
+# Hilfsfunktion, um aus der Keyword-Liste einen funktionierenden regulären Ausdruck (Regex) zu bauen.
+# Sie klebt alle Wörter einer Liste mit "Oder"-Zeichen (|) zusammen, z.B. "rind|rinder|kalb".
 make_pattern <- function(kws) {
   kws |>
     str_replace_all("\\*", "") |>
     str_c(collapse = "|")
 }
 
-# Prüft, welche Lebensmittelklassen auf ein Gericht zutreffen (liefert Namen der zutreffenden Klassen zurück)
+# Diese Funktion prüft für einen übergebenen Text, ob er Keywords aus unseren Listen enthält.
+# Sie geht alle Listen durch und gibt am Ende die Namen der Kategorien (z.B. "rotes_fleisch") zurück, bei denen es Treffer gab.
 classify_row <- function(name_clean) {
   matches <- keywords |>
     imap_lgl(~ str_detect(name_clean, make_pattern(.x)))
   names(matches)[matches]
 }
 
-# Parallelisierung (Kerne je nach CPU wählen, 4 sollten bei den meisten gehen)
+# Aufteilung der Arbeit auf mehrere Kerne
 plan(multisession, workers = 8)
 
-# Keywords auf Produktname und Beschreibung matchen, zusammenführen und als String formatieren
+# Wir prüfen jetzt "product_name" und "menu_text" auf keywords
 unique_dishes <- unique_dishes |>
   mutate(
     classes_name = future_map(product_name, classify_row),
     classes_text = future_map(menu_text, classify_row),
     
-    # Ergebnisse aus Produktname und Beschreibung zusammenführen und Duplikate entfernen
+    # Manchmal steht im Namen "Rinderbraten" und im Text auch. 
+    # Wir fügen die Treffer beider Prüfungen zusammen und entfernen mit "unique()" die Doppelungen.
     matched_classes = map2(classes_name, classes_text, ~ unique(c(.x, .y))),
     
-    # Die gematchten Klassen als Komma-getrennten String speichern für bessere Lesbarkeit
+    # Zum Schluss machen wir aus der Liste einen kommagetrennten Text (z.B. "rotes_fleisch, knollen").
+    # Das kann später direkt ins Prompt für das LLM gegeben werden.
     klassen = map_chr(matched_classes, ~ paste(.x, collapse = ", "))
   ) |>
-  # Hilfsspalten wieder löschen
+  # Die Zwischenspalten brauchen wir nicht mehr
   select(-classes_name, -classes_text, -matched_classes)

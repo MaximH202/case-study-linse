@@ -228,69 +228,6 @@ ggsave(
 
 #eventuell Grafik für zeitglichen Vergleich hülsenfrüchte vs top3 über zeit 
 
-
-#proteincode heatmap
-
-protein_code_year <- components |>
-  mutate(
-    year = lubridate::year(date),
-    proteincode = factor(
-      proteincode,
-      levels = c("very_low", "low", "medium", "high", "very_high")
-    )
-  ) |>
-  filter(
-    !is.na(year),
-    !is.na(proteincode)
-  ) |>
-  count(year, proteincode) |>
-  group_by(year) |>
-  mutate(
-    share = n / sum(n)
-  ) |>
-  ungroup()
-
-p_protein_code_heatmap <- protein_code_year |>
-  ggplot(
-    aes(
-      x = year,
-      y = proteincode,
-      fill = share
-    )
-  ) +
-  geom_tile(color = "white", linewidth = 0.4) +
- #scale_fill_viridis_c(
-  #option = "C",
-  #labels = scales::label_percent()
-  scale_fill_gradientn(
-  colours = c(
-    "#ffffcc",
-    "#fed976",
-    "#fd8d3c",
-    "#e31a1c"
-  ),
-  labels = scales::label_percent()
-
-
-  ) +
-  labs(
-    title = "Entwicklung der Proteinqualität über die Zeit",
-    subtitle = "Anteil der klassifizierten Lebensmittelkomponenten nach Protein-Code",
-    x = "Jahr",
-    y = "Protein-Code",
-    fill = "Anteil"
-  ) +
-  theme_minimal(base_size = 14)
-
-p_protein_code_heatmap
-
-ggsave(
-  "communications/visualizations/05_protein_code_heatmap.svg",
-  plot = p_protein_code_heatmap,
-  width = 9,
-  height = 6
-)
-
 # gewichtete Proteinqualität pro Gericht
 
 protein_score <- c(
@@ -362,76 +299,6 @@ ggsave(
   height = 6
 )
 
-# 1. Daten vorbereiten und filtern
-trend_data <- menus_classified |>
-  # Filter: Keine NAs und Output muss größer als 0 sein
-  filter(!is.na(actual_output) & actual_output > 0) |>
-  # Jahr aus dem Datum extrahieren
-  mutate(year = year(date)) |>
-  # Gruppieren nach Jahr und Ernährungsform
-  group_by(year, group_level_1) |>
-  # Summe der verkauften Portionen berechnen
-  summarise(total_sold = sum(actual_output), .groups = "drop") |>
-  # NAs in der Ernährungsform (falls vorhanden) herausfiltern
-  filter(!is.na(group_level_1))
-
-# Eigene Farben für die Ernährungsformen definieren
-diet_colors <- c(
-  "vegan" = "#4daf4a",        # Grün
-  "vegetarisch" = "#dede00",  # Gelb
-  "pescetarisch" = "#377eb8", # Blau
-  "omnivor" = "#e41a1c"       # Rot
-)
-
-# ---------------------------------------------------------
-# GRAFIK 1: Absolute Verkaufszahlen über die Jahre (Flächendiagramm)
-# ---------------------------------------------------------
-plot_absolute <- ggplot(trend_data, aes(x = year, y = total_sold, fill = group_level_1)) +
-  geom_area(alpha = 0.8, color = "white", linewidth = 0.2) +
-  scale_fill_manual(values = diet_colors) +
-  scale_y_continuous(labels = label_number(scale_cut = cut_short_scale())) + # Macht aus 1000000 -> 1M
-  scale_x_continuous(breaks = unique(trend_data$year)) +
-  labs(
-    title = "Verkaufte Mensa-Portionen über die Jahre",
-    subtitle = "Absolute Zahlen nach Ernährungsform (ohne fehlende Tracking-Daten)",
-    x = "Jahr",
-    y = "Verkaufte Portionen",
-    fill = "Ernährungsform"
-  ) +
-  theme_minimal(base_size = 14) +
-  theme(
-    legend.position = "bottom",
-    panel.grid.minor = element_blank()
-  )
-
-print(plot_absolute)
-library(scales)
-# ---------------------------------------------------------
-# GRAFIK 2: Prozentuale Beliebtheit (100% Stacked Bar Chart)
-# Zeigt den echten Trend unabhängig von Corona-Schließungen!
-# ---------------------------------------------------------
-plot_relative <- ggplot(trend_data, aes(x = year, y = total_sold, fill = group_level_1)) +
-  geom_col(position = "fill", width = 0.8) +
-  scale_fill_manual(values = diet_colors) +
-  scale_y_continuous(labels = label_percent()) +
-  scale_x_continuous(breaks = unique(trend_data$year)) +
-  labs(
-    title = "Entwicklung der Beliebtheit von Ernährungsformen",
-    subtitle = "Prozentualer Anteil an den Gesamtverkäufen pro Jahr",
-    x = "Jahr",
-    y = "Anteil an verkauften Portionen",
-    fill = "Ernährungsform"
-  ) +
-  theme_minimal(base_size = 14) +
-  theme(
-    legend.position = "bottom",
-    panel.grid.minor = element_blank(),
-    panel.grid.major.x = element_blank()
-  )
-
-print(plot_relative)
-
-
 # 1. Die Top 6 Hauptproteinquellen ermitteln (über alle Jahre)
 top6_protein <- menus_short |>
   filter(!is.na(actual_output) & actual_output > 0) |>
@@ -489,10 +356,6 @@ plot_heatmap_relative <- ggplot(heatmap_data_relative, aes(x = factor(year), y =
     legend.position = "right",
     legend.title = element_text(face = "bold")
   )
-
-# Plot anzeigen
-print(plot_heatmap)
-# Plot anzeigen
 ggsave(
   "communications/visualizations/05_beliebtheit.svg",
   plot = plot_heatmap_relative,

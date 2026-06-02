@@ -1,6 +1,12 @@
-#Hauptprotein durch mathematische Gewichtung ermitteln
+# 6. Hauptprotein durch mathematische Gewichtung ermitteln
+# In einem Gericht wie "Nudeln mit Hähnchen" gibt es zwei Zutatenklassen. 
+# Aber welche ist die "Hauptzutat" bzw. das primäre Protein? 
+# Um das zu entscheiden, vergeben wir hier Punkte (Scores) für jede Zutat.
+
 llm_classified_long <- llm_classified_long |> 
-  # 1. Punkte für Klasse und Anteil direkt im Datensatz vergeben (ohne Joins)
+  # 1. Punkte-Vergabe für die Lebensmittelklasse
+  # Fleisch und Fisch gelten traditionell oft als Hauptkomponente (100 Punkte).
+  # Pflanzliche Alternativen bekommen etwas weniger, Sättigungsbeilagen (Getreide) oder Gemüse noch weniger.
   mutate(
     p_klasse = case_when(
       group_level_2 %in% c("rotes_fleisch", "gefluegel", "fisch") ~ 100,
@@ -12,25 +18,32 @@ llm_classified_long <- llm_classified_long |>
       group_level_2 == "gemuese"                                   ~ 10,
       TRUE                                                  ~ 0
     ),
+    # 2. Punkte-Vergabe für den Anteil, den das LLM geschätzt hat
+    # Eine dominante Zutat ist wichtiger als eine, die nur eine Beilage ist.
     p_anteil = case_when(
       anteil == "dominant" ~ 3,
       anteil == "mittel"   ~ 2,
       anteil == "gering"   ~ 1,
       TRUE                 ~ 0
     ),
+    # Wir multiplizieren beide Werte. 
     score = p_klasse * p_anteil
   ) |> 
   
- group_by(id) |> 
+  # Jetzt schauen wir uns für jedes Gericht (id) die Scores aller Zutaten an.
+  group_by(id) |> 
   mutate(
-    # Finde die Klasse mit dem höchsten Score. Falls der Score <= 30 ist, nimm den Fallback.
+    # Wir suchen die Zutat mit dem höchsten Score.
+    # Wenn der höchste Score allerdings sehr klein ist (<= 20), z.B. weil es nur Gemüse als Beilage gibt, 
+    # dann sagen wir ehrlich: "Keine eindeutige Proteinquelle".
     code_main_protein = if_else(
       max(score) > 20, 
       group_level_2[which.max(score)], 
       "keine_eindeutige_proteinquelle"
     )
   ) |> 
+  # Gruppierung wieder aufheben
   ungroup() |> 
   
-  # 3. Rechenspalten löschen und Spalte umbenennen für die Abgabe
+  # 3. Aufräumen
   select(-p_klasse, -p_anteil, -score)
