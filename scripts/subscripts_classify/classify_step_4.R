@@ -33,3 +33,14 @@ llm_classified_long <- results |>
   left_join(unique_dishes |> select(id, product_name, menu_text), 
             by = "id") 
 
+llm_classified_long <- llm_classified_long |> 
+  mutate(
+    proteincode = case_when(
+      group_level_2 %in% c("milchprodukte", "eier") ~ "very_high",
+      group_level_2 %in% c("rotes_fleisch", "gefluegel", "fisch") ~ "high",
+      group_level_2 %in% c("huelsenfruechte", "leguminosen") ~ "medium",
+      group_level_2 %in% c("getreide", "samen", "nuesse") ~ "low",
+      group_level_2 %in% c("gemuese", "obst") ~ "very_low",
+      TRUE ~ "unbekannt"
+    )
+  )
