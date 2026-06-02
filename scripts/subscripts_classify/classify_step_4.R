@@ -32,7 +32,12 @@ llm_classified_long <- results |>
   select(id, klasse, anteil) |> 
   left_join(unique_dishes |> select(id, product_name, menu_text), 
             by = "id") |> 
-  rename(group_level_2 = klasse)
+  rename(group_level_2 = klasse)|>
+  group_by(id) |>
+  filter(
+    !(n() == 1 & group_level_2 %in% c("getreide", "knollen", "gemuese"))
+  ) |>
+  ungroup()
 
 llm_classified_long <- llm_classified_long |>
   mutate(

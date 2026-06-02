@@ -25,7 +25,7 @@ llm_classified_long <- llm_classified_long |>
   mutate(
     # Finde die Klasse mit dem höchsten Score. Falls der Score <= 30 ist, nimm den Fallback.
     code_main_protein = if_else(
-      max(score) > 30, 
+      max(score) > 20, 
       group_level_2[which.max(score)], 
       "keine_eindeutige_proteinquelle"
     )

@@ -17,19 +17,12 @@ RULES:
    - TRUE: Savory main courses (including veggie plates, large fries-plates, casseroles, stews).
    - FALSE: Desserts/sweet dishes (pudding, sweet rice, cakes), plain separate side dishes (plain rice, small side salad), or non-meals (info texts, "closed").
 
-2. CLASSES & PORTIONS (alle_klassen):
-   - List ALL constituent classes from the ALLOWED FOOD CLASSES list.
-   - Assign a portion size to each:
-     * "dominant" = Main component / base of the dish (e.g., the meat, the pasta, the burger patty).
-     * "mittel" = Sättigungsbeilage (heavy side dishes like fries/potatoes) or substantial sauces (e.g., cheese sauce).
-     * "gering" = Garnish, breading (Panade), light toppings, small vegetable bits.
-
-3. INGREDIENT LOGIC:
-   - KEEP PROVIDED: You MUST include all classes listed in "vorhandene_klassen".
-   - ADD IMPLICIT: Add hidden ingredients based on culinary knowledge (e.g., "paniert"/breaded -> add "getreide"; "Pizza" -> add "getreide" + "milchprodukte"; Pasta/Noodles/Bread -> "getreide"; Potatoes/Fries -> "knollen").
-   - BURGER/MINCE RULE: "Hackfleisch", "Burger", or "Meatballs" default to "rotes_fleisch" unless specified otherwise (e.g., "Chickenburger" -> "gefluegel").
-   - VEG/VEGAN OVERRIDE: If "veg", "vegetarisch", or "vegan" appears in the text, absolutely NO meat/fish classes ("rotes_fleisch", "gefluegel", "fisch"). If "vegan", also NO "ei" or "milchprodukte".
-
+2. CLASSES & INGREDIENT LOGIC (alle_klassen):
+   List ALL constituent classes from the ALLOWED FOOD CLASSES list and assign a portion size ("dominant" = main component/base, "mittel" = heavy side/sauce, "gering" = garnish/breading). Apply these strict rules:
+   - KEEP PROVIDED: You MUST include all classes from "vorhandene_klassen".
+   - ADD IMPLICIT: Use culinary knowledge for hidden ingredients (e.g., "paniert"/pasta -> "getreide"; potatoes/fries -> "knollen"; pizza -> "getreide" + "milchprodukte").
+   - BURGER RULE: "Hackfleisch" or "Burger" default to "rotes_fleisch" unless specified otherwise (e.g., "Chickenburger").
+   - VEG/VEGAN OVERRIDE: If "veg", "vegetarisch", or "vegan" is in the text, output NO meat/fish. If "vegan", also NO "ei" or "milchprodukte".
 ---
 PROJECT EXAMPLES:
 
@@ -89,7 +82,7 @@ schema <- '{
 
 # Testlauf: Zufällige Stichprobe (30 Gerichte) für das LLM ziehen
 batch_menus <- unique_dishes |> 
-  slice_sample(n = 20) |> 
+  slice_sample(n = 2000) |> 
   select(id, product_name, menu_text, klassen) 
 
 # OpenAI API aufrufen und Ergebnisse über mehrere Worker parallel abfragen
@@ -101,7 +94,7 @@ results <- process_with_llm_openai_multiple_workers(
   user_prompt_template = user_prompt_template,
   schema = schema,
   log_fn = log_to_r,
-  max_workers = 4
+  max_workers = 8
 )
 
 # Ergebnisse in ein R-Datenformat (Tibble) konvertieren und direkt parsen
@@ -127,4 +120,9 @@ llm_classified_short <- results |>
     })
   ) |> 
   select(id, product_name, menu_text, klassen, ist_speise) |> 
-  rename(group_level_2 = klassen)
+  rename(group_level_2 = klassen) |> 
+    filter(
+    !(
+      group_level_2 %in% c("getreide", "knollen", "gemuese")
+    )
+  )

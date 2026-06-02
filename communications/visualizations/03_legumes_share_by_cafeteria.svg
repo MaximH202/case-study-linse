@@ -34,79 +34,91 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMjEyLjEzfDY0MS4wM3w0OS40Nnw0NjMuOTM=)'>
-<polyline points='270.61,463.93 270.61,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='348.59,463.93 348.59,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='426.58,463.93 426.58,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='504.56,463.93 504.56,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='582.54,463.93 582.54,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,450.26 641.03,450.26 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,427.49 641.03,427.49 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,404.72 641.03,404.72 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,381.94 641.03,381.94 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,359.17 641.03,359.17 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,336.40 641.03,336.40 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,313.62 641.03,313.62 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,290.85 641.03,290.85 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,268.08 641.03,268.08 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,245.30 641.03,245.30 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,222.53 641.03,222.53 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,199.76 641.03,199.76 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,176.99 641.03,176.99 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,154.21 641.03,154.21 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,131.44 641.03,131.44 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,108.67 641.03,108.67 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,85.89 641.03,85.89 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='212.13,63.12 641.03,63.12 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='280.36,463.93 280.36,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='377.84,463.93 377.84,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='475.31,463.93 475.31,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='572.79,463.93 572.79,49.46 ' style='stroke-width: 0.68; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,453.21 641.03,453.21 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,435.34 641.03,435.34 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,417.48 641.03,417.48 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,399.61 641.03,399.61 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,381.75 641.03,381.75 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,363.88 641.03,363.88 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,346.02 641.03,346.02 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,328.15 641.03,328.15 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,310.29 641.03,310.29 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,292.42 641.03,292.42 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,274.56 641.03,274.56 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,256.69 641.03,256.69 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,238.83 641.03,238.83 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,220.96 641.03,220.96 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,203.10 641.03,203.10 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,185.23 641.03,185.23 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,167.37 641.03,167.37 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,149.50 641.03,149.50 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,131.64 641.03,131.64 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,113.77 641.03,113.77 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,95.90 641.03,95.90 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,78.04 641.03,78.04 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='212.13,60.17 641.03,60.17 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='231.62,463.93 231.62,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='309.60,463.93 309.60,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='387.58,463.93 387.58,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='465.57,463.93 465.57,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='543.55,463.93 543.55,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='329.10,463.93 329.10,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='426.58,463.93 426.58,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='524.05,463.93 524.05,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='621.53,463.93 621.53,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='231.62' y='98.42' width='389.91' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='75.64' width='389.91' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='121.19' width='155.96' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='143.96' width='129.97' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='166.74' width='123.13' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='189.51' width='70.89' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='235.06' width='64.98' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='212.28' width='64.98' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='440.02' width='0.00' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='417.24' width='0.00' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='394.47' width='0.00' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='371.70' width='0.00' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='348.92' width='0.00' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='326.15' width='0.00' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='303.38' width='0.00' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='280.60' width='0.00' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='257.83' width='0.00' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
-<rect x='231.62' y='52.87' width='0.00' height='20.50' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='52.13' width='389.91' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='70.00' width='288.82' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='87.87' width='278.51' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='105.73' width='233.28' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='123.60' width='168.06' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='141.46' width='84.76' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='159.33' width='34.64' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='445.17' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='427.30' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='409.44' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='391.57' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='373.71' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='355.84' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='337.98' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='320.11' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='302.25' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='284.38' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='266.52' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='248.65' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='230.79' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='212.92' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='195.06' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
+<rect x='231.62' y='177.19' width='0.00' height='16.08' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #595959;' />
 </g>
 <g clip-path='url(#cpMC4wMHw2NDguMDB8MC4wMHw1MDQuMDA=)'>
-<text x='205.85' y='454.27' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='113.77px' lengthAdjust='spacingAndGlyphs'>Chemnitz Küche RH55</text>
-<text x='205.85' y='431.50' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='133.61px' lengthAdjust='spacingAndGlyphs'>Mainz (mehrere Standorte)</text>
-<text x='205.85' y='408.72' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='73.36px' lengthAdjust='spacingAndGlyphs'>Mensa Elsfleth</text>
-<text x='205.85' y='385.95' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='72.11px' lengthAdjust='spacingAndGlyphs'>Mensa Emden</text>
-<text x='205.85' y='363.18' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='79.36px' lengthAdjust='spacingAndGlyphs'>Mensa Wechloy</text>
-<text x='205.85' y='340.40' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='124.30px' lengthAdjust='spacingAndGlyphs'>Mensa Forum Paderborn</text>
-<text x='205.85' y='317.63' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='146.06px' lengthAdjust='spacingAndGlyphs'>Stuttgart (mehrere Standorte)</text>
-<text x='205.85' y='294.86' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='183.80px' lengthAdjust='spacingAndGlyphs'>Wuppertal Hauptmensa (2014–2024)</text>
-<text x='205.85' y='272.08' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='65.89px' lengthAdjust='spacingAndGlyphs'>Mensa Haste</text>
-<text x='205.85' y='249.31' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='41.62px' lengthAdjust='spacingAndGlyphs'>Freiburg</text>
-<text x='205.85' y='226.54' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='198.27px' lengthAdjust='spacingAndGlyphs'>Schleswig-Holstein (mehrere Standorte)</text>
-<text x='205.85' y='203.77' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='101.94px' lengthAdjust='spacingAndGlyphs'>Mensa Uhlhornsweg</text>
-<text x='205.85' y='180.99' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='198.88px' lengthAdjust='spacingAndGlyphs'>Erlangen-Nürnberg (mehrere Standorte)</text>
-<text x='205.85' y='158.22' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='116.86px' lengthAdjust='spacingAndGlyphs'>Mensa Atrium Lippstadt</text>
-<text x='205.85' y='135.45' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='148.55px' lengthAdjust='spacingAndGlyphs'>Saarland (mehrere Standorte)</text>
-<text x='205.85' y='112.67' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='101.95px' lengthAdjust='spacingAndGlyphs'>Zwickau Küche Ring</text>
-<text x='205.85' y='89.90' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='146.70px' lengthAdjust='spacingAndGlyphs'>Mensa Academica Paderborn</text>
-<text x='205.85' y='67.13' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='15.55px' lengthAdjust='spacingAndGlyphs'>NA</text>
+<text x='205.85' y='457.22' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='113.77px' lengthAdjust='spacingAndGlyphs'>Chemnitz Küche RH55</text>
+<text x='205.85' y='439.35' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='146.70px' lengthAdjust='spacingAndGlyphs'>Mensa Academica Paderborn</text>
+<text x='205.85' y='421.48' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='116.86px' lengthAdjust='spacingAndGlyphs'>Mensa Atrium Lippstadt</text>
+<text x='205.85' y='403.62' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='72.11px' lengthAdjust='spacingAndGlyphs'>Mensa Emden</text>
+<text x='205.85' y='385.75' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='124.30px' lengthAdjust='spacingAndGlyphs'>Mensa Forum Paderborn</text>
+<text x='205.85' y='367.89' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='65.89px' lengthAdjust='spacingAndGlyphs'>Mensa Haste</text>
+<text x='205.85' y='350.02' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='107.53px' lengthAdjust='spacingAndGlyphs'>Mensa Ofener Straße</text>
+<text x='205.85' y='332.16' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='107.55px' lengthAdjust='spacingAndGlyphs'>Mensa Schlossgarten</text>
+<text x='205.85' y='314.29' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='79.36px' lengthAdjust='spacingAndGlyphs'>Mensa Wechloy</text>
+<text x='205.85' y='296.43' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='94.27px' lengthAdjust='spacingAndGlyphs'>Mensa Westerberg</text>
+<text x='205.85' y='278.56' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='112.50px' lengthAdjust='spacingAndGlyphs'>Mensa Wilhelmshaven</text>
+<text x='205.85' y='260.70' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='148.55px' lengthAdjust='spacingAndGlyphs'>Saarland (mehrere Standorte)</text>
+<text x='205.85' y='242.83' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='146.06px' lengthAdjust='spacingAndGlyphs'>Stuttgart (mehrere Standorte)</text>
+<text x='205.85' y='224.97' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='176.95px' lengthAdjust='spacingAndGlyphs'>Wuppertal Hauptmensa (Jan. 2025)</text>
+<text x='205.85' y='207.10' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='101.95px' lengthAdjust='spacingAndGlyphs'>Zwickau Küche Ring</text>
+<text x='205.85' y='189.24' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='143.39px' lengthAdjust='spacingAndGlyphs'>Zwickau Mensa Scheffelberg</text>
+<text x='205.85' y='171.37' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='101.94px' lengthAdjust='spacingAndGlyphs'>Mensa Uhlhornsweg</text>
+<text x='205.85' y='153.51' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='198.88px' lengthAdjust='spacingAndGlyphs'>Erlangen-Nürnberg (mehrere Standorte)</text>
+<text x='205.85' y='135.64' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='183.80px' lengthAdjust='spacingAndGlyphs'>Wuppertal Hauptmensa (2014–2024)</text>
+<text x='205.85' y='117.78' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='41.62px' lengthAdjust='spacingAndGlyphs'>Freiburg</text>
+<text x='205.85' y='99.91' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='133.61px' lengthAdjust='spacingAndGlyphs'>Mainz (mehrere Standorte)</text>
+<text x='205.85' y='82.05' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='198.27px' lengthAdjust='spacingAndGlyphs'>Schleswig-Holstein (mehrere Standorte)</text>
+<text x='205.85' y='64.18' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='73.36px' lengthAdjust='spacingAndGlyphs'>Mensa Elsfleth</text>
 <text x='231.62' y='478.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='16.17px' lengthAdjust='spacingAndGlyphs'>0%</text>
-<text x='309.60' y='478.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>10%</text>
-<text x='387.58' y='478.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>20%</text>
-<text x='465.57' y='478.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>30%</text>
-<text x='543.55' y='478.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>40%</text>
-<text x='621.53' y='478.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>50%</text>
+<text x='329.10' y='478.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='16.17px' lengthAdjust='spacingAndGlyphs'>5%</text>
+<text x='426.58' y='478.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>10%</text>
+<text x='524.05' y='478.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>15%</text>
+<text x='621.53' y='478.22' text-anchor='middle' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>20%</text>
 <text x='426.58' y='494.08' text-anchor='middle' style='font-size: 14.00px; font-family: "Arial";' textLength='236.47px' lengthAdjust='spacingAndGlyphs'>Anteil der Gerichte mit Hülsenfrüchten</text>
 <text x='212.13' y='39.54' style='font-size: 14.00px; font-family: "Arial";' textLength='353.91px' lengthAdjust='spacingAndGlyphs'>Nur Mensen mit mindestens 100 klassifizierten Gerichten</text>
 <text x='212.13' y='19.01' style='font-size: 16.80px; font-family: "Arial";' textLength='392.27px' lengthAdjust='spacingAndGlyphs'>Anteil von Gerichten mit Hülsenfrüchten nach Mensa</text>

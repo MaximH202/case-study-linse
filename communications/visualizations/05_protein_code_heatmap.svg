@@ -48,58 +48,65 @@
 <polyline points='303.84,391.93 303.84,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='414.82,391.93 414.82,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='525.79,391.93 525.79,49.46 ' style='stroke-width: 1.36; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='100.38' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F46B2F;' />
-<rect x='100.38' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBD60;' />
-<rect x='100.38' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA34C;' />
-<rect x='100.38' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FED573;' />
-<rect x='137.38' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EC4A25;' />
-<rect x='137.38' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FED977;' />
-<rect x='137.38' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFAC0;' />
-<rect x='137.38' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FE9945;' />
-<rect x='137.38' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE99B;' />
-<rect x='174.37' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E62D1F;' />
-<rect x='174.37' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E62D1F;' />
-<rect x='174.37' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FED977;' />
-<rect x='211.36' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FE9945;' />
-<rect x='211.36' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBA5D;' />
-<rect x='211.36' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE99B;' />
-<rect x='211.36' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBA5D;' />
-<rect x='211.36' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FED977;' />
-<rect x='248.35' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFC767;' />
-<rect x='248.35' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FD8C3B;' />
-<rect x='248.35' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FD8C3B;' />
-<rect x='248.35' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFC767;' />
-<rect x='285.35' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F77533;' />
-<rect x='285.35' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFCC6C;' />
-<rect x='285.35' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FE9541;' />
-<rect x='285.35' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFCC6C;' />
-<rect x='322.34' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #EF5628;' />
-<rect x='322.34' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FB8338;' />
-<rect x='322.34' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFAA51;' />
-<rect x='322.34' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF7BB;' />
-<rect x='359.33' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FD8E3D;' />
-<rect x='359.33' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA44D;' />
-<rect x='359.33' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFFCC;' />
-<rect x='359.33' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FD8E3D;' />
-<rect x='359.33' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE99B;' />
-<rect x='396.32' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F2642D;' />
-<rect x='396.32' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FE9541;' />
-<rect x='396.32' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF5B5;' />
-<rect x='396.32' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFBE61;' />
-<rect x='396.32' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF5B5;' />
-<rect x='433.31' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FA7F37;' />
-<rect x='433.31' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F15F2B;' />
-<rect x='433.31' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFEFA9;' />
-<rect x='433.31' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFEFA9;' />
-<rect x='433.31' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE28B;' />
-<rect x='470.31' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA04A;' />
-<rect x='470.31' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E94022;' />
-<rect x='470.31' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFC767;' />
-<rect x='470.31' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE38D;' />
-<rect x='507.30' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E31A1C;' />
-<rect x='507.30' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FE9541;' />
-<rect x='507.30' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE086;' />
-<rect x='507.30' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE086;' />
+<rect x='100.38' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFDD80;' />
+<rect x='100.38' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE087;' />
+<rect x='100.38' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFDC7;' />
+<rect x='100.38' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FA8237;' />
+<rect x='100.38' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE189;' />
+<rect x='137.38' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FED674;' />
+<rect x='137.38' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE695;' />
+<rect x='137.38' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFFCC;' />
+<rect x='137.38' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F57031;' />
+<rect x='137.38' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE695;' />
+<rect x='174.37' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFCF6E;' />
+<rect x='174.37' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF9BE;' />
+<rect x='174.37' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFDC8;' />
+<rect x='174.37' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E31A1C;' />
+<rect x='174.37' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF3B0;' />
+<rect x='211.36' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFC263;' />
+<rect x='211.36' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE694;' />
+<rect x='211.36' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF5B5;' />
+<rect x='211.36' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FA8037;' />
+<rect x='211.36' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF5B5;' />
+<rect x='248.35' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFC263;' />
+<rect x='248.35' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE28A;' />
+<rect x='248.35' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF2AF;' />
+<rect x='248.35' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FB8739;' />
+<rect x='248.35' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF9BE;' />
+<rect x='285.35' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFCB6B;' />
+<rect x='285.35' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF1AC;' />
+<rect x='285.35' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFDC7;' />
+<rect x='285.35' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E7321F;' />
+<rect x='285.35' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF9BE;' />
+<rect x='322.34' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFC163;' />
+<rect x='322.34' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFEFA9;' />
+<rect x='322.34' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFECA;' />
+<rect x='322.34' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #E73320;' />
+<rect x='322.34' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFECA;' />
+<rect x='359.33' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFB358;' />
+<rect x='359.33' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE189;' />
+<rect x='359.33' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFAC1;' />
+<rect x='359.33' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FE9844;' />
+<rect x='359.33' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF1AD;' />
+<rect x='396.32' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA24C;' />
+<rect x='396.32' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF4B3;' />
+<rect x='396.32' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFBC4;' />
+<rect x='396.32' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F77734;' />
+<rect x='396.32' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF4B3;' />
+<rect x='433.31' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FED775;' />
+<rect x='433.31' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFF3B2;' />
+<rect x='433.31' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFCC5;' />
+<rect x='433.31' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F4692E;' />
+<rect x='433.31' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFDF84;' />
+<rect x='470.31' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFD170;' />
+<rect x='470.31' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFE38D;' />
+<rect x='470.31' y='187.76' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFCC6;' />
+<rect x='470.31' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FE9542;' />
+<rect x='470.31' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFDE83;' />
+<rect x='507.30' y='319.48' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFCC6C;' />
+<rect x='507.30' y='253.62' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FED674;' />
+<rect x='507.30' y='121.90' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #F56C30;' />
+<rect x='507.30' y='56.04' width='36.99' height='65.86' style='stroke-width: 0.85; stroke: #FFFFFF; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFFBC3;' />
 </g>
 <g clip-path='url(#cpMC4wMHw2NDguMDB8MC4wMHw0MzIuMDA=)'>
 <text x='71.91' y='356.42' text-anchor='end' style='font-size: 11.20px;fill: #4D4D4D; font-family: "Arial";' textLength='44.12px' lengthAdjust='spacingAndGlyphs'>very_low</text>
@@ -116,18 +123,15 @@
 <text transform='translate(17.00,220.69) rotate(-90)' text-anchor='middle' style='font-size: 14.00px; font-family: "Arial";' textLength='82.45px' lengthAdjust='spacingAndGlyphs'>Protein-Code</text>
 <text x='587.41' y='179.02' style='font-size: 14.00px; font-family: "Arial";' textLength='35.02px' lengthAdjust='spacingAndGlyphs'>Anteil</text>
 <image width='17.28' height='86.40' x='587.41' y='187.46' preserveAspectRatio='none' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAEsCAYAAAACUNnVAAAAmElEQVQ4jc2PUQ6EIBBD2/EWxvtfzIPohy6xQ0FM1s3+EKCvjwHrvGyBCQgGEQicC49duiMCVIQFoSJUxBwPC6VhLRlhUZWjpmdNX2vfGf2wr9vFd7o1l6XoSS8wWAVXAXWMOvANRUzAR5b2kCbId02pmeDvu7f/3Ua7UAGoARHEGId3OJha2qGl/8FD7/zIcLbRVaWBPsEOnBQHICKDqvEAAAAASUVORK5CYII='/>
-<polyline points='601.23,259.87 604.69,259.87 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<polyline points='601.23,237.88 604.69,237.88 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<polyline points='601.23,215.88 604.69,215.88 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<polyline points='601.23,193.89 604.69,193.89 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<polyline points='590.86,259.87 587.41,259.87 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<polyline points='590.86,237.88 587.41,237.88 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<polyline points='590.86,215.88 587.41,215.88 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<polyline points='590.86,193.89 587.41,193.89 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
-<text x='611.66' y='263.88' style='font-size: 11.20px; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>10%</text>
-<text x='611.66' y='241.88' style='font-size: 11.20px; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>20%</text>
-<text x='611.66' y='219.89' style='font-size: 11.20px; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>30%</text>
-<text x='611.66' y='197.90' style='font-size: 11.20px; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>40%</text>
+<polyline points='601.23,246.99 604.69,246.99 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='601.23,219.55 604.69,219.55 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='601.23,192.11 604.69,192.11 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='590.86,246.99 587.41,246.99 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='590.86,219.55 587.41,219.55 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<polyline points='590.86,192.11 587.41,192.11 ' style='stroke-width: 0.38; stroke: #FFFFFF; stroke-linecap: butt;' />
+<text x='611.66' y='251.00' style='font-size: 11.20px; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>20%</text>
+<text x='611.66' y='223.56' style='font-size: 11.20px; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>40%</text>
+<text x='611.66' y='196.12' style='font-size: 11.20px; font-family: "Arial";' textLength='22.39px' lengthAdjust='spacingAndGlyphs'>60%</text>
 <text x='78.19' y='39.54' style='font-size: 14.00px; font-family: "Arial";' textLength='435.62px' lengthAdjust='spacingAndGlyphs'>Anteil der klassifizierten Lebensmittelkomponenten nach Protein-Code</text>
 <text x='78.19' y='19.01' style='font-size: 16.80px; font-family: "Arial";' textLength='328.78px' lengthAdjust='spacingAndGlyphs'>Entwicklung der Proteinqualität über die Zeit</text>
 </g>

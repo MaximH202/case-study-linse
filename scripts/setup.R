@@ -6,7 +6,7 @@ if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
 if (file.exists("renv.lock")) renv::restore() else renv::init()
 
 # Load all required libraries
-pacman::p_load(tidyverse, janitor, skimr, jsonlite, reticulate, furrr)
+pacman::p_load(tidyverse, janitor, skimr, jsonlite, reticulate, furrr, openxlsx)
 
 # Ensure Python virtual environment exists, then activate it
 venv_path <- normalizePath(".python-env", mustWork = FALSE)

@@ -8,7 +8,15 @@ menus <- read_csv("data/menus_consolidated.csv") |>
   )
 
 # Run an R subscript (example)
-source("scripts/subscripts_classify/classify_step_1.R")  
+source("scripts/subscripts_classify/classify_step_1.R")
+source("scripts/subscripts_classify/classify_step_2.R") 
+source("scripts/subscripts_classify/classify_step_3.R") 
+source("scripts/subscripts_classify/classify_step_4.R") 
+source("scripts/subscripts_classify/classify_step_5.R") 
+source("scripts/subscripts_classify/classify_step_6.R") 
+source("scripts/subscripts_classify/classify_step_7.R")
+source("scripts/subscripts_analyze/darstellung.R")
+
 
 # Run a Python subscript
 reticulate::source_python("scripts/subscripts_classify/classify_with_llm_openai.py")

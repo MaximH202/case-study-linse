@@ -1,13 +1,13 @@
 # 2. Daten laden -----------------------------------------------------------
 
-menus <- read_csv("data/menus_classified.csv")
+menus_classified <- read_csv("data/menus_classified.csv")
 
 components <- read_csv("data/menu_components.csv")
 
 
 # 3. Daten vorbereiten -----------------------------------------------------
 
-menus_prepared <- menus |>
+menus_prepared <- menus_classified |>
   mutate(
     # Aus dem genauen Datum wird das Jahr extrahiert,
     # weil die Forschungsfrage nach Entwicklungen über die Zeit fragt.
@@ -100,12 +100,12 @@ ggsave(
   height = 6
 )
 
-legume_ids <- llm_classified_long |> 
+legume_ids <- components |> 
   filter(group_level_2 == "huelsenfruechte") |> 
   distinct(id) |> 
   mutate(has_legume = TRUE)
 
-legume_trend <- llm_classified_short |> 
+legume_trend <- menus_classified |> 
   mutate(year = lubridate::year(date)) |> 
   left_join(legume_ids, by = "id") |> 
   mutate(
@@ -148,12 +148,12 @@ ggsave(
 )
 
 # unterschiede zwischen mensen
-legume_ids <- llm_classified_long |> 
+legume_ids <- components |> 
   filter(group_level_2 == "huelsenfruechte") |> 
   distinct(id) |> 
   mutate(has_legume = TRUE)
 
-legume_by_cafeteria <- llm_classified_short |> 
+legume_by_cafeteria <- menus_classified |> 
   left_join(legume_ids, by = "id") |> 
   mutate(
     has_legume = tidyr::replace_na(has_legume, FALSE)
@@ -194,7 +194,7 @@ ggsave(
 )
 
 # zweiter Absatz Forschungsfragen
-protein_share <- llm_classified_short |>
+protein_share <- menus_classified |>
   count(code_main_protein ) |>
   mutate(
     share = n / sum(n)
@@ -231,12 +231,7 @@ ggsave(
 
 #proteincode heatmap
 
-protein_code_year <- llm_classified_long |>
-  left_join(
-    llm_classified_short |>
-      select(id, date),
-    by = "id"
-  ) |>
+protein_code_year <- components |>
   mutate(
     year = lubridate::year(date),
     proteincode = factor(
@@ -305,7 +300,7 @@ protein_score <- c(
   high = 4,
   very_high = 5
 )
-dish_protein_score <- llm_classified_long |>
+dish_protein_score <- components |>
   mutate(
     protein_score = protein_score[proteincode]
   ) |>
@@ -315,7 +310,7 @@ dish_protein_score <- llm_classified_long |>
     .groups = "drop"
   ) |>
   left_join(
-    llm_classified_short |>
+    menus_classified |>
       select(id, date, cafeteria, student_service, product_name),
     by = "id"
   ) |>

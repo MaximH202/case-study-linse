@@ -14,7 +14,7 @@ rotes_fleisch = c(
   "hirsch", "hirschgulasch", "hirschbraten",
   "wild", "wildragout", "wildgulasch", "wildschwein",
   "cevapcici", "pork", "salami", "hamburger",
-  "ungarische gulaschsuppe", "spare ribs", "leberkaes",
+  "gulasch", "spare ribs", "leberkaes",
   "mett", "hackbraten", "roulade", "beef", "pastrami", "corned beef"
 ),
 
@@ -54,12 +54,12 @@ fisch = c(
 ),
 
 milchprodukte = c(
-  "grillkaese", "hirtenkaese", "fetakaese",
+  "grillkaese", "hirtenkaese", "fetakaese", "schafskaese", "schafkaese", "ziegenkaese",
   "camembert", "brie", "mozzarella", "halloumi",
   "parmesan", "gouda", "emmentaler", "bergkaese",
   "frischkaese", "ricotta", "mascarpone",
   "joghurt", "jogurt", "quark", "milch", "buttermilch", "schmand", "creme fraiche", "sauerrahm", "rahm",
-  "kefir", "molke", "skyr"
+  "kefir", "molke", "skyr", "auflauf"
 ),
 
 ei = c(
@@ -81,7 +81,7 @@ huelsenfruechte = c(
   "mungbohne", "mung", "ackerbohne", "lupin", "lupinen",
   "erbsen", "erbse", "grüne erbsen", "spalterbse",
   "adukibohne", "azukibohne", "butterbohne",
-  "borlotti", "borlottibohnen",
+  "borlotti", "borlottibohnen", "chili sin carne",
   "cannellini", "cannellinibohnen"
 ),
 
@@ -95,7 +95,7 @@ getreide = c(
   "nudel", "nudeln", "pasta", "spaghetti", "tagliatelle",
   "bandnudel", "bandnudeln", "rigatoni", "farfalle", "penne",
   "fusilli", "fussili", "maccaroni", "macaroni",
-  "tortelloni", "tortellini", "spaetzle", "spätzle",
+  "tortelloni", "tortellini", "spaetzle", "spätzle", "eierknoepfle",
   "risotto", "gries", "griess", "grieß",
   "brot", "baguette", "broetchen", "brötchen", "toast", "ciabatta",
   "fladenbrot", "wrap", "lavash", "tortilla",
