@@ -26,9 +26,9 @@ assign_level1 <- function(klassen_str= " ", menu_text = " ") {
 # Hilfsfunktion zeilenweise auf den Datensatz anwenden
 llm_classified_short <- llm_classified_short |>
   mutate(
-    ernaehrungsform = map2_chr(
-      klassen,
+    group_level_1 = map2_chr(
+      group_level_2,
       menu_text,
-      ~ assign_level1(klassen = .x, menu_text = .y)
+      ~ assign_level1(klassen_str = .x, menu_text = .y)
     )
   )

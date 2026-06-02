@@ -151,6 +151,7 @@ make_pattern <- function(kws) {
     str_replace_all("\\*", "") |>
     str_c(collapse = "|")
 }
+
 # Prüft, welche Lebensmittelklassen auf ein Gericht zutreffen (liefert Namen der zutreffenden Klassen zurück)
 classify_row <- function(name_clean) {
   matches <- keywords |>
@@ -161,21 +162,17 @@ classify_row <- function(name_clean) {
 # Parallelisierung (Kerne je nach CPU wählen, 4 sollten bei den meisten gehen)
 plan(multisession, workers = 8)
 
-# Keywords auf Produktname und Beschreibung matchen und zusammenführen
-# (future_map führt die Klassifizierung parallel über die 8 Kerne aus)
+# Keywords auf Produktname und Beschreibung matchen, zusammenführen und als String formatieren
 unique_dishes <- unique_dishes |>
   mutate(
     classes_name = future_map(product_name, classify_row),
     classes_text = future_map(menu_text, classify_row),
     
     # Ergebnisse aus Produktname und Beschreibung zusammenführen und Duplikate entfernen
-    matched_classes = map2(classes_name, classes_text, ~ unique(c(.x, .y)))
+    matched_classes = map2(classes_name, classes_text, ~ unique(c(.x, .y))),
+    
+    # Die gematchten Klassen als Komma-getrennten String speichern für bessere Lesbarkeit
+    klassen = map_chr(matched_classes, ~ paste(.x, collapse = ", "))
   ) |>
   # Hilfsspalten wieder löschen
-  select(-classes_name, -classes_text)
-
-
-# Die gematchten Klassen als Komma-getrennten String speichern für bessere Lesbarkeit
-unique_dishes <- unique_dishes |>
-  mutate(klassen = map_chr(matched_classes, ~ paste(.x, collapse = ", "))) |> 
-  select(-matched_classes)
+  select(-classes_name, -classes_text, -matched_classes)

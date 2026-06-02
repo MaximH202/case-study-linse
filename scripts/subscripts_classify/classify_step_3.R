@@ -104,19 +104,16 @@ results <- process_with_llm_openai_multiple_workers(
   max_workers = 4
 )
 
-# Ergebnisse in ein R-Datenformat (Tibble) konvertieren
-results <- as_tibble(results)
-
-# Fehlerresistentes Parsen mit purrr::possibly (verhindert Abbruch bei fehlerhaftem JSON)
+# Ergebnisse in ein R-Datenformat (Tibble) konvertieren und direkt parsen
 safe_parse <- possibly(fromJSON, otherwise = list())
+
+results <- as_tibble(results) |>
+  mutate(parsed = map(llm_result, safe_parse))
 
 # JSON extrahieren und in strukturierte Spalten überführen
 llm_classified_short <- results |>
   select(-klassen) |> 
   mutate(
-   # id = map_chr(id, ~ as.character(.x[[-1]])),
-    parsed = map(llm_result, safe_parse),
-    
     klassen = map_chr(parsed, ~ {
       if (is.null(.x$alle_klassen) || length(.x$alle_klassen) == 0) {
         return("")
@@ -129,5 +126,5 @@ llm_classified_short <- results |>
       if (is.null(.x$ist_speise)) NA else as.logical(.x$ist_speise)
     })
   ) |> 
-  select(id, klassen, menu_text, ist_speise)
-
+  select(id, klassen, menu_text, ist_speise) |> 
+  rename(group_level_2 = klassen)
