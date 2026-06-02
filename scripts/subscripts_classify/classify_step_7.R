@@ -52,7 +52,7 @@ menus_short <- menus_short |>
     group_level_1
   )
 # Ergebnisse als CSV-Dateien für die weitere Analyse speichern
-write_csv2(menus_short, "data/menus_classified.csv")
-write_csv2(menus_long, "data/menu_components.csv")
+write_csv(menus_short, "data/menus_classified.csv")
+write_csv(menus_long, "data/menu_components.csv")
 
 #Join mit der gesamten menus liste um alle Einträge zu bekommen
