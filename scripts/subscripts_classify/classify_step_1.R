@@ -25,15 +25,15 @@ unique_dishes <- menus |>
   ) |>
   # Beilagen und Desserts herausfiltern
   filter(!is_side) |>
-  # Duplikate entfernen, um jedes Gericht nur einmal zu behalten
-  distinct(product_name, .keep_all = TRUE) |>
-  select(-is_side) |> 
   # Textbereinigung auf die verbleibenden Einträge anwenden
   mutate(
     product_name = clean_text(product_name),
     menu_text = clean_text(menu_text),
     id = as.integer(id)
   ) |> 
+  # Duplikate entfernen, um jedes Gericht nur einmal zu behalten
+  distinct(product_name, .keep_all = TRUE) |>
+  select(-is_side) |> 
   # Manche Mensen fügen 2 Gerichte in einer Zeile ein ("oder"/"or"). Daher harter Filter:
   filter(!str_detect(menu_text, "\\boder\\b|\\bor\\b"))
 

@@ -89,7 +89,7 @@ schema <- '{
 
 # Testlauf: Zufällige Stichprobe (30 Gerichte) für das LLM ziehen
 batch_menus <- unique_dishes |> 
-  slice_sample(n = 100) |> 
+  slice_sample(n = 20) |> 
   select(id, product_name, menu_text, klassen) 
 
 # OpenAI API aufrufen und Ergebnisse über mehrere Worker parallel abfragen
@@ -126,5 +126,5 @@ llm_classified_short <- results |>
       if (is.null(.x$ist_speise)) NA else as.logical(.x$ist_speise)
     })
   ) |> 
-  select(id, klassen, menu_text, ist_speise) |> 
+  select(id, product_name, menu_text, klassen, ist_speise) |> 
   rename(group_level_2 = klassen)

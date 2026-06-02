@@ -1,71 +1,259 @@
-gericht_name,text,klasse,anteil,hauptprotein,id
-lachsfilet m dillsahne brokkoli & reis,lachsfilet (wz fi) mit dillrahmsosse (wz mi) brokkoligemuese (mi) und wildreis,fisch,dominant,fisch,148232
-lachsfilet m dillsahne brokkoli & reis,lachsfilet (wz fi) mit dillrahmsosse (wz mi) brokkoligemuese (mi) und wildreis,getreide,mittel,fisch,148232
-lachsfilet m dillsahne brokkoli & reis,lachsfilet (wz fi) mit dillrahmsosse (wz mi) brokkoligemuese (mi) und wildreis,gemuese,mittel,fisch,148232
-lachsfilet m dillsahne brokkoli & reis,lachsfilet (wz fi) mit dillrahmsosse (wz mi) brokkoligemuese (mi) und wildreis,milchprodukte,gering,fisch,148232
-de cecco fusilli vegan,"pipe rigate""carbonara- vegan"" in sojasahnesauce mit erbsen und salbei (f)geriebener vegankaese (1 2)",getreide,dominant,huelsenfruechte,1065004
-de cecco fusilli vegan,"pipe rigate""carbonara- vegan"" in sojasahnesauce mit erbsen und salbei (f)geriebener vegankaese (1 2)",huelsenfruechte,dominant,huelsenfruechte,1065004
-haehnchen suess sauer,haehnchenstreifen in suess-saurer sosse (g a9 a10),gefluegel,dominant,gefluegel,39332
-blauer wittling,blauer wittlingsfilet in knusperpanade (sn fi gl glw ml)remouladensauce (5 9 ei sn gl glw glg ml)kartoffel-gurkensalat (5 sn sf)beilagensalat oder regio-apfel(ei fi gl glg glw ml sf sn 5 9),knollen,dominant,gefluegel,228450
-blauer wittling,blauer wittlingsfilet in knusperpanade (sn fi gl glw ml)remouladensauce (5 9 ei sn gl glw glg ml)kartoffel-gurkensalat (5 sn sf)beilagensalat oder regio-apfel(ei fi gl glg glw ml sf sn 5 9),gemuese,mittel,gefluegel,228450
-kartoffel gemuese quarkauflauf hausgemach,kartoffel-quarkauflauf mit karotten zucchini und sellerie (ml)paprikadip (6 ml)apfel-rotkrautsalat (sf)obst mensafit,milchprodukte,dominant,milchprodukte,218383
-kartoffel gemuese quarkauflauf hausgemach,kartoffel-quarkauflauf mit karotten zucchini und sellerie (ml)paprikadip (6 ml)apfel-rotkrautsalat (sf)obst mensafit,knollen,mittel,milchprodukte,218383
-kartoffel gemuese quarkauflauf hausgemach,kartoffel-quarkauflauf mit karotten zucchini und sellerie (ml)paprikadip (6 ml)apfel-rotkrautsalat (sf)obst mensafit,gemuese,mittel,milchprodukte,218383
-haehnchen m rettich-champ sosse u bulgur,haehnchenbruststeak mit rettich-champignon-gemuese minzsosse und pinienkern-bulgur (g mv wz mi),gefluegel,dominant,gefluegel,120076
-haehnchen m rettich-champ sosse u bulgur,haehnchenbruststeak mit rettich-champignon-gemuese minzsosse und pinienkern-bulgur (g mv wz mi),getreide,mittel,gefluegel,120076
-haehnchen m rettich-champ sosse u bulgur,haehnchenbruststeak mit rettich-champignon-gemuese minzsosse und pinienkern-bulgur (g mv wz mi),gemuese,gering,gefluegel,120076
-haehnchen m rettich-champ sosse u bulgur,haehnchenbruststeak mit rettich-champignon-gemuese minzsosse und pinienkern-bulgur (g mv wz mi),nuesse,gering,gefluegel,120076
-seelachs auf kuerbis-moehrenpueree u salat,msc gebratener seelachs mit kuerbis-moehren-kartoffelpueree und lauch-mais-salat (7 f mv msc mi ses),fisch,dominant,fisch,104088
-seelachs auf kuerbis-moehrenpueree u salat,msc gebratener seelachs mit kuerbis-moehren-kartoffelpueree und lauch-mais-salat (7 f mv msc mi ses),knollen,mittel,fisch,104088
-seelachs auf kuerbis-moehrenpueree u salat,msc gebratener seelachs mit kuerbis-moehren-kartoffelpueree und lauch-mais-salat (7 f mv msc mi ses),gemuese,mittel,fisch,104088
-seelachs auf kuerbis-moehrenpueree u salat,msc gebratener seelachs mit kuerbis-moehren-kartoffelpueree und lauch-mais-salat (7 f mv msc mi ses),getreide,gering,fisch,104088
-r steak m kraeuterbutter brokkoli & wed,rumpsteak vom rind (r sel) mit kraeuterbutter (mi) broccoli (1) und wedges (wz),rotes_fleisch,dominant,rotes_fleisch,138104
-r steak m kraeuterbutter brokkoli & wed,rumpsteak vom rind (r sel) mit kraeuterbutter (mi) broccoli (1) und wedges (wz),gemuese,mittel,rotes_fleisch,138104
-r steak m kraeuterbutter brokkoli & wed,rumpsteak vom rind (r sel) mit kraeuterbutter (mi) broccoli (1) und wedges (wz),knollen,gering,rotes_fleisch,138104
-gratiniertes weizenschnitzel,gratiniertes weizenschnitzel mit minzjoghurt (3 15 a1 a6 a7),getreide,dominant,getreide,517389
-gratiniertes weizenschnitzel,gratiniertes weizenschnitzel mit minzjoghurt (3 15 a1 a6 a7),milchprodukte,gering,getreide,517389
-laugen-knoedel,laugen-serviettenknoedel (8 ei gl glw glr glg ml)pilzragout (gl glw ml)(vegetar ei gl glg glr glw ml 8),gemuese,dominant,ei,245188
-laugen-knoedel,laugen-serviettenknoedel (8 ei gl glw glr glg ml)pilzragout (gl glw ml)(vegetar ei gl glg glr glw ml 8),ei,dominant,ei,245188
-gulasch schwein,schweinegulasch (sch gl glw)fusilli (ei gl glw)(ei gl glw sch),rotes_fleisch,dominant,rotes_fleisch,244380
-gulasch schwein,schweinegulasch (sch gl glw)fusilli (ei gl glw)(ei gl glw sch),getreide,dominant,rotes_fleisch,244380
-fisch mit kartoffelsalat,backfisch (gl fi sf) daenische remoulade (2 8 ei fi la sf) kartoffelsalat (2 5 sl sf sw),fisch,dominant,fisch,981185
-fisch mit kartoffelsalat,backfisch (gl fi sf) daenische remoulade (2 8 ei fi la sf) kartoffelsalat (2 5 sl sf sw),knollen,mittel,fisch,981185
-seelachs,msc seelachsfilet tomate-basilikum (msc)mit weissweinsauce (2 4)gemuesebandnudeln (4)blattsalat,fisch,dominant,fisch,196908
-seelachs,msc seelachsfilet tomate-basilikum (msc)mit weissweinsauce (2 4)gemuesebandnudeln (4)blattsalat,getreide,mittel,fisch,196908
-seelachs,msc seelachsfilet tomate-basilikum (msc)mit weissweinsauce (2 4)gemuesebandnudeln (4)blattsalat,gemuese,mittel,fisch,196908
-"pfanne mv- ""bulgur- gemuese"" nuesse soja",mensavital: bulgur-gemuesepfanne mit walnuessen und cashewkernen dazu soja-kraeuter-dip (3 18 21 49 73 74 81),huelsenfruechte,dominant,nuesse,6703
-"pfanne mv- ""bulgur- gemuese"" nuesse soja",mensavital: bulgur-gemuesepfanne mit walnuessen und cashewkernen dazu soja-kraeuter-dip (3 18 21 49 73 74 81),getreide,mittel,nuesse,6703
-"pfanne mv- ""bulgur- gemuese"" nuesse soja",mensavital: bulgur-gemuesepfanne mit walnuessen und cashewkernen dazu soja-kraeuter-dip (3 18 21 49 73 74 81),gemuese,gering,nuesse,6703
-"pfanne mv- ""bulgur- gemuese"" nuesse soja",mensavital: bulgur-gemuesepfanne mit walnuessen und cashewkernen dazu soja-kraeuter-dip (3 18 21 49 73 74 81),nuesse,gering,nuesse,6703
-backfisch kartoffelsalat remoulade,backfisch kartoffelsalat remoulade (ei fi glw mi sf) (ei fi glw mi sf),fisch,dominant,fisch,732135
-backfisch kartoffelsalat remoulade,backfisch kartoffelsalat remoulade (ei fi glw mi sf) (ei fi glw mi sf),knollen,dominant,fisch,732135
-linsentopf mit putenwienerle,linseneintopf mitputenwienerle (g),gefluegel,dominant,gefluegel,36462
-linsentopf mit putenwienerle,linseneintopf mitputenwienerle (g),huelsenfruechte,mittel,gefluegel,36462
-kasslerruecken,<b>kasselerrueckenbraten</b> (1),rotes_fleisch,dominant,rotes_fleisch,236688
-seehechtfilet auf tomaten-zucchinigemuese,gegrilltes seehechtfilet auf tomaten-zucchinigemuese (gl fi) und kraeuterkartoffeln dazu einen himbeerjoghurt (la),fisch,dominant,fisch,250943
-seehechtfilet auf tomaten-zucchinigemuese,gegrilltes seehechtfilet auf tomaten-zucchinigemuese (gl fi) und kraeuterkartoffeln dazu einen himbeerjoghurt (la),gemuese,mittel,fisch,250943
-seehechtfilet auf tomaten-zucchinigemuese,gegrilltes seehechtfilet auf tomaten-zucchinigemuese (gl fi) und kraeuterkartoffeln dazu einen himbeerjoghurt (la),knollen,mittel,fisch,250943
-seehechtfilet auf tomaten-zucchinigemuese,gegrilltes seehechtfilet auf tomaten-zucchinigemuese (gl fi) und kraeuterkartoffeln dazu einen himbeerjoghurt (la),milchprodukte,gering,fisch,250943
-tortellini tricolore,<b>tortellini tricolore</b>gemuese-kaese-sauceblattsalat,getreide,dominant,getreide,206756
-tortellini tricolore,<b>tortellini tricolore</b>gemuese-kaese-sauceblattsalat,gemuese,mittel,getreide,206756
-kartoffel-frischktaschen m dip u salat,kartoffeltaschen gefuellt mit frischkaese (v mi) quark-gurken-dip (mi sen) und gemischtem salat (1 7 9 su),knollen,dominant,knollen,179424
-kartoffel-frischktaschen m dip u salat,kartoffeltaschen gefuellt mit frischkaese (v mi) quark-gurken-dip (mi sen) und gemischtem salat (1 7 9 su),milchprodukte,dominant,knollen,179424
-kartoffel-frischktaschen m dip u salat,kartoffeltaschen gefuellt mit frischkaese (v mi) quark-gurken-dip (mi sen) und gemischtem salat (1 7 9 su),gemuese,mittel,knollen,179424
-kartoffel-pastinaken,kartoffel-pastinakengratin (kn mi)(v kn mi),knollen,dominant,knollen,429504
-bew kuerbiscremesuppe,kuerbiscremesuppe (mi nmn) baguettebrot (glw) (ve glw mi nmn),gemuese,dominant,keine_eindeutige_proteinquelle,703867
-bew kuerbiscremesuppe,kuerbiscremesuppe (mi nmn) baguettebrot (glw) (ve glw mi nmn),getreide,mittel,keine_eindeutige_proteinquelle,703867
-lamm-ragout auf breiten nudeln,lamm-curry (2 so la sl glw) kraeuternudeln (2 glw),rotes_fleisch,dominant,rotes_fleisch,872448
-lamm-ragout auf breiten nudeln,lamm-curry (2 so la sl glw) kraeuternudeln (2 glw),getreide,mittel,rotes_fleisch,872448
-mexikanische hackfleischpfanne vom rind,mexikanische hackfleischpfanne vom rind mit chili (2 3 a12),rotes_fleisch,dominant,rotes_fleisch,521875
-mexikanische hackfleischpfanne vom rind,mexikanische hackfleischpfanne vom rind mit chili (2 3 a12),gemuese,mittel,rotes_fleisch,521875
-suesskartoffel puffer (vital),suesskartoffel-puffer mit mango-senf-dip (15 a1 a3 a7 a10),knollen,dominant,knollen,561904
-braten mit rotkohl kartoffeln (vital),sauerbraten mit apfelrotkohl und kartoffelkloessen (3 9 15 a1 a7 a9 r),knollen,dominant,knollen,565273
-braten mit rotkohl kartoffeln (vital),sauerbraten mit apfelrotkohl und kartoffelkloessen (3 9 15 a1 a7 a9 r),gemuese,mittel,knollen,565273
-salatteller sommeraktion,salatteller (v+),knollen,dominant,keine_eindeutige_proteinquelle,326249
-stueck- suedtiroler spinatknoedel,3 suedtiroler spinatknoedel mit nussbutter und parmesanhobel (15 19 47 81)dazu bunter salatmix,gemuese,dominant,nuesse,7745
-stueck- suedtiroler spinatknoedel,3 suedtiroler spinatknoedel mit nussbutter und parmesanhobel (15 19 47 81)dazu bunter salatmix,milchprodukte,dominant,nuesse,7745
-mscseelachs m sosse karotten & kartoffeln,msc seelachsfilet in kraeutereihuelle auf dijon-senfsauce und karotten dazu kraeuterkartoffeln (f mv msc wz ei mi sen),fisch,dominant,fisch,101899
-mscseelachs m sosse karotten & kartoffeln,msc seelachsfilet in kraeutereihuelle auf dijon-senfsauce und karotten dazu kraeuterkartoffeln (f mv msc wz ei mi sen),knollen,mittel,fisch,101899
-mscseelachs m sosse karotten & kartoffeln,msc seelachsfilet in kraeutereihuelle auf dijon-senfsauce und karotten dazu kraeuterkartoffeln (f mv msc wz ei mi sen),gemuese,mittel,fisch,101899
-crossies + pommes,haehnchencrossies (we g)pommes fritescocktailsauce (1 3 ei mi sf we)mit rucola(ei g mi sf we 1 3),knollen,dominant,gefluegel,441181
-crossies + pommes,haehnchencrossies (we g)pommes fritescocktailsauce (1 3 ei mi sf we)mit rucola(ei g mi sf we 1 3),gefluegel,dominant,gefluegel,441181
+id,group_level_2,anteil,product_name,menu_text,proteincode,code_main_protein
+252420,getreide,dominant,tagliatelle mit spinat-tomaten-frischkaes,farfalle mit blattspinat-tomaten-frischkaese-sosse (gl la),low,milchprodukte
+252420,gemuese,dominant,tagliatelle mit spinat-tomaten-frischkaes,farfalle mit blattspinat-tomaten-frischkaese-sosse (gl la),very_low,milchprodukte
+252420,milchprodukte,mittel,tagliatelle mit spinat-tomaten-frischkaes,farfalle mit blattspinat-tomaten-frischkaese-sosse (gl la),very_high,milchprodukte
+577732,gefluegel,dominant,geb haehnchenbrustfilet d7,kraeuter-dip auberginengemuese geb haehnchenbrustfilet (16),high,gefluegel
+577732,gemuese,mittel,geb haehnchenbrustfilet d7,kraeuter-dip auberginengemuese geb haehnchenbrustfilet (16),very_low,gefluegel
+590324,huelsenfruechte,dominant,soja gyros mit pommes,klimateller: vegan: soja-gyros aus der pfanne (auch to go) (so sl sf) vegan:knoblauch-kraeuter-dip (17 22 so) reis (aus biologischem anbau),medium,huelsenfruechte
+590324,getreide,dominant,soja gyros mit pommes,klimateller: vegan: soja-gyros aus der pfanne (auch to go) (so sl sf) vegan:knoblauch-kraeuter-dip (17 22 so) reis (aus biologischem anbau),low,huelsenfruechte
+590324,gemuese,mittel,soja gyros mit pommes,klimateller: vegan: soja-gyros aus der pfanne (auch to go) (so sl sf) vegan:knoblauch-kraeuter-dip (17 22 so) reis (aus biologischem anbau),very_low,huelsenfruechte
+209123,fisch,dominant,paniertes schollenfilet,paniertes schollenfilet msc (msc sn fi gl glw ml)remouladensauce (9 ei sn fi ml lak)schmelzkartoffelnblattsalat,high,fisch
+209123,knollen,mittel,paniertes schollenfilet,paniertes schollenfilet msc (msc sn fi gl glw ml)remouladensauce (9 ei sn fi ml lak)schmelzkartoffelnblattsalat,unbekannt,fisch
+209123,milchprodukte,gering,paniertes schollenfilet,paniertes schollenfilet msc (msc sn fi gl glw ml)remouladensauce (9 ei sn fi ml lak)schmelzkartoffelnblattsalat,very_high,fisch
+6412,gefluegel,dominant,"burger- ""texas"" ae",texasburger mit salat peperoni roestzwiebeln bacon und bbq sauce (2 3 21 22 51 52 81)dazu twister pommes (81)mit tomaten-mayonnaise-dip (3 9 15 19 21 81),high,gefluegel
+6412,rotes_fleisch,dominant,"burger- ""texas"" ae",texasburger mit salat peperoni roestzwiebeln bacon und bbq sauce (2 3 21 22 51 52 81)dazu twister pommes (81)mit tomaten-mayonnaise-dip (3 9 15 19 21 81),high,gefluegel
+6412,gemuese,mittel,"burger- ""texas"" ae",texasburger mit salat peperoni roestzwiebeln bacon und bbq sauce (2 3 21 22 51 52 81)dazu twister pommes (81)mit tomaten-mayonnaise-dip (3 9 15 19 21 81),very_low,gefluegel
+6412,knollen,mittel,"burger- ""texas"" ae",texasburger mit salat peperoni roestzwiebeln bacon und bbq sauce (2 3 21 22 51 52 81)dazu twister pommes (81)mit tomaten-mayonnaise-dip (3 9 15 19 21 81),unbekannt,gefluegel
+6412,getreide,gering,"burger- ""texas"" ae",texasburger mit salat peperoni roestzwiebeln bacon und bbq sauce (2 3 21 22 51 52 81)dazu twister pommes (81)mit tomaten-mayonnaise-dip (3 9 15 19 21 81),low,gefluegel
+445887,getreide,dominant,pasta/ spaetzle ai funghi,pasta ai funghi (mi we)(v mi we),low,getreide
+445887,gemuese,dominant,pasta/ spaetzle ai funghi,pasta ai funghi (mi we)(v mi we),very_low,getreide
+694343,gemuese,dominant,baerlauchcremesuppe fleischkloesschen,baerlauchcremesuppe fleischkloesschen (ei mi r s) baguettebrot (glw) (ei glw mi r s),very_low,getreide
+694343,getreide,mittel,baerlauchcremesuppe fleischkloesschen,baerlauchcremesuppe fleischkloesschen (ei mi r s) baguettebrot (glw) (ei glw mi r s),low,getreide
+235162,getreide,dominant,gersteneintopf,steckrueben-graupeneintopf mit suesskartoffeln (o so se gl glg)koernerbroetchen (8 so sa gl glw glr glg glh)(vegan vegetar gl glg glh glr glw o sa se so 8),low,getreide
+235162,knollen,dominant,gersteneintopf,steckrueben-graupeneintopf mit suesskartoffeln (o so se gl glg)koernerbroetchen (8 so sa gl glw glr glg glh)(vegan vegetar gl glg glh glr glw o sa se so 8),unbekannt,getreide
+823723,rotes_fleisch,dominant,currywurst mit twisters,currywurst (sf) mit currysauce (8 so sl glw) mit pommes frites (rs glw sf sl so 7 8),high,rotes_fleisch
+823723,knollen,mittel,currywurst mit twisters,currywurst (sf) mit currysauce (8 so sl glw) mit pommes frites (rs glw sf sl so 7 8),unbekannt,rotes_fleisch
+823723,getreide,gering,currywurst mit twisters,currywurst (sf) mit currysauce (8 so sl glw) mit pommes frites (rs glw sf sl so 7 8),low,rotes_fleisch
+823723,gemuese,gering,currywurst mit twisters,currywurst (sf) mit currysauce (8 so sl glw) mit pommes frites (rs glw sf sl so 7 8),very_low,rotes_fleisch
+378227,gemuese,dominant,z2 paprikaschiffchen vegan,zusatz paprikaschiffchen mit vollkornreis vegan (sl)tomatensauce (gl sl),very_low,getreide
+378227,getreide,dominant,z2 paprikaschiffchen vegan,zusatz paprikaschiffchen mit vollkornreis vegan (sl)tomatensauce (gl sl),low,getreide
+133227,rotes_fleisch,dominant,hacklett mit pilzrahmsauce,hacksteak (r s wz ei)mit pilzrahmsosse (1 wz mi sel ge),high,rotes_fleisch
+133227,milchprodukte,mittel,hacklett mit pilzrahmsauce,hacksteak (r s wz ei)mit pilzrahmsosse (1 wz mi sel ge),very_high,rotes_fleisch
+133227,gemuese,mittel,hacklett mit pilzrahmsauce,hacksteak (r s wz ei)mit pilzrahmsosse (1 wz mi sel ge),very_low,rotes_fleisch
+728685,gemuese,dominant,ve spargelcremesuppe mit croutons,spargelcremesuppe mit croutons (ei glw mi) baguettebrot (glw) (ve ei glw mi),very_low,getreide
+728685,getreide,mittel,ve spargelcremesuppe mit croutons,spargelcremesuppe mit croutons (ei glw mi) baguettebrot (glw) (ve ei glw mi),low,getreide
+419149,fisch,dominant,seelachsfilet mit spinat,seelachsfilet mit spinatkruste (1 mi sf fi)lauchsauce (mi we),high,fisch
+419149,gemuese,mittel,seelachsfilet mit spinat,seelachsfilet mit spinatkruste (1 mi sf fi)lauchsauce (mi we),very_low,fisch
+518057,rotes_fleisch,dominant,bifteki vom rind mit weisskaese,bifteki vom rind mit weisskaese gefuellt und tzatziki (15 a1 a3 a7 a9 a10 r),high,rotes_fleisch
+518057,getreide,gering,bifteki vom rind mit weisskaese,bifteki vom rind mit weisskaese gefuellt und tzatziki (15 a1 a3 a7 a9 a10 r),low,rotes_fleisch
+518057,milchprodukte,gering,bifteki vom rind mit weisskaese,bifteki vom rind mit weisskaese gefuellt und tzatziki (15 a1 a3 a7 a9 a10 r),very_high,rotes_fleisch
+518057,gemuese,gering,bifteki vom rind mit weisskaese,bifteki vom rind mit weisskaese gefuellt und tzatziki (15 a1 a3 a7 a9 a10 r),very_low,rotes_fleisch
+38644,gefluegel,dominant,gruenes curry m putenfleisch kokos u gem,gruenes curry mit putenfleisch kokos und gemuese (g a1 a6),high,gefluegel
+38644,gemuese,dominant,gruenes curry m putenfleisch kokos u gem,gruenes curry mit putenfleisch kokos und gemuese (g a1 a6),very_low,gefluegel
+38644,milchprodukte,gering,gruenes curry m putenfleisch kokos u gem,gruenes curry mit putenfleisch kokos und gemuese (g a1 a6),very_high,gefluegel
+244659,gefluegel,dominant,putenschnit,putenschnitzel naturjaegersauce (gl glw ml)roestikroketten(gl glw ml),high,gefluegel
+244659,knollen,mittel,putenschnit,putenschnitzel naturjaegersauce (gl glw ml)roestikroketten(gl glw ml),unbekannt,gefluegel
+576777,knollen,dominant,kartoffel -lyonerpfanne d13,kartoffel -lyonerpfanne (3 4 8 11 13),unbekannt,knollen
+720142,gemuese,dominant,karotten-mango-konfit,karotten- mango- konfit (1 3 sw) (ve vn sw 1 3),very_low,keine_eindeutige_proteinquelle
+426621,gemuese,dominant,bratmaultaschen,gebratene maultaschen (we)mit zwiebelschmelzeauf blattspinat (so we)(v+ so we),very_low,keine_eindeutige_proteinquelle
+6308,rotes_fleisch,dominant,"gulasch hirsch- ""preiselbeeren"" esterha",hirschgulasch mit feinen gemuesestiften (1 3 21 24 44 49 55 81)und preiselbeerschmand (19)dazu prinzessbohnenund hefeknoedelscheiben (15 19 81),high,rotes_fleisch
+6308,gemuese,mittel,"gulasch hirsch- ""preiselbeeren"" esterha",hirschgulasch mit feinen gemuesestiften (1 3 21 24 44 49 55 81)und preiselbeerschmand (19)dazu prinzessbohnenund hefeknoedelscheiben (15 19 81),very_low,rotes_fleisch
+6308,getreide,mittel,"gulasch hirsch- ""preiselbeeren"" esterha",hirschgulasch mit feinen gemuesestiften (1 3 21 24 44 49 55 81)und preiselbeerschmand (19)dazu prinzessbohnenund hefeknoedelscheiben (15 19 81),low,rotes_fleisch
+6308,milchprodukte,gering,"gulasch hirsch- ""preiselbeeren"" esterha",hirschgulasch mit feinen gemuesestiften (1 3 21 24 44 49 55 81)und preiselbeerschmand (19)dazu prinzessbohnenund hefeknoedelscheiben (15 19 81),very_high,rotes_fleisch
+138,rotes_fleisch,dominant,"schweinerueckensteak ""tomate-mozarella""","schweinerueckensteak ""tomate-mozzarella"" (1 19 21 51)mit bratensosse (13 21)dazu pommes fritesund vier-jahreszeiten-salat",high,rotes_fleisch
+138,knollen,mittel,"schweinerueckensteak ""tomate-mozarella""","schweinerueckensteak ""tomate-mozzarella"" (1 19 21 51)mit bratensosse (13 21)dazu pommes fritesund vier-jahreszeiten-salat",unbekannt,rotes_fleisch
+138,gemuese,gering,"schweinerueckensteak ""tomate-mozarella""","schweinerueckensteak ""tomate-mozzarella"" (1 19 21 51)mit bratensosse (13 21)dazu pommes fritesund vier-jahreszeiten-salat",very_low,rotes_fleisch
+138,milchprodukte,gering,"schweinerueckensteak ""tomate-mozarella""","schweinerueckensteak ""tomate-mozzarella"" (1 19 21 51)mit bratensosse (13 21)dazu pommes fritesund vier-jahreszeiten-salat",very_high,rotes_fleisch
+237072,gefluegel,dominant,zuericher pute mit spaetzle bohnengemuese,geschnetzelte putenbrust zuericher art (2)mit bohnenbauernspaetzle(2),high,gefluegel
+237072,huelsenfruechte,mittel,zuericher pute mit spaetzle bohnengemuese,geschnetzelte putenbrust zuericher art (2)mit bohnenbauernspaetzle(2),medium,gefluegel
+237072,getreide,dominant,zuericher pute mit spaetzle bohnengemuese,geschnetzelte putenbrust zuericher art (2)mit bohnenbauernspaetzle(2),low,gefluegel
+237072,gemuese,mittel,zuericher pute mit spaetzle bohnengemuese,geschnetzelte putenbrust zuericher art (2)mit bohnenbauernspaetzle(2),very_low,gefluegel
+378032,fisch,dominant,e2 seelachsfilet,seelachsfilet gebraten (1 gl sf fi)senfsauce (la gl sf),high,fisch
+378032,gefluegel,gering,e2 seelachsfilet,seelachsfilet gebraten (1 gl sf fi)senfsauce (la gl sf),high,fisch
+378032,milchprodukte,gering,e2 seelachsfilet,seelachsfilet gebraten (1 gl sf fi)senfsauce (la gl sf),very_high,fisch
+690712,gefluegel,dominant,ag gefluegelbaellchen bowl,freshbowl mit gefluegelbaellchen (glw mi nmn agg) (agg glw mi nmn),high,gefluegel
+690712,gemuese,mittel,ag gefluegelbaellchen bowl,freshbowl mit gefluegelbaellchen (glw mi nmn agg) (agg glw mi nmn),very_low,gefluegel
+431812,getreide,dominant,pizza multicolore,pizza des tages - pizza multicolore mit gemuese kirschtomaten & rucola (kn mi we)(v kn mi we),low,getreide
+431812,gemuese,dominant,pizza multicolore,pizza des tages - pizza multicolore mit gemuese kirschtomaten & rucola (kn mi we)(v kn mi we),very_low,getreide
+594386,getreide,dominant,tortellini al arabiata,tortellini al arabiata (1 6),low,getreide
+103087,getreide,dominant,pasta m suesskartoffel-kraeuterragout - veg,pasta mit suesskartoffelragout (veg wz ka),low,getreide
+103087,knollen,dominant,pasta m suesskartoffel-kraeuterragout - veg,pasta mit suesskartoffelragout (veg wz ka),unbekannt,getreide
+217667,getreide,dominant,pilz-spaetzlepfanne,pilz-spaetzlepfanne (ei gl glw)rahmsauce (gl glw glg ml lak)buntes marktgemuesebunter blattsalat,low,milchprodukte
+217667,gemuese,dominant,pilz-spaetzlepfanne,pilz-spaetzlepfanne (ei gl glw)rahmsauce (gl glw glg ml lak)buntes marktgemuesebunter blattsalat,very_low,milchprodukte
+217667,milchprodukte,mittel,pilz-spaetzlepfanne,pilz-spaetzlepfanne (ei gl glw)rahmsauce (gl glw glg ml lak)buntes marktgemuesebunter blattsalat,very_high,milchprodukte
+144220,gefluegel,dominant,h-schnitzel m pfeffer-dip,haehnchenschnitzel gebacken mit zitrone (g wz)kartoffelsalat (1 7 9 sen su)und pfeffer- quark - dip (5 wz ei so mi sen),high,gefluegel
+144220,knollen,mittel,h-schnitzel m pfeffer-dip,haehnchenschnitzel gebacken mit zitrone (g wz)kartoffelsalat (1 7 9 sen su)und pfeffer- quark - dip (5 wz ei so mi sen),unbekannt,gefluegel
+144220,milchprodukte,gering,h-schnitzel m pfeffer-dip,haehnchenschnitzel gebacken mit zitrone (g wz)kartoffelsalat (1 7 9 sen su)und pfeffer- quark - dip (5 wz ei so mi sen),very_high,gefluegel
+608302,rotes_fleisch,dominant,schnuesch mit speck,"iss gut! iss aus der region ""schnuesch"" holsteiner (2 3 s) (s 2 3)",high,rotes_fleisch
+233474,rotes_fleisch,dominant,piccata/cordon bleu,cordon bleu vom schwein (sch 4 6 ei sn se gl glw ml)tomatensauce (gl glw)gabelspaghetti (ei gl glw)beilagensalatdessert,high,rotes_fleisch
+233474,getreide,mittel,piccata/cordon bleu,cordon bleu vom schwein (sch 4 6 ei sn se gl glw ml)tomatensauce (gl glw)gabelspaghetti (ei gl glw)beilagensalatdessert,low,rotes_fleisch
+233474,gemuese,gering,piccata/cordon bleu,cordon bleu vom schwein (sch 4 6 ei sn se gl glw ml)tomatensauce (gl glw)gabelspaghetti (ei gl glw)beilagensalatdessert,very_low,rotes_fleisch
+916458,gemuese,dominant,gemuesewok thai-red,gemuesewok honig-pfeffer mit glasnudeln,very_low,getreide
+916458,getreide,dominant,gemuesewok thai-red,gemuesewok honig-pfeffer mit glasnudeln,low,getreide
+916458,knollen,mittel,gemuesewok thai-red,gemuesewok honig-pfeffer mit glasnudeln,unbekannt,getreide
+119481,fisch,dominant,tilapia mit rote beete-gemuese und nudeln,gebratener tilapia mit rote beete-gemuese meerrettichsosse und schnittlauchfarfalle (1 7 9 f mv wz mi su),high,fisch
+119481,gemuese,mitteln,tilapia mit rote beete-gemuese und nudeln,gebratener tilapia mit rote beete-gemuese meerrettichsosse und schnittlauchfarfalle (1 7 9 f mv wz mi su),very_low,fisch
+119481,getreide,mittel,tilapia mit rote beete-gemuese und nudeln,gebratener tilapia mit rote beete-gemuese meerrettichsosse und schnittlauchfarfalle (1 7 9 f mv wz mi su),low,fisch
+543983,getreide,dominant,salat bowl mit reis tomate-avocado und,salat bowl mit reissalat tomate-avocado mais und schwarze bohnen (8 a1),low,huelsenfruechte
+543983,gemuese,dominant,salat bowl mit reis tomate-avocado und,salat bowl mit reissalat tomate-avocado mais und schwarze bohnen (8 a1),very_low,huelsenfruechte
+543983,huelsenfruechte,dominant,salat bowl mit reis tomate-avocado und,salat bowl mit reissalat tomate-avocado mais und schwarze bohnen (8 a1),medium,huelsenfruechte
+628538,gefluegel,dominant,bf haehnchenbrust in zitronensalbeisud,haehnchenbrust mit curryfruchtsosse (3 11 17 20) dazu reis und salat (11 17 20 3),high,gefluegel
+628538,getreide,mittel,bf haehnchenbrust in zitronensalbeisud,haehnchenbrust mit curryfruchtsosse (3 11 17 20) dazu reis und salat (11 17 20 3),low,gefluegel
+628538,gemuese,gering,bf haehnchenbrust in zitronensalbeisud,haehnchenbrust mit curryfruchtsosse (3 11 17 20) dazu reis und salat (11 17 20 3),very_low,gefluegel
+1018196,fisch,dominant,alaska seelachsfilet lemon-basilikum,alaska seelachsfilet lemon-basilikummit sauce hollandaise (15)dazu rosmarinkartoffeln (1)broccoligemuese (1)und vanillequark mit brombeeren (15),high,fisch
+1018196,milchprodukte,mittel,alaska seelachsfilet lemon-basilikum,alaska seelachsfilet lemon-basilikummit sauce hollandaise (15)dazu rosmarinkartoffeln (1)broccoligemuese (1)und vanillequark mit brombeeren (15),very_high,fisch
+1018196,knollen,mittel,alaska seelachsfilet lemon-basilikum,alaska seelachsfilet lemon-basilikummit sauce hollandaise (15)dazu rosmarinkartoffeln (1)broccoligemuese (1)und vanillequark mit brombeeren (15),unbekannt,fisch
+1018196,gemuese,mittel,alaska seelachsfilet lemon-basilikum,alaska seelachsfilet lemon-basilikummit sauce hollandaise (15)dazu rosmarinkartoffeln (1)broccoligemuese (1)und vanillequark mit brombeeren (15),very_low,fisch
+232630,gemuese,dominant,auberginen gebraten,auberginen gebratenkraeuter-olivensauce (gl glw)salzkartoffelnbeilagensalatdessert(gl glw 5),very_low,knollen
+232630,knollen,mittel,auberginen gebraten,auberginen gebratenkraeuter-olivensauce (gl glw)salzkartoffelnbeilagensalatdessert(gl glw 5),unbekannt,knollen
+771642,gemuese,dominant,nuss-broccoli knusperkarree,broccoli-knusperecken (sl glw glh nuh) karottensauce (2 so glw) schnittlauchkartoffeln,very_low,knollen
+771642,knollen,dominant,nuss-broccoli knusperkarree,broccoli-knusperecken (sl glw glh nuh) karottensauce (2 so glw) schnittlauchkartoffeln,unbekannt,knollen
+568481,huelsenfruechte,dominant,tofunuggets mit pommes,knusprige tofu nuggets mit ketchup und pommes frites (1 3 9 a1 a6 a12),medium,huelsenfruechte
+568481,knollen,mittel,tofunuggets mit pommes,knusprige tofu nuggets mit ketchup und pommes frites (1 3 9 a1 a6 a12),unbekannt,huelsenfruechte
+537708,ei,dominant,nuernberger mit paprika-ruehrei hartkaese,nuernberger mit paprika-ruehrei hartkaese und feldsala (2 3 15 a3 a7 a10 r s),unbekannt,ei
+537708,gemuese,mittel,nuernberger mit paprika-ruehrei hartkaese,nuernberger mit paprika-ruehrei hartkaese und feldsala (2 3 15 a3 a7 a10 r s),very_low,ei
+423220,knollen,dominant,gnocchi all'arrabiata,gnocchi all'arrabiata (1 sw we)(v+ sw we 1),unbekannt,knollen
+423220,getreide,gering,gnocchi all'arrabiata,gnocchi all'arrabiata (1 sw we)(v+ sw we 1),low,knollen
+423220,gemuese,gering,gnocchi all'arrabiata,gnocchi all'arrabiata (1 sw we)(v+ sw we 1),very_low,knollen
+618230,gemuese,dominant,mexikanischer gemueseeintopf,mexikanischer gemueseeintopf m roten bohnen (3 20) (80 81 20 3),very_low,huelsenfruechte
+618230,huelsenfruechte,dominant,mexikanischer gemueseeintopf,mexikanischer gemueseeintopf m roten bohnen (3 20) (80 81 20 3),medium,huelsenfruechte
+720309,getreide,dominant,caf pizza belag pesto,pesto (2 3 ei mi nc) (ve ei mi nc 2 3),low,getreide
+720309,milchprodukte,gering,caf pizza belag pesto,pesto (2 3 ei mi nc) (ve ei mi nc 2 3),very_high,getreide
+545250,rotes_fleisch,dominant,schweineschnitzel mit bratensauce,schweineschnitzel mit pfeffersauce (a1 a a3 s),high,rotes_fleisch
+545250,knollen,mittel,schweineschnitzel mit bratensauce,schweineschnitzel mit pfeffersauce (a1 a a3 s),unbekannt,rotes_fleisch
+545250,gemuese,gering,schweineschnitzel mit bratensauce,schweineschnitzel mit pfeffersauce (a1 a a3 s),very_low,rotes_fleisch
+123664,rotes_fleisch,dominant,rumpsteak m pfefferrahm und wedges,rumpsteak vom rind (r sel)mit kraeuterbutter (mi) pfeffer-rahmsosse (1 wz mi sel ge) bio fingermoehren und wedges,high,rotes_fleisch
+123664,milchprodukte,mittel,rumpsteak m pfefferrahm und wedges,rumpsteak vom rind (r sel)mit kraeuterbutter (mi) pfeffer-rahmsosse (1 wz mi sel ge) bio fingermoehren und wedges,very_high,rotes_fleisch
+123664,knollen,mittel,rumpsteak m pfefferrahm und wedges,rumpsteak vom rind (r sel)mit kraeuterbutter (mi) pfeffer-rahmsosse (1 wz mi sel ge) bio fingermoehren und wedges,unbekannt,rotes_fleisch
+123664,gemuese,gering,rumpsteak m pfefferrahm und wedges,rumpsteak vom rind (r sel)mit kraeuterbutter (mi) pfeffer-rahmsosse (1 wz mi sel ge) bio fingermoehren und wedges,very_low,rotes_fleisch
+557043,gemuese,dominant,wok auf tofu,wok-gemuese auf sesam-tofu (a1 a5 a6 a9 a11),very_low,getreide
+557043,getreide,mittel,wok auf tofu,wok-gemuese auf sesam-tofu (a1 a5 a6 a9 a11),low,getreide
+557043,tofu,gering,wok auf tofu,wok-gemuese auf sesam-tofu (a1 a5 a6 a9 a11),unbekannt,getreide
+523020,gefluegel,dominant,haehnchenfluegel mit pikantem apfel-chili-,haehnchenfluegel mit pikantem apfel-chili-chutney (2 3 6 a12),high,gefluegel
+523020,gemuese,mittel,haehnchenfluegel mit pikantem apfel-chili-,haehnchenfluegel mit pikantem apfel-chili-chutney (2 3 6 a12),very_low,gefluegel
+132502,gemuese,dominant,kuerbistopf mit nussbrot,winterlicher kuerbistopf mit nussbrot (1 veg wz sel ro wa),very_low,getreide
+132502,getreide,mittel,kuerbistopf mit nussbrot,winterlicher kuerbistopf mit nussbrot (1 veg wz sel ro wa),low,getreide
+396953,getreide,dominant,couscous-moehrenpuffer,couscous-moehrenpuffer (v+ gl sl)buntes gemuese in sojakraeuterrahm (3 v+ so sl),low,huelsenfruechte
+396953,gemuese,dominant,couscous-moehrenpuffer,couscous-moehrenpuffer (v+ gl sl)buntes gemuese in sojakraeuterrahm (3 v+ so sl),very_low,huelsenfruechte
+396953,milchprodukte,mittel,couscous-moehrenpuffer,couscous-moehrenpuffer (v+ gl sl)buntes gemuese in sojakraeuterrahm (3 v+ so sl),very_high,huelsenfruechte
+396953,huelsenfruechte,mittel,couscous-moehrenpuffer,couscous-moehrenpuffer (v+ gl sl)buntes gemuese in sojakraeuterrahm (3 v+ so sl),medium,huelsenfruechte
+571635,gemuese,dominant,kuerbispfanne mit kaese,suesskartoffel-kuerbispfanne mit kichererbsen und hirtenkaese (15 a7),very_low,huelsenfruechte
+571635,milchprodukte,dominant,kuerbispfanne mit kaese,suesskartoffel-kuerbispfanne mit kichererbsen und hirtenkaese (15 a7),very_high,huelsenfruechte
+571635,huelsenfruechte,dominant,kuerbispfanne mit kaese,suesskartoffel-kuerbispfanne mit kichererbsen und hirtenkaese (15 a7),medium,huelsenfruechte
+571635,knollen,mittel,kuerbispfanne mit kaese,suesskartoffel-kuerbispfanne mit kichererbsen und hirtenkaese (15 a7),unbekannt,huelsenfruechte
+194300,rotes_fleisch,dominant,hacksteak m pilzrahm & pueree,hacksteak (r s wz ei sen) mit pilzrahmsosse (1 wz mi ge) und kartoffelpueree (7 mi su),high,rotes_fleisch
+194300,milchprodukte,mittel,hacksteak m pilzrahm & pueree,hacksteak (r s wz ei sen) mit pilzrahmsosse (1 wz mi ge) und kartoffelpueree (7 mi su),very_high,rotes_fleisch
+194300,knollen,mittel,hacksteak m pilzrahm & pueree,hacksteak (r s wz ei sen) mit pilzrahmsosse (1 wz mi ge) und kartoffelpueree (7 mi su),unbekannt,rotes_fleisch
+194300,gemuese,gering,hacksteak m pilzrahm & pueree,hacksteak (r s wz ei sen) mit pilzrahmsosse (1 wz mi ge) und kartoffelpueree (7 mi su),very_low,rotes_fleisch
+303394,rotes_fleisch,dominant,al kartoffel-weizenpuffer mit schafkaese,kartoffel-weizenpuffer mit schafkaese (la gl),high,rotes_fleisch
+303394,getreide,dominant,al kartoffel-weizenpuffer mit schafkaese,kartoffel-weizenpuffer mit schafkaese (la gl),low,rotes_fleisch
+303394,knollen,mittel,al kartoffel-weizenpuffer mit schafkaese,kartoffel-weizenpuffer mit schafkaese (la gl),unbekannt,rotes_fleisch
+665090,rotes_fleisch,dominant,lammragout tuerkisch xy,lammragout mit gnocchi (ei) (ei),high,rotes_fleisch
+665090,knollen,mittel,lammragout tuerkisch xy,lammragout mit gnocchi (ei) (ei),unbekannt,rotes_fleisch
+665090,getreide,gering,lammragout tuerkisch xy,lammragout mit gnocchi (ei) (ei),low,rotes_fleisch
+174977,getreide,dominant,pasta kalamata- - vegan,pasta kalamata-mit ratatouillesosse (veg 1 wz so sel),low,getreide
+174977,gemuese,dominant,pasta kalamata- - vegan,pasta kalamata-mit ratatouillesosse (veg 1 wz so sel),very_low,getreide
+39488,knollen,dominant,kartoffel-gemuese-auflauf mit kraeutersc,kartoffel - gemuese - auflauf und (1 4 v a3 a7 a9)kraeutersosse (a1 a7),unbekannt,knollen
+39488,gemuese,mittel,kartoffel-gemuese-auflauf mit kraeutersc,kartoffel - gemuese - auflauf und (1 4 v a3 a7 a9)kraeutersosse (a1 a7),very_low,knollen
+304419,milchprodukte,dominant,thai-currysauce rot (kokosmilch),rote thai-currysauce (gl so sl),very_high,milchprodukte
+304419,nuesse,dominant,thai-currysauce rot (kokosmilch),rote thai-currysauce (gl so sl),low,milchprodukte
+967977,getreide,dominant,helfendecafe,helfendecafe,low,getreide
+142687,rotes_fleisch,dominant,2 bratwuerste mit sauerkraut und jus,2 fraenkische schweinsbratwuerste (7 12 gf s sen)mit sauerkraut (4 7 12 s)mit jus (wz sel ge),high,rotes_fleisch
+142687,gemuese,mittel,2 bratwuerste mit sauerkraut und jus,2 fraenkische schweinsbratwuerste (7 12 gf s sen)mit sauerkraut (4 7 12 s)mit jus (wz sel ge),very_low,rotes_fleisch
+1096655,getreide,dominant,dampfnudel (hefekloss),germknoedel (20)mohnsauce (3 g),low,getreide
+1096655,samen,gering,dampfnudel (hefekloss),germknoedel (20)mohnsauce (3 g),low,getreide
+594279,rotes_fleisch,dominant,pulled pork burger mit (ausgabe 8),pulled pork burger mit coleslaw (9 13 ei la sf we ge) barbecuesosse (sl),high,rotes_fleisch
+594279,getreide,mittel,pulled pork burger mit (ausgabe 8),pulled pork burger mit coleslaw (9 13 ei la sf we ge) barbecuesosse (sl),low,rotes_fleisch
+594279,gemuese,gering,pulled pork burger mit (ausgabe 8),pulled pork burger mit coleslaw (9 13 ei la sf we ge) barbecuesosse (sl),very_low,rotes_fleisch
+1058846,getreide,dominant,barilla penne tricolore no 78,penne tricolore (a 1)mit lachswuerfel lauch und paprika in tomaten sahne sauce (d n)mit gehobeltem parmesan (2 c n),low,milchprodukte
+1058846,milchprodukte,mittel,barilla penne tricolore no 78,penne tricolore (a 1)mit lachswuerfel lauch und paprika in tomaten sahne sauce (d n)mit gehobeltem parmesan (2 c n),very_high,milchprodukte
+1058846,gemuese,gering,barilla penne tricolore no 78,penne tricolore (a 1)mit lachswuerfel lauch und paprika in tomaten sahne sauce (d n)mit gehobeltem parmesan (2 c n),very_low,milchprodukte
+1058273,gemuese,dominant,wok neu vegan - wok-gemuese erdnuss sc m,wok-gemuese in erdnusssauce mit kokos chilli und buntem gemuese (e f h a 1)reis-bandnudeln,very_low,nuesse
+1058273,nuesse,mittel,wok neu vegan - wok-gemuese erdnuss sc m,wok-gemuese in erdnusssauce mit kokos chilli und buntem gemuese (e f h a 1)reis-bandnudeln,low,nuesse
+1058273,getreide,mittel,wok neu vegan - wok-gemuese erdnuss sc m,wok-gemuese in erdnusssauce mit kokos chilli und buntem gemuese (e f h a 1)reis-bandnudeln,low,nuesse
+1057622,getreide,dominant,nudeln rigatoni tk alla pescatore pasta,rigatoni alla pescatore (a 1)weisswein - zitronensauce (f h k n)meeresfruechte mit gruenen pesto (d m n)tomatenwuerfel mit dillfaeden,low,fisch
+1057622,fisch,dominant,nudeln rigatoni tk alla pescatore pasta,rigatoni alla pescatore (a 1)weisswein - zitronensauce (f h k n)meeresfruechte mit gruenen pesto (d m n)tomatenwuerfel mit dillfaeden,high,fisch
+1057622,gemuese,mittel,nudeln rigatoni tk alla pescatore pasta,rigatoni alla pescatore (a 1)weisswein - zitronensauce (f h k n)meeresfruechte mit gruenen pesto (d m n)tomatenwuerfel mit dillfaeden,very_low,fisch
+3865,getreide,dominant,lasagne a la bolognese,lasagne a la bolognese (1 3 15 19 21 24 44 49 51 52 81),low,milchprodukte
+3865,milchprodukte,mittel,lasagne a la bolognese,lasagne a la bolognese (1 3 15 19 21 24 44 49 51 52 81),very_high,milchprodukte
+3865,knollen,gering,lasagne a la bolognese,lasagne a la bolognese (1 3 15 19 21 24 44 49 51 52 81),unbekannt,milchprodukte
+505943,getreide,dominant,tomaten couscous,tomaten-couscous-salat mit oliven (2 3 15 a1 a5 a7 a9 a11 a12),low,getreide
+505943,gemuese,dominant,tomaten couscous,tomaten-couscous-salat mit oliven (2 3 15 a1 a5 a7 a9 a11 a12),very_low,getreide
+523257,gemuese,dominant,gemuese- paella,gemuese-paella (3 4 a9),very_low,getreide
+523257,getreide,mittel,gemuese- paella,gemuese-paella (3 4 a9),low,getreide
+236872,rotes_fleisch,dominant,thueringer rostbraet´l,<b>thueringer rostbraet´l</b> (1 2)mit schmorzwiebeln,high,rotes_fleisch
+236872,gemuese,mittel,thueringer rostbraet´l,<b>thueringer rostbraet´l</b> (1 2)mit schmorzwiebeln,very_low,rotes_fleisch
+174157,getreide,dominant,gebrat nudeln m soja,gebratene nudeln mit soja und gemuese in suess-chili sosse (veg wz so sel sen ses),low,huelsenfruechte
+174157,gemuese,dominant,gebrat nudeln m soja,gebratene nudeln mit soja und gemuese in suess-chili sosse (veg wz so sel sen ses),very_low,huelsenfruechte
+174157,huelsenfruechte,mittel,gebrat nudeln m soja,gebratene nudeln mit soja und gemuese in suess-chili sosse (veg wz so sel sen ses),medium,huelsenfruechte
+195790,rotes_fleisch,dominant,schweinesteak,<b>schweinesteak</b> (1)kraeuterbutterkartoffelpuereeratatouille,high,rotes_fleisch
+195790,knollen,mittel,schweinesteak,<b>schweinesteak</b> (1)kraeuterbutterkartoffelpuereeratatouille,unbekannt,rotes_fleisch
+195790,gemuese,gering,schweinesteak,<b>schweinesteak</b> (1)kraeuterbutterkartoffelpuereeratatouille,very_low,rotes_fleisch
+670152,gefluegel,dominant,entenkeule m1,markeruper entenkeule mit orangensosse und kartoffelkloesse,high,gefluegel
+670152,knollen,mittel,entenkeule m1,markeruper entenkeule mit orangensosse und kartoffelkloesse,unbekannt,gefluegel
+964629,gefluegel,dominant,crispy drumsticks mit sultaninenreis,crispy drumsticks (7 sl glw) curry-pfirisch-rahmsauce (so la sl) sultaninenreis,high,gefluegel
+964629,knollen,mittel,crispy drumsticks mit sultaninenreis,crispy drumsticks (7 sl glw) curry-pfirisch-rahmsauce (so la sl) sultaninenreis,unbekannt,gefluegel
+964629,getreide,gering,crispy drumsticks mit sultaninenreis,crispy drumsticks (7 sl glw) curry-pfirisch-rahmsauce (so la sl) sultaninenreis,low,gefluegel
+964629,milchprodukte,gering,crispy drumsticks mit sultaninenreis,crispy drumsticks (7 sl glw) curry-pfirisch-rahmsauce (so la sl) sultaninenreis,very_high,gefluegel
+178367,gefluegel,dominant,"haehnchen ""tajine"" mit nudeln","haehnchenstreifen mit kichererbsen ""tajine art"" (gf g man mit nudeln",high,gefluegel
+178367,getreide,mittel,"haehnchen ""tajine"" mit nudeln","haehnchenstreifen mit kichererbsen ""tajine art"" (gf g man mit nudeln",low,gefluegel
+178367,huelsenfruechte,mittel,"haehnchen ""tajine"" mit nudeln","haehnchenstreifen mit kichererbsen ""tajine art"" (gf g man mit nudeln",medium,gefluegel
+68464,getreide,dominant,gebratene asiatische weizennudeln mit ge,gebratene nudeln mit gemuese (vegan a1 a6 a9 a11)),low,getreide
+68464,gemuese,dominant,gebratene asiatische weizennudeln mit ge,gebratene nudeln mit gemuese (vegan a1 a6 a9 a11)),very_low,getreide
+397682,getreide,dominant,nudelauflauf mit schinken,nudelauflauf mit schinken und pilzen (s la gl),low,getreide
+397682,gemuese,dominant,nudelauflauf mit schinken,nudelauflauf mit schinken und pilzen (s la gl),very_low,getreide
+15219,samen,dominant,"germknoedel- ""mohn-zucker"" heidelbeerfuel",germknoedel mit heidelbeerfuellung mohn-zucker (15 19 81)und vanillesosse (19),low,samen
+129315,rotes_fleisch,dominant,nudelauflauf mit kalb paprika u pilzen,nudelauflauf mit kalbsstreifen paprika und pilzen (1 4 wz ei mi),high,rotes_fleisch
+129315,getreide,mittel,nudelauflauf mit kalb paprika u pilzen,nudelauflauf mit kalbsstreifen paprika und pilzen (1 4 wz ei mi),low,rotes_fleisch
+129315,gemuese,mittel,nudelauflauf mit kalb paprika u pilzen,nudelauflauf mit kalbsstreifen paprika und pilzen (1 4 wz ei mi),very_low,rotes_fleisch
+129315,ei,gering,nudelauflauf mit kalb paprika u pilzen,nudelauflauf mit kalbsstreifen paprika und pilzen (1 4 wz ei mi),unbekannt,rotes_fleisch
+3234,rotes_fleisch,dominant,"schweinerueckensteak ""akropolis""","schweinerueckensteak""akropolis"" mit paprika zwiebeln und fetakaese ueberbacken (1 19 51)dazu aioli-dip (9 15 19 49)kartoffelspaltenund garnitur (4)",high,rotes_fleisch
+3234,milchprodukte,mittel,"schweinerueckensteak ""akropolis""","schweinerueckensteak""akropolis"" mit paprika zwiebeln und fetakaese ueberbacken (1 19 51)dazu aioli-dip (9 15 19 49)kartoffelspaltenund garnitur (4)",very_high,rotes_fleisch
+3234,knollen,mittel,"schweinerueckensteak ""akropolis""","schweinerueckensteak""akropolis"" mit paprika zwiebeln und fetakaese ueberbacken (1 19 51)dazu aioli-dip (9 15 19 49)kartoffelspaltenund garnitur (4)",unbekannt,rotes_fleisch
+3234,gemuese,mittel,"schweinerueckensteak ""akropolis""","schweinerueckensteak""akropolis"" mit paprika zwiebeln und fetakaese ueberbacken (1 19 51)dazu aioli-dip (9 15 19 49)kartoffelspaltenund garnitur (4)",very_low,rotes_fleisch
+149892,getreide,dominant,kuerbis-lasagne - vegan,kuerbis-lasagne (veg so),low,getreide
+149892,gemuese,dominant,kuerbis-lasagne - vegan,kuerbis-lasagne (veg so),very_low,getreide
+515609,gefluegel,dominant,putenschnitzel mit paprikarahmsauce,putenschnitzel mit paprikarahmsauce (15 a1 a7 g),high,gefluegel
+515609,milchprodukte,mittel,putenschnitzel mit paprikarahmsauce,putenschnitzel mit paprikarahmsauce (15 a1 a7 g),very_high,gefluegel
+515609,gemuese,mittel,putenschnitzel mit paprikarahmsauce,putenschnitzel mit paprikarahmsauce (15 a1 a7 g),very_low,gefluegel
+478429,gemuese,dominant,broccoli-nussecke paniert 422 (tk 140 g),broccoli-nussecke (ha hn ma we)salatbeilage,very_low,keine_eindeutige_proteinquelle
+334848,rotes_fleisch,dominant,chinesische rindfleischsuppe,chinesische rindfleischsuppe (so we r),high,rotes_fleisch
+231815,getreide,dominant,farfalle mit gemuesebolognese,farfallemit gemuesebolognesegeriebener hartkaeseendiviensalatdessert,low,getreide
+231815,gemuese,dominant,farfalle mit gemuesebolognese,farfallemit gemuesebolognesegeriebener hartkaeseendiviensalatdessert,very_low,getreide
+215264,gemuese,dominant,mini-fruehlingsroellchen,<b>mini-fruehlingsroellchen</b>feuriger dip,very_low,samen
+215264,samen,mittel,mini-fruehlingsroellchen,<b>mini-fruehlingsroellchen</b>feuriger dip,low,samen
+248275,rotes_fleisch,dominant,thai-curry mit schweinefleisch paprika,thai-curry mit schweinefleisch paprika und erdnussauce (2 3 gl so s),high,rotes_fleisch
+248275,gemuese,mittel,thai-curry mit schweinefleisch paprika,thai-curry mit schweinefleisch paprika und erdnussauce (2 3 gl so s),very_low,rotes_fleisch
+248275,nuesse,gering,thai-curry mit schweinefleisch paprika,thai-curry mit schweinefleisch paprika und erdnussauce (2 3 gl so s),low,rotes_fleisch
+281039,getreide,dominant,quesadilla (erl ba),quesadilla-weizentortilla gefuellt mit huehnchen kaese tomate und mexikanischem gemuese (gl la g we) dazu salat (sl),low,gefluegel
+281039,gefluegel,dominant,quesadilla (erl ba),quesadilla-weizentortilla gefuellt mit huehnchen kaese tomate und mexikanischem gemuese (gl la g we) dazu salat (sl),high,gefluegel
+281039,milchprodukte,mittel,quesadilla (erl ba),quesadilla-weizentortilla gefuellt mit huehnchen kaese tomate und mexikanischem gemuese (gl la g we) dazu salat (sl),very_high,gefluegel
+281039,gemuese,mittel,quesadilla (erl ba),quesadilla-weizentortilla gefuellt mit huehnchen kaese tomate und mexikanischem gemuese (gl la g we) dazu salat (sl),very_low,gefluegel
+174387,huelsenfruechte,dominant,quinoa erbsen frikadelle mit dip u kart,quinoa erbsen frikadelle (gf veg)mit senfdip (sen) und ofenkartoffeln,medium,huelsenfruechte
+174387,getreide,mittel,quinoa erbsen frikadelle mit dip u kart,quinoa erbsen frikadelle (gf veg)mit senfdip (sen) und ofenkartoffeln,low,huelsenfruechte
+174387,knollen,mittel,quinoa erbsen frikadelle mit dip u kart,quinoa erbsen frikadelle (gf veg)mit senfdip (sen) und ofenkartoffeln,unbekannt,huelsenfruechte
+450890,knollen,dominant,1/2 kartoffelpfanne,1/2 port griechische kartoffelpfanne (kn mi)(v kn mi),unbekannt,knollen
+559187,gefluegel,dominant,gemuesetopf mit gefluegel kloesschen,eintopf mit gemuese und gefluegelkloesschen (a3 a9 g),high,gefluegel
+559187,gemuese,mittel,gemuesetopf mit gefluegel kloesschen,eintopf mit gemuese und gefluegelkloesschen (a3 a9 g),very_low,gefluegel
+537783,rotes_fleisch,dominant,bayerisch bowl mit wuerschtl leberkaes un,bayerisch bowl mit wuerschtl leberkaes und kraut (2 3 6 15 a1 a7 a9 a10 a12 r s),high,rotes_fleisch
+537783,gemuese,mittel,bayerisch bowl mit wuerschtl leberkaes un,bayerisch bowl mit wuerschtl leberkaes und kraut (2 3 6 15 a1 a7 a9 a10 a12 r s),very_low,rotes_fleisch
+387059,gefluegel,dominant,nasi goreng mit huhn,nasi goreng mit huhnfleisch (2 36 gl so sl),high,gefluegel
+387059,getreide,mittel,nasi goreng mit huhn,nasi goreng mit huhnfleisch (2 36 gl so sl),low,gefluegel
+387059,gemuese,gering,nasi goreng mit huhn,nasi goreng mit huhnfleisch (2 36 gl so sl),very_low,gefluegel
+382538,gefluegel,dominant,38 putensteak griechisch,putensteak griechisch (2 36 la),high,gefluegel
+382538,gemuese,mittel,38 putensteak griechisch,putensteak griechisch (2 36 la),very_low,gefluegel
+25666,rotes_fleisch,dominant,hirschbraten in wacholderrahmsosse,hirschbraten in wacholderrahmsosse,high,rotes_fleisch
+25666,milchprodukte,gering,hirschbraten in wacholderrahmsosse,hirschbraten in wacholderrahmsosse,very_high,rotes_fleisch
+189711,getreide,dominant,krautschupfnudeln - mit speck,krautschupfnudeln (1 wz) mit speckwuerfeln (4 7 12 s),low,getreide
+189711,knollen,mittel,krautschupfnudeln - mit speck,krautschupfnudeln (1 wz) mit speckwuerfeln (4 7 12 s),unbekannt,getreide
+189711,speck,gering,krautschupfnudeln - mit speck,krautschupfnudeln (1 wz) mit speckwuerfeln (4 7 12 s),unbekannt,getreide
+234170,fisch,dominant,fischfilet paniert,fischfilet paniert (sn gl glw ml)tomatensauce (gl glw)butterkartoffeln (ml)gurkensalat (ml)dessert,high,fisch
+234170,knollen,mittel,fischfilet paniert,fischfilet paniert (sn gl glw ml)tomatensauce (gl glw)butterkartoffeln (ml)gurkensalat (ml)dessert,unbekannt,fisch
+234170,gemuese,mittel,fischfilet paniert,fischfilet paniert (sn gl glw ml)tomatensauce (gl glw)butterkartoffeln (ml)gurkensalat (ml)dessert,very_low,fisch
+577641,rotes_fleisch,dominant,schweinrueckensteak d3,schweinrueckensteak (13) champignon-rahmsauce,high,rotes_fleisch
+577641,milchprodukte,mittel,schweinrueckensteak d3,schweinrueckensteak (13) champignon-rahmsauce,very_high,rotes_fleisch
+577641,gemuese,mittel,schweinrueckensteak d3,schweinrueckensteak (13) champignon-rahmsauce,very_low,rotes_fleisch
+550,knollen,dominant,schichtkraut mit hackfleisch,schichtkraut mit hackfleisch (15 21 44 51)und bratensosse (13 21)dazu petersilienkartoffelnund frisches obst,unbekannt,rotes_fleisch
+550,rotes_fleisch,mittel,schichtkraut mit hackfleisch,schichtkraut mit hackfleisch (15 21 44 51)und bratensosse (13 21)dazu petersilienkartoffelnund frisches obst,high,rotes_fleisch
+550,gemuese,gering,schichtkraut mit hackfleisch,schichtkraut mit hackfleisch (15 21 44 51)und bratensosse (13 21)dazu petersilienkartoffelnund frisches obst,very_low,rotes_fleisch
+602272,getreide,dominant,mv veg italienischer nudelauflauf mozzar,italienischer nudelauflauf mit champignons und mozzarella (80),low,milchprodukte
+602272,milchprodukte,dominant,mv veg italienischer nudelauflauf mozzar,italienischer nudelauflauf mit champignons und mozzarella (80),very_high,milchprodukte
+602272,gemuese,mittel,mv veg italienischer nudelauflauf mozzar,italienischer nudelauflauf mit champignons und mozzarella (80),very_low,milchprodukte
+12589,rotes_fleisch,dominant,jaegerschnitzel tk fertig,jaegerschnitzel (2 3 22 51 52 81)und bohnengemuese mit speck (51 81)dazu roestkartoffelpueree (3 19 81),high,rotes_fleisch
+12589,huelsenfruechte,mittel,jaegerschnitzel tk fertig,jaegerschnitzel (2 3 22 51 52 81)und bohnengemuese mit speck (51 81)dazu roestkartoffelpueree (3 19 81),medium,rotes_fleisch
+12589,knollen,mittel,jaegerschnitzel tk fertig,jaegerschnitzel (2 3 22 51 52 81)und bohnengemuese mit speck (51 81)dazu roestkartoffelpueree (3 19 81),unbekannt,rotes_fleisch
+12589,gemuese,mittel,jaegerschnitzel tk fertig,jaegerschnitzel (2 3 22 51 52 81)und bohnengemuese mit speck (51 81)dazu roestkartoffelpueree (3 19 81),very_low,rotes_fleisch
+524,getreide,dominant,vegan: spaghetti mit gruenkernbolognese,vegan: spaghetti mit gruenkern-gemuese-bolognese und rucola (13 21 49),low,getreide
+524,gemuese,dominant,vegan: spaghetti mit gruenkernbolognese,vegan: spaghetti mit gruenkern-gemuese-bolognese und rucola (13 21 49),very_low,getreide
+1087168,gemuese,dominant,ciorba cu perisoare,gemuesesuppe (2 3 13 a c g i j)schnittbroetchen (21 a f),very_low,getreide
+1087168,getreide,mittel,ciorba cu perisoare,gemuesesuppe (2 3 13 a c g i j)schnittbroetchen (21 a f),low,getreide
