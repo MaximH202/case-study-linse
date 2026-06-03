@@ -11,7 +11,7 @@ Wir haben uns dazu entschieden, uns hauptsächlich auf Hauptgerichte zu konzentr
 Wir haben die Klassifizierung der Daten in zwei Schritten durchgeführt. Zunächst haben wir eine key_word suche über die product_names und menu_text Spalten laufen lassen, und die Ergebnisse
 zussamengeführt (siehe classify_step_2). Danach haben wir diese Klassen dem LLM übergeben und ihm dabei zwei Aufgaben erteilt:
 1. Das Ergänzen von fehlenden Klassen
-2. Das Abschätzen der Anteile der einzelnen Klassen am gesamten Gericht (gering, mittel dominant)
+2. Das Abschätzen der Anteile der einzelnen Klassen am gesamten Gericht (gering, mittel dominant). Dabei lag der Fokus auf Hauptkomponenten eines Gerichts.
 
 Diese Ergebnisse haben wir dann genutzt, um zwei Tabellen zu bauen.
 1. *llm_classified_long* listet alle Gerichte mit ihren einzelnen Komponenten und deren Anteil auf
@@ -29,7 +29,7 @@ Hauptprotein zu bestimmen (siehe classify_step_6). Diese Art der Ermittlung beug
 
 #### Qualität des LLM
 
-Um die Verlässlichkeit des LLM zu prüfen, haben wir uns als Stichprobe 100 klassifizierte Gerichte angeschaut und manuell geprüft. Dabei kamen wir auf eine Trefferquote von >85%
+Um die Verlässlichkeit des LLM zu prüfen, haben wir uns als Stichprobe 100 klassifizierte Gerichte angeschaut und manuell geprüft. Dabei kamen wir auf eine Trefferquote von >85% (zuverlässigkeit_llm_sample_test.xlsx)
 
 ### Task 3: Exporatory Analysis
 
