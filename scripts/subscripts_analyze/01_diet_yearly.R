@@ -71,10 +71,16 @@ plot_diet_yearly <- ggplot(
   scale_y_continuous(labels = scales::percent) +
   scale_fill_manual(
     values = c(
-      "vegan" = "#2e7d32", # Frisches Grün
-      "vegetarisch" = "#ffca28", # Warmes Gelb
-      "pescetarisch" = "#00acc1", # Softes Cyan
-      "omnivor" = "#ef5350" # Sanftes Rot
+      "vegan" = "#009E73",
+      "vegetarisch" = "#E69F00",
+      "pescetarisch" = "#56B4E9",
+      "omnivor" = "#D55E00"
+    ),
+    labels = c(
+      "vegan" = "Vegan",
+      "vegetarisch" = "Vegetarisch",
+      "pescetarisch" = "Pescetarisch",
+      "omnivor" = "Omnivor"
     )
   ) +
   labs(
@@ -82,13 +88,23 @@ plot_diet_yearly <- ggplot(
     subtitle = "Anteil der angebotenen Gerichte auf den Speisekarten",
     x = "Jahr",
     y = "Anteil der angebotenen Speisen",
-    fill = "Ernährungsform"
+    fill = "Ernährungsform",
+    caption = "Anzahl Gerichte = 521915"
   ) +
-  theme_minimal(base_size = 12) +
+  theme_minimal(base_size = 14) +
   theme(
-    plot.title = element_text(face = "bold", size = 14),
-    plot.subtitle = element_text(color = "dimgrey", size = 11),
-    legend.position = "bottom"
+    plot.title = element_text(face = "bold", size = 16, margin = margin(b = 5)),
+    plot.subtitle = element_text(color = "grey40", size = 12, margin = margin(b = 15)),
+    plot.caption = element_text(hjust = 0, color = "grey50", size = 10, margin = margin(t = 10)),
+    axis.title.x = element_text(margin = margin(t = 10), face = "bold", color = "grey30"),
+    axis.title.y = element_text(margin = margin(r = 10), face = "bold", color = "grey30"),
+    axis.text = element_text(color = "grey50"),
+    legend.position = "bottom",
+    legend.title = element_text(face = "bold"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA)
   )
 
 ggsave(

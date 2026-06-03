@@ -24,16 +24,29 @@ legume_by_cafeteria <- menus_classified |>
 
 p_legume_by_cafeteria <- legume_by_cafeteria |> 
   ggplot(aes(x = period, y = legume_share)) +
-  geom_boxplot(fill = "steelblue", alpha = 0.4, outlier.shape = NA) +
-  geom_jitter(width = 0.15, size = 2, alpha = 0.7, color = "steelblue4", seed = 42) +
+  geom_boxplot(fill = "#009E73", alpha = 0.5, outlier.shape = NA, color = "grey30") +
+  geom_jitter(width = 0.15, size = 2, alpha = 0.7, color = "grey20", seed = 42) +
   scale_y_continuous(labels = scales::label_percent()) +
   labs(
     title = "Verteilung des Hülsenfrüchte-Anteils über alle Mensen",
     subtitle = "Jeder Punkt repräsentiert eine Mensa, gruppiert nach Zeitraum",
-    x = NULL,
-    y = "Anteil der Gerichte mit Hülsenfrüchten"
+    x = "Zeitraum",
+    y = "Anteil der Gerichte mit Hülsenfrüchten",
+    caption = "Anzahl Gerichte = 521915"
   ) +
-  theme_minimal(base_size = 14)
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16, margin = margin(b = 5)),
+    plot.subtitle = element_text(color = "grey40", size = 12, margin = margin(b = 15)),
+    plot.caption = element_text(hjust = 0, color = "grey50", size = 10, margin = margin(t = 10)),
+    axis.title.x = element_text(margin = margin(t = 10), face = "bold", color = "grey30"),
+    axis.title.y = element_text(margin = margin(r = 10), face = "bold", color = "grey30"),
+    axis.text = element_text(color = "grey50"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA)
+  )
 
 p_legume_by_cafeteria
 

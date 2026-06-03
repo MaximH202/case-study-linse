@@ -24,14 +24,22 @@ p_protein_trend <- protein_trend |>
       "milchprodukte",
       "gefluegel",
       "rotes_fleisch"
-    ))
-  ) |>
+    ),
+      labels = c(
+        "Fisch",
+        "Hülsenfrüchte",
+        "Getreide",
+        "Milchprodukte",
+        "Geflügel",
+        "Rotes Fleisch"
+      )
+  )) |>
   ggplot(aes(x = factor(year), y = code_main_protein, fill = share)) +
   geom_tile(color = "white", linewidth = 0.5) +
-  scale_fill_distiller(
-    palette = "YlOrRd",
-    direction = 1,
-    labels = function(x) paste0(round(x * 100, 0), "%")
+  scale_fill_viridis_c(
+    option = "mako",
+    direction = -1,
+    labels = scales::percent_format(accuracy = 1)
   ) +
   scale_x_discrete(breaks = as.character(seq(2014, 2026))) +
   labs(
@@ -39,14 +47,23 @@ p_protein_trend <- protein_trend |>
     subtitle = "Anteil aller klassifizierten Gerichte pro Jahr",
     x = "Jahr",
     y = "Hauptprotein",
-    fill = "Anteil"
+    fill = "Anteil",
+    caption = "Anzahl Gerichte = 521915"
   ) +
   theme_minimal(base_size = 14) +
   theme(
+    plot.title = element_text(face = "bold", size = 16, margin = margin(b = 5)),
+    plot.subtitle = element_text(color = "grey40", size = 12, margin = margin(b = 15)),
+    plot.caption = element_text(hjust = 0, color = "grey50", size = 10, margin = margin(t = 10)),
+    axis.title.x = element_text(margin = margin(t = 10), face = "bold", color = "grey30"),
+    axis.title.y = element_text(margin = margin(r = 10), face = "bold", color = "grey30"),
+    axis.text = element_text(color = "grey50"),
     panel.grid = element_blank(),
     axis.ticks = element_blank(),
     legend.position = "right",
-    legend.title = element_text(face = "bold")
+    legend.title = element_text(face = "bold"),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA)
   )
 
 p_protein_trend

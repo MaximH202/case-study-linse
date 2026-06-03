@@ -1,35 +1,36 @@
-# Case Study "Project Linse"
-
-This repository contains the project with all relevant files for the case study ["Projekt Linse"](https://huelsenheld.thuenen.de/das-projekt) in the course "Big Data Analytics" in the summer term 2026. You can find the case study document [here](https://data.hands-on-computer-science.de/experiments/mensa/case-study-mensa.pdf).
-
-Use this file to document your solutions and findings regarding the tasks of the case study.
-
-#Setup
-
--source("scripts/setup.R")
-
--source("scripts/analyze/setup.R")
-
--source("scripts/classify/.R")
-
-## Instructions
-
-1. Set your OpenAI API key in `.Renviron`. It will be loaded as an environment variable from there everytime you restart R (or when you open Positron).
-
-2. The data is provided separately. Copy the data in the `data/` folder.
-
-3. Solve the task in the [case study PDF](https://data.hands-on-computer-science.de/experiments/mensa/case-study-mensa.pdf) 😊
-
 ## Solution Documentation
 
-### Task 1: Consolidation and Cleansing
+### Task 1: Datenaufbereitung
 
-✅ *This task was already done for you! Find the result in [`data/projekt-linse/menus_consolidated.csv`](data/projekt-linse/menus_consolidated.csv)
+#### Gefilterte Daten:
+
+Wir haben uns dazu entschieden, uns hauptsächlich auf Hauptgerichte zu konzentrieren. Daher haben wir in verschiedenen classify_schritten versucht, Beilagen und Einträge, bei denen es sich nicht um Speisen handelte, herauszufiltern.
 
 ### Task 2: Classification of Menu Items
 
-*Document your solution for the task, including your assumptions, here.*
+Wir haben die Klassifizierung der Daten in zwei Schritten durchgeführt. Zunächst haben wir eine key_word suche über die product_names und menu_text Spalten laufen lassen, und die Ergebnisse
+zussamengeführt (siehe classify_step_2). Danach haben wir diese Klassen dem LLM übergeben und ihm dabei zwei Aufgaben erteilt:
+1. Das Ergänzen von fehlenden Klassen
+2. Das Abschätzen der Anteile der einzelnen Klassen am gesamten Gericht (gering, mittel dominant)
+
+Diese Ergebnisse haben wir dann genutzt, um zwei Tabellen zu bauen.
+1. *llm_classified_long* listet alle Gerichte mit ihren einzelnen Komponenten und deren Anteil auf
+2. *llm_classified_short* listet alle Gerichte mit ihrer Ernährungsform und dem Hauptprotein auf
+
+Ernährungsform und Hauptprotein wurden nicht durch ein LLM, sondern feste Regeln bestimmt.
+##### Ernährungsform
+
+Die Ernährungsform wird durch ein hierarchisches System bestimmt. Ganz oben steht die Wort-Suche nach vegetarisch oder vegan in den Daten (eindeutig).
+Danach wird stufenweise anhand der Lebensmittelklassen bestimmt (siehe classify_step_5). Diese Art der Ermittlung beugt Halluzinationen des LLMs vor. Jedoch ist das Ergebnis eng gebunden an der Qualität des Outputs des LLM.
+#### Hauptprotein
+
+Das Hauptprotein wird durch eine mathematische Formel bestimmt. Den einzelnen Lebensmittelklassen werden dabei Werte zugeordnet und dann mit dem Anteil am Gericht verrechnet um so das 
+Hauptprotein zu bestimmen (siehe classify_step_6). Diese Art der Ermittlung beugt Halluzinationen des LLMs vor. Jedoch ist das Ergebnis eng gebunden an der Qualität des Outputs des LLM.
+
+#### Qualität des LLM
+
+Um die Verlässlichkeit des LLM zu prüfen, haben wir uns als Stichprobe 100 klassifizierte Gerichte angeschaut und manuell geprüft. Dabei kamen wir auf eine Trefferquote von >85%
 
 ### Task 3: Exporatory Analysis
 
-*Document your solution for the task, including your assumptions, here.*
+Für die Darstellung haben wir uns hauptsächlich auf Ernährungsformen, Hauptproteinquellen und deren Beliebtheit konzentriert. Ein besonderer Fokus lag dabei auf den Hülsenfrüchten. Gerichte, bei denen nur eine Lebensmittelklasse ohne nennenswerten Proteingehalt (Gemüse, Kartoffeln oder Nudeln) angeboten wurden, haben wir bei der Analyse ausgeschlossen.

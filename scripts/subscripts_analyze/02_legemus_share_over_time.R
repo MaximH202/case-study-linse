@@ -1,13 +1,11 @@
-
 # Hülsenfrüchte nach Anteilsstufe klassifizieren
 legume_levels <- components |> 
   filter(group_level_2 == "huelsenfruechte") |> 
   distinct(id, anteil) |> 
   mutate(
-    legume_high  = anteil == "dominant",   # ggf. "dominierend" je nach Schreibweise
+    legume_high  = anteil == "dominant",
     legume_low   = anteil %in% c("mittel", "gering")
   ) |> 
-  # Pro Gericht: TRUE wenn mind. eine Zeile die Bedingung erfüllt
   group_by(id) |> 
   summarise(
     legume_high = any(legume_high, na.rm = TRUE),
@@ -20,54 +18,74 @@ legume_trend <- menus_classified |>
   left_join(legume_levels, by = "id") |> 
   mutate(
     legume_high = tidyr::replace_na(legume_high, FALSE),
-    legume_low  = tidyr::replace_na(legume_low,  FALSE)
+    legume_low  = tidyr::replace_na(legume_low,  FALSE),
+    legume_main = code_main_protein == "huelsenfruechte" & !is.na(code_main_protein)
   ) |> 
   group_by(year) |> 
   summarise(
     high_share = mean(legume_high),
     low_share  = mean(legume_low),
+    main_share = mean(legume_main),
     n = n(),
     .groups = "drop"
   ) |> 
-  # Ins Long-Format für ggplot
   pivot_longer(
-    cols = c(high_share, low_share),
+    cols = c(high_share, low_share, main_share),
     names_to  = "level",
     values_to = "share"
   ) |> 
   mutate(
     level = factor(level,
-      levels = c("high_share", "low_share"),
-      labels = c("Hoch (dominant)", "Niedrig/Mittel (gering/mittel)")
+      levels = c("high_share", "low_share", "main_share"),
+      labels = c(
+        "Hoch (dominant)",
+        "Niedrig/Mittel (gering/mittel)",
+        "Hauptprotein"
+      )
     )
   )
 
 p_legume_trend <- legume_trend |> 
   ggplot(aes(x = year, y = share, color = level, group = level)) +
-  geom_line(linewidth = 0.8) +
+  geom_line(linewidth = 1) +
   geom_point(size = 3) +
   geom_smooth(
     se = FALSE,
     method = "lm",
     linewidth = 1.2,
-    linetype = "dashed"
+    linetype = "dashed",
+    alpha = 0.5
   ) +
   scale_y_continuous(labels = scales::label_percent()) +
   scale_color_manual(
     values = c(
-      "Hoch (dominant)"              = "#2166ac",
-      "Niedrig/Mittel (gering/mittel)" = "#d73027"
+      "Hoch (dominant)"                = "#009E73",
+      "Niedrig/Mittel (gering/mittel)" = "#E69F00",
+      "Hauptprotein"                   = "#56B4E9"
     )
   ) +
   labs(
     title    = "Entwicklung des Anteils von Gerichten mit Hülsenfrüchten",
-    subtitle = "Nach Anteilsstufe: dominant vs. mittel/gering",
+    subtitle = "Nach Anteilsstufe: dominant vs. mittel/gering vs. Hauptprotein",
     x        = "Jahr",
     y        = "Anteil der Gerichte",
-    color    = "Anteilsstufe"
+    color    = "Anteilsstufe",
+    caption  = "Anzahl Gerichte = 521915"
   ) +
   theme_minimal(base_size = 14) +
-  theme(legend.position = "bottom")
+  theme(
+    plot.title = element_text(face = "bold", size = 16, margin = margin(b = 5)),
+    plot.subtitle = element_text(color = "grey40", size = 12, margin = margin(b = 15)),
+    plot.caption = element_text(hjust = 0, color = "grey50", size = 10, margin = margin(t = 10)),
+    axis.title.x = element_text(margin = margin(t = 10), face = "bold", color = "grey30"),
+    axis.title.y = element_text(margin = margin(r = 10), face = "bold", color = "grey30"),
+    axis.text = element_text(color = "grey50"),
+    legend.position = "bottom",
+    legend.title = element_text(face = "bold"),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = "white", color = NA),
+    panel.background = element_rect(fill = "white", color = NA)
+  )
 
 p_legume_trend
 
