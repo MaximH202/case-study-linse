@@ -1,24 +1,6 @@
-source("scripts/setup.R")
+source("scripts/subscripts_analyze/01_diet_yearly.R")
+source("scripts/subscripts_analyze/02_legemus_share_over_time.R") 
+source("scripts/subscripts_analyze/03_legumes_share_by_cafeteria.R") #LLM Skript, hier vorher sample_size festlegen
+source("scripts/subscripts_analyze/04_protein_trend.R") 
+source("scripts/subscripts_analyze/05_beliebtheit.R") 
 
-# Read the consolidated menus
-menus <- read_csv("data/menus_consolidated.csv") |> 
-  mutate(
-    student_service = as_factor(student_service),
-    cafeteria = as_factor(cafeteria)
-  )
-
-# Run a subscript
-source("scripts/subscripts_analyze/analyze_step_1.R")
-
-# Create a visualization (example)
-p <- menus |> 
-  filter(year(date) > 2014) |>
-  filter(year(date) < 2025) |> 
-  mutate(year = lubridate::floor_date(date, unit = "years")) |> 
-  ggplot() +
-  aes(x = year) +
-  geom_bar() +
-  theme_bw()
-
-# Save a plot to file (example)
-ggsave("communications/visualizations/scatter_plot.svg", plot = p)
