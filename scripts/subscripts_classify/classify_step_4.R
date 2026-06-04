@@ -55,7 +55,7 @@ llm_classified_long <- results |>
   # bestehen und somit kein richtiges Hauptgericht sind.
   group_by(id) |>
   filter(
-    !(n() == 1 & group_level_2 %in% c("getreide", "knollen", "gemuese"))
+    !(n() == 1 & group_level_2 %in% c("getreide", "knollen", "gemuese", "nuesse", "samen"))
   ) |>
   ungroup()
 
@@ -63,11 +63,11 @@ llm_classified_long <- results |>
 llm_classified_long <- llm_classified_long |>
   mutate(
     proteincode = case_when(
-      group_level_2 %in% c("milchprodukte", "eier") ~ "very_high",
-      group_level_2 %in% c("rotes_fleisch", "gefluegel", "fisch") ~ "high",
-      group_level_2 %in% c("huelsenfruechte", "leguminosen") ~ "medium",
+      group_level_2 %in% c("milchprodukte", "ei") ~ "very_high",
+      group_level_2 %in% c("rotes_fleisch", "gefluegel", "fisch", "knollen") ~ "high",
+      group_level_2 %in% c("huelsenfruechte") ~ "medium",
       group_level_2 %in% c("getreide", "samen", "nuesse") ~ "low",
-      group_level_2 %in% c("gemuese", "obst") ~ "very_low",
+      group_level_2 %in% c("gemuese") ~ "very_low",
       TRUE ~ "unbekannt"
     )
   )

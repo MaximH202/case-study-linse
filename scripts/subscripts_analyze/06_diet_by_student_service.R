@@ -1,28 +1,37 @@
-# 6. Anteil der Ernährungsformen nach Studierendenwerk ----------------------
+# 6. Anteil der Ernährungsformen nach Studierendenwerk
+# Während Skript 01 die Entwicklung über die Zeit zeigt, vergleichen wir hier
+# die Studierendenwerke miteinander: Wo ist der pflanzliche Anteil am höchsten?
+# Die Sortierung nach dem kombinierten Vegan- und Vegetarisch-Anteil macht
+# Unterschiede zwischen den Standorten sofort sichtbar.
 
 menus_classified <- read_csv("data/menus_classified.csv", show_col_types = FALSE)
 
 menus_prepared <- menus_classified |>
   filter(!is.na(group_level_1)) |>
   mutate(
+    # Konsistente Reihenfolge der Ernährungsformen für alle Plots
     group_level_1 = factor(
       group_level_1,
       levels = c("vegan", "vegetarisch", "pescetarisch", "omnivor")
     )
   )
 
-# Berechne den Anteil der Ernährungsformen pro Studierendenwerk
+# Angebots-Anteile pro Studierendenwerk und Ernährungsform berechnen ------
 plot_diet_sw_data <- menus_prepared |>
   group_by(student_service, group_level_1) |>
   summarise(n_items = n(), .groups = "drop") |>
   group_by(student_service) |>
   mutate(
     total_items = sum(n_items),
+    # Relativer Anteil statt absoluter Anzahl, damit große und kleine
+    # Studierendenwerke fair verglichen werden können
     share = n_items / total_items
   ) |>
   ungroup()
 
-# Sortiere die Studierendenwerke nach dem Anteil an pflanzlichen Gerichten (vegan + vegetarisch)
+# Sortierung der Studierendenwerke nach pflanzlichem Anteil ---------------
+# Wir sortieren aufsteigend nach dem kombinierten Anteil von vegan + vegetarisch,
+# damit das Studierendenwerk mit dem höchsten Pflanzenkost-Anteil oben steht.
 order_sw <- plot_diet_sw_data |>
   filter(group_level_1 %in% c("vegan", "vegetarisch")) |>
   group_by(student_service) |>
@@ -33,6 +42,7 @@ order_sw <- plot_diet_sw_data |>
 plot_diet_sw_data <- plot_diet_sw_data |>
   mutate(student_service = factor(student_service, levels = order_sw))
 
+# Visualisierung: Horizontales 100%-gestapeltes Balkendiagramm ------------
 plot_diet_sw <- ggplot(
   plot_diet_sw_data,
   aes(x = share, y = student_service, fill = group_level_1)

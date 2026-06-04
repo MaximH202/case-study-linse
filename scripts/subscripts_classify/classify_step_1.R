@@ -4,8 +4,8 @@
 
 # Wir definieren zunächst Schlüsselwörter (Stopwords), mit denen wir typische 
 # Beilagen, Desserts und nicht-Speise-Einträge (z.B. "Personal", "Buffet") erkennen.
-exclude_pattern_name <- "pudding|buffet|kuchen|obst|dessert|^eis$|joghurt|getränk|imbiss|personal|catering|schokolade"
-exclude_pattern_type <- "dessert|pudding|kuchen|eis|joghurt|obst|beilage|getränk|buffet|pudding|salat|imbiss|personal|gemüse|catering"
+exclude_pattern_name <- "pudding|buffet|kuchen|obst|dessert|^eis$|joghurt|getränk|imbiss|personal|catering|schokolade|personal|kita|zusatz|pastabar|wahlessen"
+exclude_pattern_type <- "dessert|pudding|kuchen|eis|joghurt|obst|beilage|getränk|buffet|pudding|salat|imbiss|personal|gemüse|catering|zusatz|pasta bar"
 
 # Eine Hilfsfunktion, um Texte zu "säubern". 
 # Sie wandelt alles in Kleinbuchstaben um, ersetzt Umlaute durch ihre 
@@ -16,7 +16,7 @@ clean_text <- function(text_column) {
     str_to_lower() |>
     str_replace_all(c(
       "ä" = "ae", "ö" = "oe", "ü" = "ue", "ß" = "ss",
-      "\\." = " ", ","  = " "
+      "\\." = " ", "," = " "
     )) |>
     str_squish()
 }
@@ -43,9 +43,18 @@ unique_dishes <- menus |>
     menu_text = clean_text(menu_text),
     id = as.integer(id)
   ) |> 
-  
+  # Klammern und deren Inhalt entfernen, außer wenn "vegan" oder "vegetarisch" drin steht.
+  # So bereinigen wir z.B. Zusatzstoffe (z.B. "Schnitzel (1, 2, A)") ohne wichtige
+  # Ernährungshinweise zu verlieren.
+  mutate(
+    menu_text = map_chr(menu_text, ~ {
+      str_remove_all(.x, "\\((?![^()]*\\b(vegan|vegetarisch)\\b)[^()]*\\)")
+    }) |> str_squish()
+  ) |>
+  distinct(menu_text, .keep_all = TRUE) |>
+  filter(!is.na(product_name), !is.na(menu_text),
+         product_name != "", menu_text != "") |>
   # entfernen der Duplikate
-  distinct(product_name, .keep_all = TRUE) |>
   
   # Die Hilfsspalte "is_side" brauchen wir nicht mehr.
   select(-is_side) |> 
@@ -62,5 +71,8 @@ menus <- menus |>
     prod_type = str_to_lower(prod_type),
     product_name = clean_text(product_name),
     menu_text = clean_text(menu_text),
-    id = as.integer(id)
+    id = as.integer(id),
+        menu_text = map_chr(menu_text, ~ {
+      str_remove_all(.x, "\\((?![^()]*\\b(vegan|vegetarisch)\\b)[^()]*\\)")
+    }) |> str_squish()
   )

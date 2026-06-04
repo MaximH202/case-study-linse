@@ -1,9 +1,13 @@
-# 2. Daten laden -----------------------------------------------------------
+# 1. Entwicklung der Ernährungsformen über die Zeit
+# Hier schauen wir uns an, wie sich das Angebot nach Ernährungsformen (vegan, vegetarisch,
+# pescetarisch, omnivor) über die Jahre verändert hat.
+# Dafür laden wir zunächst die klassifizierten Daten und bereiten sie für die Visualisierung vor.
+
+# Daten laden -----------------------------------------------------------
 
 menus_classified <- read_csv("data/menus_classified.csv")
 
 components <- read_csv("data/menu_components.csv")
-
 
 menus_prepared <- menus_classified |>
   mutate(
@@ -17,12 +21,14 @@ menus_prepared <- menus_classified |>
 
     # Die Ernährungsform (aus group_level_1-Spalte der klassifizierten Daten)
     # wird als Faktor mit konsistenter Reihenfolge festgelegt.
+    # Die Reihenfolge bestimmt später auch die Stapelreihenfolge im Plot.
     group_level_1 = factor(
       group_level_1,
       levels = c("vegan", "vegetarisch", "pescetarisch", "omnivor")
     ),
 
-    # Schönerer Name für die Proteinquellen in den Visualisierungen
+    # Lesbarere deutsche Bezeichnungen für die Proteinquellen in den Visualisierungen.
+    # Damit müssen wir in den ggplot-Skripten nicht mit den internen Code-Strings arbeiten.
     code_main_protein_de = case_when(
       code_main_protein == "rotes_fleisch" ~ "Rotes Fleisch",
       code_main_protein == "gefluegel" ~ "Geflügel",
@@ -37,6 +43,8 @@ menus_prepared <- menus_classified |>
     )
   )
 
+
+# Aggregation: Angebots-Anteile pro Jahr und Ernährungsform ---------------
 
 plot_diet_yearly_data <- menus_prepared |>
   filter(!is.na(group_level_1)) |>
@@ -62,6 +70,8 @@ plot_diet_yearly_data <- menus_prepared |>
     share_output = total_output / sum(total_output)
   ) |>
   ungroup()
+
+# Visualisierung: 100%-gestapeltes Balkendiagramm -------------------------
 
 plot_diet_yearly <- ggplot(
   plot_diet_yearly_data,

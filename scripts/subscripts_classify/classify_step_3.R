@@ -87,7 +87,6 @@ schema <- '{
 
 # Wir bereiten die Gerichte für das LLM vor, indem wir nur die nötigsten Infos mitnehmen.
 batch_menus <- unique_dishes |> 
-  #slice_head(n = 20) |> 
   select(id, product_name, menu_text, klassen) 
 
 # wir haben eine neue classify_with_llm funktion gebaut und lassen bis zu 8 Abfragen gleichzeitig laufen, um Zeit zu sparen.
@@ -147,6 +146,6 @@ llm_classified_short <- results |>
   # behalten würde die Auswertung verfälschen.
   filter(
     !(
-      group_level_2 %in% c("getreide", "knollen", "gemuese")
+      group_level_2 %in% c("getreide", "knollen", "gemuese", "nuesse", "samen")
     )
   )

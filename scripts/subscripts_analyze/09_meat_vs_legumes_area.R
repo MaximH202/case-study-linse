@@ -1,4 +1,12 @@
-# 9. Direkter Vergleich: Fleisch vs. Hülsenfrüchte (Area Chart) ------------
+# 9. Direkter Vergleich: Fleisch vs. Hülsenfrüchte (Area Chart)
+# Dieser Plot stellt die zentrale Forschungsfrage direkt dar:
+# Hat der Anteil an Hülsenfrüchten im Angebot über die Zeit zugenommen,
+# während Fleisch zurückgegangen ist? Das Area Chart eignet sich hier gut,
+# weil es zeigt, wie sich die Anteile der Gruppen gegenseitig verdrängen.
+#
+# Wir fassen rotes Fleisch und Geflügel als "Fleisch" zusammen und setzen
+# sie Hülsenfrüchten als der relevantesten pflanzlichen Proteinquelle gegenüber.
+# Alle anderen Proteinquellen (Fisch, Milch, Getreide usw.) landen in "Andere".
 
 library(dplyr)
 library(readr)
@@ -6,10 +14,13 @@ library(ggplot2)
 
 menus_classified <- read_csv("data/menus_classified.csv", show_col_types = FALSE)
 
+# Aggregation: Jahres-Anteile der drei Proteingruppen ---------------------
 area_data <- menus_classified |>
   mutate(year = lubridate::year(date)) |>
   filter(!is.na(code_main_protein)) |>
   mutate(
+    # Wir gruppieren in drei Kategorien, die die Kernaussage tragen:
+    # Fleisch, Hülsenfrüchte und alles andere als Kontext.
     protein_group = case_when(
       code_main_protein %in% c("rotes_fleisch", "gefluegel") ~ "Fleisch (Rotes Fleisch & Geflügel)",
       code_main_protein == "huelsenfruechte" ~ "Hülsenfrüchte",
@@ -19,15 +30,19 @@ area_data <- menus_classified |>
   group_by(year, protein_group) |>
   summarise(n = n(), .groups = "drop") |>
   group_by(year) |>
+  # Jahres-Normalisierung, damit auch Jahre mit unterschiedlicher Datendichte vergleichbar sind
   mutate(share = n / sum(n)) |>
   ungroup() |>
   mutate(
+    # Die Reihenfolge der Flächen im Plot: Fleisch unten, Andere in der Mitte, Hülsenfrüchte oben.
+    # So ist die Hülsenfrüchte-Fläche immer oben und ihre Wachstumstendenz direkt sichtbar.
     protein_group = factor(
       protein_group,
       levels = c("Fleisch (Rotes Fleisch & Geflügel)", "Andere Proteinquellen", "Hülsenfrüchte")
     )
   )
 
+# Visualisierung: Gestapeltes Area Chart ----------------------------------
 plot_area <- ggplot(area_data, aes(x = year, y = share, fill = protein_group)) +
   geom_area(alpha = 0.85, color = "white", linewidth = 0.5) +
   scale_y_continuous(labels = scales::percent) +
@@ -35,7 +50,7 @@ plot_area <- ggplot(area_data, aes(x = year, y = share, fill = protein_group)) +
   scale_fill_manual(
     values = c(
       "Fleisch (Rotes Fleisch & Geflügel)" = "#D55E00",
-      "Andere Proteinquellen" = "#E69F00",  # Or some neutral color like #999999 if we wanted to deemphasize, but E69F00 works
+      "Andere Proteinquellen" = "#E69F00",
       "Hülsenfrüchte" = "#009E73"
     )
   ) +

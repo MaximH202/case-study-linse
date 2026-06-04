@@ -8,20 +8,19 @@
 llm_classified_short <- llm_classified_short |> 
   left_join(llm_classified_long |> distinct(id, code_main_protein), by = "id")
 
+
 # Jetzt kleben wir die Short-Ergebnisse an den Hauptdatensatz (menus).
 # Wir joinen über den "product_name"
 menus_short <- menus |> 
-  select(-menu_text) |> # Vermeidung der durch den Join entstandenen ID-Doppelungen
-  inner_join(llm_classified_short, by = "product_name") |> 
-  rename(id = id.x) |> # Bereinigung der durch den Join entstandenen ID-Doppelungen
-  select(-id.y)
+  inner_join(llm_classified_short, by = "menu_text") |>  #c("product_name", "menu_text")
+  rename(id = id.x, product_name = product_name.x) |> # Bereinigung der durch den Join entstandenen ID-Doppelungen
+  select(-id.y, -product_name.y)
 
 # Das Gleiche machen wir für die "Long"-Version (wo jede Zutat eine eigene Zeile hat).
 menus_long <- menus |> 
-  select(-menu_text) |> 
-  inner_join(llm_classified_long, by = "product_name") |> 
-  rename(id= id.x) |> 
-  select(-id.y)
+  inner_join(llm_classified_long, by = "menu_text") |> 
+  rename(id = id.x, product_name = product_name.x) |> 
+  select(-id.y, -product_name.y)
 
 # Wir sortieren die Spalten in eine logische und gut lesbare Reihenfolge
 menus_long <- menus_long |> 

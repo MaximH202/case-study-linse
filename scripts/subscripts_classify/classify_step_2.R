@@ -167,7 +167,7 @@ classify_row <- function(name_clean) {
 }
 
 # Aufteilung der Arbeit auf mehrere Kerne
-plan(multisession, workers = 8)
+plan(multisession, workers =12)
 
 # Wir prüfen jetzt "product_name" und "menu_text" auf keywords
 unique_dishes <- unique_dishes |>

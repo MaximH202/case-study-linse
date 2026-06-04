@@ -1,4 +1,9 @@
-# 7. Angebot vs. Nachfrage (Beliebtheit) nach Studierendenwerk ---------------
+# 7. Angebot vs. Nachfrage nach pflanzlichen Gerichten (Dumbell Chart)
+# Eine entscheidende Frage ist: Wird das pflanzliche Angebot auch angenommen?
+# Oder bieten Mensen viele vegane/vegetarische Gerichte an, die aber kaum gekauft werden?
+# Ein Dumbbell Chart eignet sich hier perfekt: Jedes Studierendenwerk hat einen Punkt
+# für den Angebots-Anteil und einen für den Nachfrage-Anteil, verbunden durch eine Linie.
+# Der Abstand und die Richtung der Linie zeigt, ob Angebot und Nachfrage auseinanderklaffen.
 
 library(dplyr)
 library(readr)
@@ -13,23 +18,26 @@ offer_demand_data <- menus_classified |>
   mutate(is_plant_based = group_level_1 %in% c("vegan", "vegetarisch")) |>
   group_by(student_service) |>
   summarise(
-    # Anteil am Angebot (Anzahl Zeilen)
+    # Angebots-Anteil: wie viele der angebotenen Gerichte sind pflanzlich?
     n_total = n(),
     n_plant = sum(is_plant_based),
     share_offer = n_plant / n_total,
     
-    # Anteil an der Nachfrage (actual_output)
+    # Nachfrage-Anteil: wie viele der ausgegebenen Portionen entfallen auf pflanzliche Gerichte?
     output_total = sum(actual_output, na.rm = TRUE),
     output_plant = sum(actual_output[is_plant_based], na.rm = TRUE),
     share_demand = output_plant / output_total,
     .groups = "drop"
   ) |>
-  # Wir behalten nur Studierendenwerke mit ausreichend vielen Daten für einen validen Vergleich
+  # Wir behalten nur Studierendenwerke mit ausreichend vielen Daten für einen validen Vergleich.
+  # Zu wenige Einträge würden die Anteile stark verzerren.
   filter(n_total > 1000) |>
+  # Sortierung nach Nachfrage-Anteil, damit der Plot eine klare Struktur hat
   arrange(share_demand) |>
   mutate(student_service = factor(student_service, levels = student_service))
 
-# Wir müssen die Daten fürs Plotting leicht ins lange Format bringen
+# Wir müssen die Daten fürs Plotting ins lange Format bringen,
+# damit ggplot Angebot und Nachfrage als separate Punkte darstellen kann.
 plot_data_long <- offer_demand_data |>
   pivot_longer(
     cols = c(share_offer, share_demand),
@@ -40,6 +48,10 @@ plot_data_long <- offer_demand_data |>
     metric = factor(metric, levels = c("share_offer", "share_demand"), labels = c("Angebot", "Nachfrage"))
   )
 
+# Visualisierung: Dumbbell Chart ------------------------------------------
+# Die Strecke zwischen den zwei Punkten zeigt die Lücke zwischen Angebot und Nachfrage.
+# Liegt der orange Punkt (Nachfrage) links vom blauen (Angebot), werden die pflanzlichen
+# Gerichte unterdurchschnittlich nachgefragt.
 plot_offer_demand <- ggplot(offer_demand_data) +
   geom_segment(
     aes(x = share_offer, xend = share_demand, y = student_service, yend = student_service),

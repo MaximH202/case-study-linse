@@ -1,3 +1,10 @@
+# 5. Beliebtheit der Top-6-Proteinquellen (Heatmap nach actual_output)
+# Während Skript 04 das Angebot zeigt (wie oft steht etwas auf der Karte),
+# schauen wir hier auf die Nachfrage: Wie viele Portionen wurden tatsächlich
+# ausgegeben? Das ist ein besserer Indikator für Beliebtheit bei den Studierenden.
+# Wir beschränken uns auf die 6 häufigsten Proteinquellen.
+
+# Die 6 Proteinquellen, auf die wir uns konzentrieren
 top6_protein <- c(
   "rotes_fleisch",
   "gefluegel",
@@ -7,12 +14,14 @@ top6_protein <- c(
   "fisch"
 )
 
+# Aggregation: Verkaufsanteile pro Jahr und Proteinquelle ------------------
 heatmap_data_relative <- menus_classified |>
+  # Nur Zeilen mit validen Ausgabemengen und bekanntem Protein behalten
   filter(!is.na(actual_output) & actual_output > 0) |>
   filter(!is.na(code_main_protein)) |>
   mutate(year = year(date)) |>
   
-  # A) Gesamtverkäufe für JEDES Jahr berechnen (für alle Gerichte)
+  # A) Gesamtverkäufe für JEDES Jahr berechnen (als Referenzbasis für alle Gruppen)
   group_by(year) |>
   mutate(yearly_total = sum(actual_output)) |>
   
@@ -20,7 +29,9 @@ heatmap_data_relative <- menus_classified |>
   group_by(year, code_main_protein, yearly_total) |>
   summarise(protein_sold = sum(actual_output), .groups = "drop") |>
   
-  # C) Den prozentualen Anteil berechnen
+  # C) Den prozentualen Anteil an den Gesamtverkäufen des Jahres berechnen.
+  # Durch die Normalisierung auf den Jahres-Gesamtabsatz werden Jahre mit
+  # unterschiedlicher Datenlage vergleichbar.
   mutate(share = protein_sold / yearly_total) |>
   
   # D) Nur die Top 6 behalten und für den Plot sortieren
@@ -39,6 +50,7 @@ heatmap_data_relative <- menus_classified |>
     )
   )
 
+# Visualisierung: Heatmap nach Verkaufsanteilen ----------------------------
 plot_heatmap_relative <- ggplot(heatmap_data_relative, aes(x = factor(year), y = code_main_protein, fill = share)) +
   geom_tile(color = "white", linewidth = 0.5) +
   scale_fill_viridis_c(
