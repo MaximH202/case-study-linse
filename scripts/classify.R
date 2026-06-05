@@ -7,11 +7,13 @@ menus <- read_csv("data/menus_consolidated.csv") |>
     cafeteria = as_factor(cafeteria)
   )
 
-# Run an R subscript (example)
+# Alle Classify-Scripts
 source("scripts/subscripts_classify/classify_step_1.R")
-source("scripts/subscripts_classify/classify_step_2.R") 
-source("scripts/subscripts_classify/classify_step_3.R") #LLM Skript, hier vorher sample_size festlegen
+source("scripts/subscripts_classify/classify_step_2.R") # keyword mapping, vorher Anzahl CPU-Kerne festlegen 
+source("scripts/subscripts_classify/classify_step_3.R") # LLM Skript, hier vorher sample_size festlegen
 source("scripts/subscripts_classify/classify_step_4.R") 
 source("scripts/subscripts_classify/classify_step_5.R") 
 source("scripts/subscripts_classify/classify_step_6.R") 
-source("scripts/subscripts_classify/classify_step_7.R")
+source("scripts/subscripts_classify/classify_step_7.R") # write_csv derzeit auskommentiert
+
+source("scripts/analyze.R")

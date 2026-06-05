@@ -109,6 +109,7 @@ def process_with_llm_openai_multiple_workers(data, model, system_prompt, user_pr
     results = {}
 
     def _process_row(index, row):
+        # Formatieren der Inputs
         user_prompt = user_prompt_template.format(
             id = row["id"],
             menu_text=row["menu_text"],
@@ -123,8 +124,8 @@ def process_with_llm_openai_multiple_workers(data, model, system_prompt, user_pr
             schema=schema
         )
         return index, result
-
-    with ThreadPoolExecutor(max_workers=10) as executor:
+    # Threads um mehrere Daten auf einmal analyiseren zu lassen
+    with ThreadPoolExecutor(max_workers) as executor:
         futures = [
             executor.submit(_process_row, index, row)
             for index, row in data.iterrows()
@@ -143,7 +144,7 @@ def process_with_llm_openai_multiple_workers(data, model, system_prompt, user_pr
                 f"— est. {remaining:.0f}s remaining"
             )
 
-    # Write back into dataframe in original order
+    # Reihenfolge des Outputs
     for index, result in results.items():
         data.at[index, "llm_result"] = result["llm_result"]
         data.at[index, "llm_call_timestamp"] = result["llm_call_timestamp"]

@@ -59,7 +59,7 @@ llm_classified_long <- results |>
   ) |>
   ungroup()
 
-# Zum Schluss geben wir jeder Zutatenklasse noch einen "proteincode".
+# Zum Schluss geben wir jeder Zutatenklasse noch einen "proteincode". Dieser wird jedoch nicht in der Analyse genutzt und dient nur der Vollständigkeit
 llm_classified_long <- llm_classified_long |>
   mutate(
     proteincode = case_when(

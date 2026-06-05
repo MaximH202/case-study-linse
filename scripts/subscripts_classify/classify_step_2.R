@@ -151,7 +151,7 @@ samen = c(
 )
 
 # Hilfsfunktion, um aus der Keyword-Liste einen funktionierenden regulären Ausdruck (Regex) zu bauen.
-# Sie klebt alle Wörter einer Liste mit "Oder"-Zeichen (|) zusammen, z.B. "rind|rinder|kalb".
+# Sie klebt alle Wörter einer Liste mit "Oder"-Zeichen (|) zusammen
 make_pattern <- function(kws) {
   kws |>
     str_replace_all("\\*", "") |>
@@ -166,8 +166,8 @@ classify_row <- function(name_clean) {
   names(matches)[matches]
 }
 
-# Aufteilung der Arbeit auf mehrere Kerne
-plan(multisession, workers =12)
+# Aufteilung der Arbeit auf mehrere Kerne, hier selber anpassen je nach CPU
+plan(multisession, workers =10)
 
 # Wir prüfen jetzt "product_name" und "menu_text" auf keywords
 unique_dishes <- unique_dishes |>
@@ -175,7 +175,6 @@ unique_dishes <- unique_dishes |>
     classes_name = future_map(product_name, classify_row),
     classes_text = future_map(menu_text, classify_row),
     
-    # Manchmal steht im Namen "Rinderbraten" und im Text auch. 
     # Wir fügen die Treffer beider Prüfungen zusammen und entfernen mit "unique()" die Doppelungen.
     matched_classes = map2(classes_name, classes_text, ~ unique(c(.x, .y))),
     

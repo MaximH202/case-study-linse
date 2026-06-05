@@ -1,11 +1,9 @@
-# 8. Wochentags-Analyse: Gibt es einen Veggie-Tag-Effekt?
+# 7. Wochentags-Analyse: Gibt es einen Veggie-Tag-Effekt?
 # Viele Mensen haben einen festen "Veggie-Tag" (meistens Donnerstag), an dem
 # bewusst mehr pflanzliche Gerichte angeboten werden. Hier schauen wir, ob sich
 # das auch in den tatsächlichen Verkaufszahlen niederschlägt.
 # Dafür vergleichen wir die durchschnittlich verkauften Portionen pro Gericht
 # (nicht den Gesamtabsatz) getrennt nach fleischhaltig und pflanzlich.
-# Durch die Normalisierung auf "pro angebotenem Gericht" werden Tage mit
-# mehr oder weniger Auswahl vergleichbar.
 
 library(dplyr)
 library(readr)
@@ -14,7 +12,7 @@ library(ggplot2)
 
 menus_classified <- read_csv("data/menus_classified.csv", show_col_types = FALSE)
 
-# Wochentag extrahieren und Kategorien zusammenfassen ---------------------
+# Wochentag extrahieren und Kategorien zusammenfassen 
 weekday_data <- menus_classified |>
   filter(!is.na(group_level_1), !is.na(actual_output), actual_output > 0) |>
   filter(!is.na(date)) |>
@@ -35,7 +33,7 @@ weekday_data <- menus_classified |>
   # pflanzlich und fleischhaltig bleibt.
   filter(diet_category != "Andere (Pescetarisch)")
 
-# Aggregation: Durchschnittlicher Absatz pro Gericht und Wochentag --------
+# Aggregation: Durchschnittlicher Absatz pro Gericht und Wochentag
 plot_weekday_data <- weekday_data |>
   group_by(weekday, diet_category) |>
   summarise(
@@ -48,7 +46,7 @@ plot_weekday_data <- weekday_data |>
     .groups = "drop"
   )
 
-# Visualisierung: Gruppiertes Balkendiagramm nach Wochentag ---------------
+# Visualisierung: Gruppiertes Balkendiagramm nach Wochentag
 plot_weekday <- ggplot(
   plot_weekday_data,
   aes(x = weekday, y = avg_output_per_dish, fill = diet_category)
@@ -66,7 +64,7 @@ plot_weekday <- ggplot(
     x = "Wochentag",
     y = "Ø Verkaufte Portionen pro Gericht",
     fill = "Kategorie",
-    caption = "Beschränkt auf Mo-Fr"
+    caption = paste("Auf Basis von:", len_gerichte, "Gerichten | 2014-2026")
   ) +
   theme_minimal(base_size = 14) +
   theme(
@@ -85,7 +83,7 @@ plot_weekday <- ggplot(
   )
 
 ggsave(
-  "communications/visualizations/08_weekday_analysis.svg",
+  "communications/visualizations/07_weekday_analysis.svg",
   plot_weekday,
   width = 9,
   height = 6

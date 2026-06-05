@@ -4,9 +4,17 @@
 # Ensure renv is present and packages are in sync
 if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
 if (file.exists("renv.lock")) renv::restore() else renv::init()
+if (!requireNamespace("furrr", quietly = TRUE)) {
+  install.packages("furrr")
+}
+if (!requireNamespace("scales", quietly = TRUE)) {
+  install.packages("scales")
+}
+
+
 
 # Load all required libraries
-pacman::p_load(tidyverse, janitor, skimr, jsonlite, reticulate, furrr, openxlsx,scales)
+pacman::p_load(tidyverse, janitor, skimr, jsonlite, reticulate, furrr, scales)
 
 # Ensure Python virtual environment exists, then activate it
 venv_path <- normalizePath(".python-env", mustWork = FALSE)

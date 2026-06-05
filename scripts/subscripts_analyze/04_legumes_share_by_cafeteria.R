@@ -1,19 +1,17 @@
-# 3. Hülsenfrüchte-Anteil nach Mensa im Zeitverlauf (Boxplot)
-# Während Skript 02 den Gesamttrend über alle Mensen zeigt, gehen wir hier
+# 4. Hülsenfrüchte-Anteil nach Mensa im Zeitverlauf (Boxplot)
+# Während Skript 03 den Gesamttrend über alle Mensen zeigt, gehen wir hier
 # eine Ebene tiefer: Wie verteilt sich der Hülsenfrüchte-Anteil über die einzelnen
 # Mensen, und hat sich diese Verteilung über die Zeit verändert?
 # Dafür gruppieren wir die Jahre in Perioden und stellen jede Mensa als einzelnen
 # Punkt im Boxplot dar.
 
-# Schritt 1: IDs aller Gerichte mit Hülsenfrüchten ermitteln ---------------
-# Wir holen uns aus der Long-Tabelle alle Gericht-IDs, bei denen irgendeine
-# Komponente "huelsenfruechte" ist — egal in welchem Anteil.
+# Schritt 1: IDs aller Gerichte mit Hülsenfrüchten ermitteln
 legume_ids <- components |> 
   filter(group_level_2 == "huelsenfruechte") |> 
   distinct(id) |> 
   mutate(has_legume = TRUE)
 
-# Schritt 2: Hülsenfrüchte-Anteil pro Mensa und Zeitraum berechnen --------
+# Schritt 2: Hülsenfrüchte-Anteil pro Mensa und Zeitraum berechnen
 legume_by_cafeteria <- menus_classified |> 
   left_join(legume_ids, by = "id") |> 
   mutate(
@@ -33,16 +31,15 @@ legume_by_cafeteria <- menus_classified |>
   summarise(
     # Der Anteil ergibt sich als Mittelwert des logischen Vektors (TRUE = Hülsenfrucht-Gericht)
     legume_share = mean(has_legume),
-    n = n(),
+    n_items = n(),
     .groups = "drop"
   ) |> 
   # Mensen ohne einen einzigen Hülsenfrüchte-Eintrag im Zeitraum werden ausgeblendet,
   # damit der Plot nicht durch Nullwerte verzerrt wird.
   filter(legume_share > 0)
 
+
 # Visualisierung: Boxplot mit einzelnen Mensen als Punkte
-# Der Boxplot zeigt die Verteilung über alle Mensen, die Punkte die Einzelwerte.
-# So sieht man sowohl den typischen Wert (Median) als auch Ausreißer nach oben.
 p_legume_by_cafeteria <- legume_by_cafeteria |> 
   ggplot(aes(x = period, y = legume_share)) +
   geom_boxplot(fill = "#009E73", alpha = 0.5, outlier.shape = NA, color = "grey30") +
@@ -53,7 +50,7 @@ p_legume_by_cafeteria <- legume_by_cafeteria |>
     subtitle = "Jeder Punkt repräsentiert eine Mensa, gruppiert nach Zeitraum",
     x = "Zeitraum",
     y = "Anteil der Gerichte mit Hülsenfrüchten",
-    caption = "Anzahl Gerichte = 521915"
+    caption = paste("Auf Basis von:", len_gerichte, "Gerichten | 2014-2026")
   ) +
   theme_minimal(base_size = 14) +
   theme(
@@ -69,11 +66,10 @@ p_legume_by_cafeteria <- legume_by_cafeteria |>
     panel.background = element_rect(fill = "white", color = NA)
   )
 
-p_legume_by_cafeteria
 
 ggsave(
-  "communications/visualizations/03_legumes_share_by_cafeteria.svg",
+  "communications/visualizations/04_legumes_share_by_cafeteria.svg",
   p_legume_by_cafeteria,
   width = 9,
-  height = 7
+  height = 6
 )

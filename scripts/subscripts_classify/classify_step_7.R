@@ -4,16 +4,16 @@
 # ("menus") mit allen Duplikaten und Standorten anheften.
 
 # Zuerst holen wir das berechnete Hauptprotein aus der "Long"-Version in unsere "Short"-Version.
-# Da die ID in beiden Datensätzen gleich ist, geht das ganz einfach per left_join.
+# Da die ID in beiden Datensätzen gleich ist, geht das per left_join.
 llm_classified_short <- llm_classified_short |> 
   left_join(llm_classified_long |> distinct(id, code_main_protein), by = "id")
 
 
 # Jetzt kleben wir die Short-Ergebnisse an den Hauptdatensatz (menus).
-# Wir joinen über den "product_name"
+# Wir joinen über den "menu_text"
 menus_short <- menus |> 
-  inner_join(llm_classified_short, by = "menu_text") |>  #c("product_name", "menu_text")
-  rename(id = id.x, product_name = product_name.x) |> # Bereinigung der durch den Join entstandenen ID-Doppelungen
+  inner_join(llm_classified_short, by = "menu_text") |>
+  rename(id = id.x, product_name = product_name.x) |> # Bereinigung der durch den Join entstandenen Doppelungen
   select(-id.y, -product_name.y)
 
 # Das Gleiche machen wir für die "Long"-Version (wo jede Zutat eine eigene Zeile hat).
@@ -59,5 +59,5 @@ menus_short <- menus_short |>
   )
 
 # abspeichern als CSV-Dateien
-write_csv(menus_short, "data/menus_classified.csv")
-write_csv(menus_long, "data/menu_components.csv")
+#write_csv(menus_short, "data/menus_classified.csv")
+#write_csv(menus_long, "data/menu_components.csv")

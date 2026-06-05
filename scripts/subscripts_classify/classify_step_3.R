@@ -7,7 +7,7 @@ reticulate::source_python("scripts/subscripts_classify/classify_with_llm_openai.
 
 # Das ist der Bauplan (Prompt) für das LLM. Hier erklären wir ihm ganz genau, 
 # wie es arbeiten soll, welche Klassen erlaubt sind und wie die Ausgabe aussehen muss.
-# Durch klare Regeln (z.B. die "Burger Rule" oder "Vegan Override") verhindern wir Halluzinationen. Gleichzeitig überlassen wir ihm genug Freiraum um sich auf die Hauptaufgabe
+# Durch klare Regeln verhindern wir Halluzinationen. Gleichzeitig überlassen wir ihm genug Freiraum um sich auf die Hauptaufgabe
 # zu fokussieren.
 user_prompt_template <- '
 ALLOWED FOOD CLASSES (Use ONLY these exact strings):
@@ -87,9 +87,10 @@ schema <- '{
 
 # Wir bereiten die Gerichte für das LLM vor, indem wir nur die nötigsten Infos mitnehmen.
 batch_menus <- unique_dishes |> 
+  slice_sample(n=50) |> 
   select(id, product_name, menu_text, klassen) 
 
-# wir haben eine neue classify_with_llm funktion gebaut und lassen bis zu 8 Abfragen gleichzeitig laufen, um Zeit zu sparen.
+# wir haben eine neue classify_with_llm funktion gebaut und lassen mehrere Abfragen (max_workers) gleichzeitig laufen, um Zeit zu sparen.
 results <- process_with_llm_openai_multiple_workers(
   data = batch_menus,
   model = "gpt-5-nano",

@@ -23,11 +23,10 @@ clean_text <- function(text_column) {
 
 # Wir filtern die Hauptgerichte heraus und normieren sie.
 # Ziel ist es, in "unique_dishes" jedes einzigartige Gericht genau einmal zu haben.
-# Das spart  Zeit und Geld, wenn wir die Daten später an das LLM schicken.
 unique_dishes <- menus |>
   mutate(
-    # Wir wandeln Namen und Typen zur Sicherheit in Kleinbuchstaben um,
-    # damit unsere Keywords (exclude_pattern) verlässlich greifen.
+    # Wir wandeln Namen und Typen in Kleinbuchstaben um,
+    # damit Keywords (exclude_pattern) verlässlich greifen.
     product_name = str_to_lower(product_name),
     prod_type = str_to_lower(prod_type),
     
@@ -44,8 +43,7 @@ unique_dishes <- menus |>
     id = as.integer(id)
   ) |> 
   # Klammern und deren Inhalt entfernen, außer wenn "vegan" oder "vegetarisch" drin steht.
-  # So bereinigen wir z.B. Zusatzstoffe (z.B. "Schnitzel (1, 2, A)") ohne wichtige
-  # Ernährungshinweise zu verlieren.
+  # So bereinigen wir z.B. Zusatzstoffe (z.B. "Schnitzel (1, 2, A)")
   mutate(
     menu_text = map_chr(menu_text, ~ {
       str_remove_all(.x, "\\((?![^()]*\\b(vegan|vegetarisch)\\b)[^()]*\\)")

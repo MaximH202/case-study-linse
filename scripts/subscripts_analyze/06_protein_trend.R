@@ -1,4 +1,4 @@
-# 4. Entwicklung der Hauptproteinquellen im Zeitverlauf (Heatmap)
+# 6. Entwicklung der Hauptproteinquellen im Zeitverlauf (Heatmap)
 # Hier schauen wir uns an, wie sich die sechs wichtigsten Proteinquellen
 # (Rotes Fleisch, Geflügel, Fisch, Milchprodukte, Hülsenfrüchte, Getreide)
 # anteilig am Angebot über die Jahre verändert haben.
@@ -6,22 +6,20 @@
 # in welchem Jahr besonders stark oder schwach vertreten war.
 #
 # Hinweis: Kategorieen wie "ei", "samen", "nuesse", "gemuese" und 
-# "keine_eindeutige_proteinquelle" werden ausgeschlossen, weil sie entweder 
-# zu selten sind oder keine klare Aussage über Proteingehalt erlauben.
+# "keine_eindeutige_proteinquelle" werden ausgeschlossen
 
-# Aggregation: Anteile pro Jahr und Proteinquelle berechnen ---------------
+# Aggregation: Anteile pro Jahr und Proteinquelle berechnen
 protein_trend <- menus_classified |>
   mutate(year = lubridate::year(date)) |>
   filter(!code_main_protein %in% c("samen", "nuesse", "keine_eindeutige_proteinquelle", "ei", "gemuese")) |>
   group_by(year, code_main_protein) |>
-  summarise(n = n(), .groups = "drop") |>
+  summarise(n_items = n(), .groups = "drop") |>
   group_by(year) |>
   # Der Anteil wird innerhalb jedes Jahres berechnet, damit Jahre mit
   # unterschiedlich vielen Daten trotzdem vergleichbar sind.
-  mutate(share = n / sum(n)) |>
-  ungroup()
-
-# Visualisierung: Heatmap -------------------------------------------------
+  mutate(share = n_items / sum(n_items))
+  
+# Visualisierung: Heatmap
 p_protein_trend <- protein_trend |>
   filter(code_main_protein %in% c(
     "rotes_fleisch",
@@ -64,7 +62,7 @@ p_protein_trend <- protein_trend |>
     x = "Jahr",
     y = "Hauptprotein",
     fill = "Anteil",
-    caption = "Anzahl Gerichte = 521915"
+    caption = paste("Auf Basis von:", len_gerichte, "Gerichten | 2014-2026")
   ) +
   theme_minimal(base_size = 14) +
   theme(
@@ -82,10 +80,9 @@ p_protein_trend <- protein_trend |>
     panel.background = element_rect(fill = "white", color = NA)
   )
 
-p_protein_trend
 
 ggsave(
-  "communications/visualizations/04_main_proteins.svg",
+  "communications/visualizations/06_main_proteins.svg",
   p_protein_trend,
   width = 9,
   height = 6

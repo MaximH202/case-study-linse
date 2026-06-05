@@ -35,7 +35,8 @@ Ernährungsform und Hauptprotein wurden nicht durch das LLM, sondern durch feste
 
 #### Ernährungsform (group_level_1)
 
-Die Ernährungsform wird durch ein hierarchisches System bestimmt (classify_step_5). Ganz oben steht die direkte Wortsuche nach „vegan" oder „vegetarisch" im `menu_text` — dieser expliziten Kennzeichnung der Mensen vertrauen wir am meisten. Danach wird stufenweise anhand der vom LLM erkannten Lebensmittelklassen entschieden: Fleisch → omnivor, Fisch (ohne Fleisch) → pescetarisch, Milch/Ei (ohne Fleisch/Fisch) → vegetarisch, alles andere → vegan. Diese regelbasierte Ermittlung beugt Halluzinationen vor, ist aber eng an die Qualität des LLM-Outputs gebunden.
+Die Ernährungsform wird durch ein hierarchisches System bestimmt (classify_step_5). Ganz oben steht die direkte Wortsuche nach den Tags „vegan" oder „vegetarisch" im `menu_text` — dieser expliziten Kennzeichnung der Mensen vertrauen wir am meisten. Dies kann jedoch im Wiederspruch mit den vom LLM erkannten Klassen stehen, wenn dieses die Tags bei der Klassifizierung nicht berücksichtigt hat.
+Danach wird stufenweise anhand der vom LLM erkannten Lebensmittelklassen entschieden: Fleisch → omnivor, Fisch (ohne Fleisch) → pescetarisch, Milch/Ei (ohne Fleisch/Fisch) → vegetarisch, alles andere → vegan. Diese regelbasierte Ermittlung beugt Halluzinationen vor, ist aber eng an die Qualität des LLM-Outputs gebunden.
 
 #### Hauptprotein (code_main_protein)
 
@@ -67,7 +68,6 @@ Um die Verlässlichkeit des LLM zu prüfen, haben wir uns als Stichprobe 100 kla
 - Das LLM bestimmt nur grob die Lebensmittelklassen
 - Kleinere Komponenten (z.B. eine Ei-Panade) werden oft nicht erkannt, was besonders die Differenzierung zwischen vegan und vegetarisch ungenau macht
 - Gerichte, die explizit als „oder"-Auswahl angegeben sind (z.B. „Pizza oder Pasta"), werden vollständig ausgeschlossen, da sie nicht eindeutig klassifizierbar sind
-
 ---
 
 ### Task 3: Exploratory Analysis
@@ -79,26 +79,21 @@ Die neun Analyse-Skripte sind thematisch aufgebaut und bauen auf den zwei klassi
 #### 01 – Entwicklung der Ernährungsformen (diet_yearly)
 100%-gestapeltes Balkendiagramm, das zeigt, wie sich der Anteil von veganen, vegetarischen, pescetarischen und omnivoren Gerichten am Gesamtangebot Jahr für Jahr verändert hat. Zusätzlich werden die `actual_output`-Mengen vorbereitet, um auch die Nachfrageseite analysieren zu können.
 
-#### 02 – Hülsenfrüchte-Anteil im Zeitverlauf (legumes_share_over_time)
-Liniendiagramm mit linearen Trendgeraden, das drei Rollen von Hülsenfrüchten unterscheidet: als dominante Hauptzutat, als Nebenkomponente (mittel/gering) und als das klassifizierte Hauptprotein eines Gerichts. So lässt sich beurteilen, ob Hülsenfrüchte zunehmend als vollwertiger Fleischersatz eingesetzt werden oder weiterhin eine Nebenrolle spielen.
-
-#### 03 – Hülsenfrüchte-Anteil nach Mensa (legumes_share_by_cafeteria)
-Boxplot, bei dem jeder Punkt eine einzelne Mensa repräsentiert, gruppiert in Vierjahreszeiträume. Der Plot zeigt, ob der Anstieg des Hülsenfrüchte-Anteils ein breites Phänomen ist, das über alle Standorte hinweg passiert, oder ob er von einzelnen Vorreitern getrieben wird.
-
-#### 04 – Hauptproteinquellen im Zeitverlauf (protein_trend)
-Heatmap der sechs wichtigsten Proteinquellen (Rotes Fleisch, Geflügel, Fisch, Milchprodukte, Hülsenfrüchte, Getreide) über alle Jahre. Seltene Kategorien wie `ei`, `samen` und `keine_eindeutige_proteinquelle` werden ausgeschlossen, um den Fokus auf die relevanten Verschiebungen zu halten.
-
-#### 05 – Beliebtheit der Top-6-Proteinquellen (beliebtheit)
-Heatmap auf Basis der tatsächlichen Ausgabemengen (`actual_output`) statt der Angebotsanzahl. Dadurch wird sichtbar, welche Proteinquellen von den Studierenden tatsächlich nachgefragt werden, unabhängig davon, wie häufig sie auf der Karte stehen.
-
-#### 06 – Ernährungsformen nach Studierendenwerk (diet_by_student_service)
+#### 02 – Ernährungsformen nach Studierendenwerk (diet_by_student_service)
 Horizontales 100%-gestapeltes Balkendiagramm, das die Studierendenwerke nach ihrem kombinierten Vegan-/Vegetarisch-Anteil sortiert auflistet. So werden regionale Unterschiede im Angebot auf einen Blick sichtbar.
 
-#### 07 – Angebot vs. Nachfrage (offer_vs_demand)
-Dumbbell Chart, das für jedes Studierendenwerk den pflanzlichen Angebotsanteil dem tatsächlichen Nachfrageanteil gegenüberstellt. Studierendenwerke mit weniger als 1.000 Einträgen werden ausgeschlossen, um verzerrte Quoten zu vermeiden. Der Abstand zwischen den beiden Punkten zeigt, ob das pflanzliche Angebot über- oder unterdurchschnittlich angenommen wird.
+#### 03 – Hülsenfrüchte-Anteil im Zeitverlauf (legumes_share_over_time)
+Liniendiagramm mit linearen Trendgeraden, das drei Rollen von Hülsenfrüchten unterscheidet: als dominante Hauptzutat, als Nebenkomponente (mittel/gering) und als das klassifizierte Hauptprotein eines Gerichts. So lässt sich beurteilen, ob Hülsenfrüchte zunehmend als vollwertiger Fleischersatz eingesetzt werden oder weiterhin eine Nebenrolle spielen.
 
-#### 08 – Wochentags-Analyse: Veggie-Tag-Effekt? (weekday_analysis)
+#### 04 – Hülsenfrüchte-Anteil nach Mensa (legumes_share_by_cafeteria)
+Boxplot, bei dem jeder Punkt eine einzelne Mensa repräsentiert, gruppiert in Vierjahreszeiträume. Der Plot zeigt, ob der Anstieg des Hülsenfrüchte-Anteils ein breites Phänomen ist, das über alle Standorte hinweg passiert, oder ob er von einzelnen Vorreitern getrieben wird.
+
+#### 05 – Beliebtheit der Top-6-Proteinquellen im Zeitverlauf (beliebtheit)
+Heatmap auf Basis der tatsächlichen Ausgabemengen (`actual_output`) über alle Jahre. Dadurch wird sichtbar, welche Proteinquellen von den Studierenden tatsächlich nachgefragt werden, unabhängig davon, wie häufig sie auf der Karte stehen.
+
+#### 06 – Hauptproteinquellen im Zeitverlauf (protein_trend)
+Heatmap der sechs wichtigsten Proteinquellen (Rotes Fleisch, Geflügel, Fisch, Milchprodukte, Hülsenfrüchte, Getreide) über alle Jahre. Seltene Kategorien wie `ei`, `samen` und `keine_eindeutige_proteinquelle` werden ausgeschlossen, um den Fokus auf die relevanten Verschiebungen zu halten.
+
+
+#### 07 – Wochentags-Analyse: Veggie-Tag-Effekt? (weekday_analysis)
 Gruppiertes Balkendiagramm, das die durchschnittlich verkauften Portionen pro angebotenem Gericht nach Wochentag und Kategorie (pflanzlich vs. fleischhaltig) zeigt. Durch die Normalisierung auf "pro angebotenem Gericht" werden Tage mit mehr oder weniger Auswahl fair verglichen. Die Analyse ist auf Montag bis Freitag beschränkt.
-
-#### 09 – Substitutionseffekte: Fleisch vs. Hülsenfrüchte (meat_vs_legumes_area)
-Gestapeltes Area Chart, das rotes Fleisch und Geflügel gemeinsam den Hülsenfrüchten gegenüberstellt. Alle anderen Proteinquellen werden als "Andere" zusammengefasst. So wird direkt sichtbar, ob und in welchem Ausmaß Hülsenfrüchte Fleisch im Angebot ersetzen.

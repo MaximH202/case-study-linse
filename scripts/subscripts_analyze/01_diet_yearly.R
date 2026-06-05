@@ -3,20 +3,16 @@
 # pescetarisch, omnivor) über die Jahre verändert hat.
 # Dafür laden wir zunächst die klassifizierten Daten und bereiten sie für die Visualisierung vor.
 
-# Daten laden -----------------------------------------------------------
-
 menus_classified <- read_csv("data/menus_classified.csv")
 
 components <- read_csv("data/menu_components.csv")
 
+len_gerichte <- menus_classified |>
+  summarise(n())
+
 menus_prepared <- menus_classified |>
   mutate(
-    # Aus dem genauen Datum wird das Jahr extrahiert,
-    # weil die Forschungsfrage nach Entwicklungen über die Zeit fragt.
     year = year(date),
-
-    # Der Monat wird vorbereitet, falls später feinere Zeitverläufe
-    # statt Jahresvergleichen analysiert werden sollen.
     month = floor_date(date, "month"),
 
     # Die Ernährungsform (aus group_level_1-Spalte der klassifizierten Daten)
@@ -27,8 +23,7 @@ menus_prepared <- menus_classified |>
       levels = c("vegan", "vegetarisch", "pescetarisch", "omnivor")
     ),
 
-    # Lesbarere deutsche Bezeichnungen für die Proteinquellen in den Visualisierungen.
-    # Damit müssen wir in den ggplot-Skripten nicht mit den internen Code-Strings arbeiten.
+    # Lesbarere Bezeichnungen für die Proteinquellen in den Visualisierungen.
     code_main_protein_de = case_when(
       code_main_protein == "rotes_fleisch" ~ "Rotes Fleisch",
       code_main_protein == "gefluegel" ~ "Geflügel",
@@ -53,25 +48,15 @@ plot_diet_yearly_data <- menus_prepared |>
     # Zählt, wie viele Speisen pro Jahr und Ernährungsform angeboten wurden.
     # Damit lässt sich beantworten, ob z. B. vegane Gerichte häufiger werden.
     n_items = n(),
-
-    # Summiert die tatsächlichen Ausgabemengen.
-    # Dadurch kann man zusätzlich sehen, ob diese Gerichte auch nachgefragt wurden.
-    total_output = sum(actual_output, na.rm = TRUE),
     .groups = "drop"
   ) |>
   group_by(year) |>
   mutate(
-    # Berechnet den Anteil an allen angebotenen Speisen des jeweiligen Jahres.
-    # Dadurch werden Jahre vergleichbar, auch wenn unterschiedlich viele Daten vorliegen.
     share_items = n_items / sum(n_items),
-
-    # Berechnet den Anteil an allen ausgegebenen Portionen des jeweiligen Jahres.
-    # Das ist wichtig für die Beliebtheit bzw. tatsächliche Nutzung.
-    share_output = total_output / sum(total_output)
   ) |>
   ungroup()
 
-# Visualisierung: 100%-gestapeltes Balkendiagramm -------------------------
+# Visualisierung: gestapeltes Balkendiagramm
 
 plot_diet_yearly <- ggplot(
   plot_diet_yearly_data,
@@ -99,7 +84,7 @@ plot_diet_yearly <- ggplot(
     x = "Jahr",
     y = "Anteil der angebotenen Speisen",
     fill = "Ernährungsform",
-    caption = "Anzahl Gerichte = 521915"
+    caption = paste("Auf Basis von:", len_gerichte, "Gerichten | 2014-2026")
   ) +
   theme_minimal(base_size = 14) +
   theme(

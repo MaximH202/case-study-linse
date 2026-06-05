@@ -1,4 +1,4 @@
-# 6. Anteil der Ernährungsformen nach Studierendenwerk
+# 2. Anteil der Ernährungsformen nach Studierendenwerk
 # Während Skript 01 die Entwicklung über die Zeit zeigt, vergleichen wir hier
 # die Studierendenwerke miteinander: Wo ist der pflanzliche Anteil am höchsten?
 # Die Sortierung nach dem kombinierten Vegan- und Vegetarisch-Anteil macht
@@ -16,22 +16,20 @@ menus_prepared <- menus_classified |>
     )
   )
 
-# Angebots-Anteile pro Studierendenwerk und Ernährungsform berechnen ------
+# Angebots-Anteile pro Studierendenwerk und Ernährungsform berechnen
 plot_diet_sw_data <- menus_prepared |>
   group_by(student_service, group_level_1) |>
   summarise(n_items = n(), .groups = "drop") |>
   group_by(student_service) |>
   mutate(
     total_items = sum(n_items),
-    # Relativer Anteil statt absoluter Anzahl, damit große und kleine
-    # Studierendenwerke fair verglichen werden können
+    # Relativer Anteil statt absoluter Anzahl
     share = n_items / total_items
   ) |>
   ungroup()
 
-# Sortierung der Studierendenwerke nach pflanzlichem Anteil ---------------
-# Wir sortieren aufsteigend nach dem kombinierten Anteil von vegan + vegetarisch,
-# damit das Studierendenwerk mit dem höchsten Pflanzenkost-Anteil oben steht.
+# Sortierung der Studierendenwerke nach pflanzlichem Anteil
+# Wir sortieren aufsteigend nach dem kombinierten Anteil von vegan + vegetarisch
 order_sw <- plot_diet_sw_data |>
   filter(group_level_1 %in% c("vegan", "vegetarisch")) |>
   group_by(student_service) |>
@@ -42,7 +40,7 @@ order_sw <- plot_diet_sw_data |>
 plot_diet_sw_data <- plot_diet_sw_data |>
   mutate(student_service = factor(student_service, levels = order_sw))
 
-# Visualisierung: Horizontales 100%-gestapeltes Balkendiagramm ------------
+# Visualisierung: Horizontales Balkendiagramm
 plot_diet_sw <- ggplot(
   plot_diet_sw_data,
   aes(x = share, y = student_service, fill = group_level_1)
@@ -69,7 +67,7 @@ plot_diet_sw <- ggplot(
     x = "Anteil am Angebot",
     y = "Studierendenwerk",
     fill = "Ernährungsform",
-    caption = paste0("Anzahl Gerichte = ", sum(plot_diet_sw_data$n_items))
+    caption = paste("Auf Basis von:", len_gerichte, "Gerichten | 2014-2026")
   ) +
   theme_minimal(base_size = 14) +
   theme(
@@ -88,8 +86,8 @@ plot_diet_sw <- ggplot(
   )
 
 ggsave(
-  "communications/visualizations/06_diet_by_student_service.svg",
+  "communications/visualizations/02_diet_by_student_service.svg",
   plot_diet_sw,
   width = 9,
-  height = 7
+  height = 6
 )
