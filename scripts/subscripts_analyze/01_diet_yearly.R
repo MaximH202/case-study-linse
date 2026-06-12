@@ -86,13 +86,13 @@ plot_diet_yearly <- ggplot(
     fill = "Ernährungsform",
     caption = paste("Auf Basis von:", len_gerichte, "Gerichten | 2014-2026")
   ) +
-  theme_minimal(base_size = 14) +
+  theme_minimal(base_size = 15) +
   theme(
-    plot.title = element_text(face = "bold", size = 16, margin = margin(b = 5)),
-    plot.subtitle = element_text(color = "grey40", size = 12, margin = margin(b = 15)),
+    plot.title = element_text(face = "bold", size = 20, margin = margin(b = 5)),
+    plot.subtitle = element_text(color = "grey40", size = 14, margin = margin(b = 15)),
     plot.caption = element_text(hjust = 0, color = "grey50", size = 10, margin = margin(t = 10)),
-    axis.title.x = element_text(margin = margin(t = 10), face = "bold", color = "grey30"),
-    axis.title.y = element_text(margin = margin(r = 10), face = "bold", color = "grey30"),
+    axis.title.x = element_text(margin = margin(t = 14), face = "bold", color = "grey30"),
+    axis.title.y = element_text(margin = margin(r = 14), face = "bold", color = "grey30"),
     axis.text = element_text(color = "grey50"),
     legend.position = "bottom",
     legend.title = element_text(face = "bold"),
