@@ -1,4 +1,4 @@
-![Poster]("case-study-linse\linse-poster.png")
+![Poster](linse-poster.png)
 
 ## Solution Documentation
 
