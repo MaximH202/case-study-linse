@@ -1,3 +1,4 @@
+![Poster]("C:\Users\Maxim\Desktop\Linse Poster.png")
 ## Solution Documentation
 
 ### Task 1: Datenaufbereitung
